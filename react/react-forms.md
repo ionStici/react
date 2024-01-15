@@ -49,7 +49,7 @@ The fact that `<input />` keeps track of its own information makes it an uncontr
 
 A controlled component, on the other hand, has no memory. If you ask it for information about itself, then it will have to get that information through props. Most React components are controlled.
 
-In React, when you give an `<input />` a value attribute, then something strange happens: the `<input />` BECOMES controlled. It stops using its internal storage. This is a more ‘React’ way of doing things.
+In React, when you give an `<input />` a value attribute, then something strange happens: the `<input />` BECOMES controlled. It stops using its internal storage. This is a more "React" way of doing things.
 
 More information about controlled and uncontrolled components in the [React Forms Documentation](https://reactjs.org/docs/forms.html)
 
@@ -80,5 +80,16 @@ Though change-by-change validation like this is common enough, in some cases we 
 ## useRef Hook
 
 Another approach for dealing with forms in React is by using the `useRef` hook.
+
+```jsx
+import { useRef } from "react";
+
+function App() {
+  const input = useRef(null);
+  return <input type="text" ref={input} />;
+}
+```
+
+`useRef` - select DOM elements.
 
 <br>

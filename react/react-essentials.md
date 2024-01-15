@@ -1,6 +1,6 @@
 # React
 
-[**React**](https://react.dev/) is a declarative JavaScript library for building UIs.
+[**React**](https://react.dev/) is a declarative JavaScript library for building reactive UIs.
 
 Why React? Fast, modular, scalable, flexible, popular.
 
@@ -37,7 +37,7 @@ This piece of JSX code:
 const element = <h1>Hello, World!</h1>;
 ```
 
-Is transformed by Babel into this:
+is transformed by Babel into this:
 
 ```js
 // JS
@@ -72,7 +72,7 @@ import { Fragment } from "react";
 
 <br>
 
-## className and htmlFor
+## className
 
 To set a `class` attribute in JSX, we use the `className` keyword instead.
 
@@ -80,7 +80,9 @@ To set a `class` attribute in JSX, we use the `className` keyword instead.
 <h1 className="heading-1">Hello</h1>
 ```
 
-### htmlFor
+<br>
+
+## htmlFor
 
 In JSX, the `for` attribute is written as `htmlFor`.
 
@@ -128,7 +130,7 @@ function App() {
 
 - The name of the event listener attribute: The keyword `on` + the event type (in camelCase).
 
-- The value of the event listener attribute would be a predefined function.
+- The value of the event listener attribute should be a predefined function.
 
 <br>
 

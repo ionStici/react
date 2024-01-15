@@ -15,6 +15,6 @@ function App() {
 
 Besides returning, we can have any JavaScript logic inside function components.
 
-Separation of concerns: One component per file, which, by using JSX, combines HTML, CSS and JS in one single block of code.
+Separation of concerns: One component per file, which by using JSX, combines HTML, CSS and JS in one single block of code.
 
 <br>

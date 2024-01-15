@@ -109,6 +109,8 @@ A React App is basically just a lot of components, setting state and passing pro
 
 `props` for data that can be changed only by another component. `state` for data that the component itself can change.
 
+`props` for building re-usable components. `useState` for changing what we see on the screen dynamically.
+
 When the state updates, it triggers a re-render of the component using the new state data, including child components that receive that data as a prop.
 
 React updates the actual DOM only where necessary. This means you don't have to worry about changing the DOM. **You simply declare what the UI should look like.**

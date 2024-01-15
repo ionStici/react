@@ -24,7 +24,7 @@ Object literals inside JSX using double curly braces:
 
 - In JSX, any hyphenated style properties are written using camelCase.
 - Hyphenated words are invalid syntax for JS object properties.
-- Style values must be decalred as strings.
+- Style values must be declared as strings.
 - Style values declared as numbers will be assumed as `px` units.
 - After the source code is compiled, the styles will be rendered properly.
 

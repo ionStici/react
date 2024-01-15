@@ -4,9 +4,7 @@ A component can pass data "props" to another inner component.
 
 `props` is the name of the object that stores the passed data.
 
-To pass `props`, we simply define key / value pairs
-
-inside the component's angle brackets.
+To pass `props`, we simply define key / value pairs inside the component's angle brackets.
 
 ```jsx
 function App() {
@@ -74,6 +72,22 @@ function App() {
 ```
 
 If the component is an self-closing tag, then `children` will be `undefined`.
+
+<br>
+
+## Explicit Props
+
+Passing Components as Props (Alternative to children)
+
+```jsx
+function App() {
+  return <Layout element={<Component />} />;
+}
+
+function Layout({ element }) {
+  return <main>{element}</main>;
+}
+```
 
 <br>
 

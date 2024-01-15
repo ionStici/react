@@ -3,7 +3,7 @@
 ## React using Vite
 
 ```
-npm create vite@latest my-app
+npm create vite@latest my-react-app
 ```
 
 ### Predefined Scripts
@@ -14,24 +14,12 @@ npm create vite@latest my-app
 
 - `npm run preview` preview the production version of the app.
 
-### Directory Structure
-
-- `public/` for static assets.
-
-- `src/` contains the actual application code.
-
-- `package.json` contains descriptive and functional metadata about a project.
-
-- `package-lock.json` contains the dependency tree installed in node_modules/.
-
-- `node_modules/` contains dependencies and sub-dependencies used by React.
-
 ## Rendering a Component
 
 _Boilerplate Code_
 
 ```jsx
-// index.jsx
+// main.jsx
 import React from "react";
 import ReactDOM from "react-dom/client";
 
@@ -55,10 +43,24 @@ root.render(
 
 - `ReactDOM.createRoot()` creates the root DOM node.
 
-- The `render()` method is called on the `root` obhect, which mounts the `App` component to the DOM.
+- The `render()` method is called on the `root` object, which mounts the `App` component to the DOM.
 
 - `<React.StrictMode>` is an optional utility component that helps detect potential problems.
 
 _Virtual DOM note:_ `render` only updates DOM elements that have been changed.
 
-<br>
+### Directory Structure
+
+- `public/` for static assets.
+
+- `src/` contains the actual application code.
+
+- `src/App.jsx` contains a function component that returns JSX and which is exported so that `src/main.jsx` could import and render that in the browser.
+
+- `index.html` is the HTML document into which react will insert all the content, resulting in a SPA.
+
+- `package.json` contains descriptive and functional metadata about a project.
+
+- `package-lock.json` contains the dependency tree installed in node_modules/.
+
+- `node_modules/` contains dependencies and sub-dependencies used by React.
