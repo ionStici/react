@@ -80,6 +80,6 @@ The result of the Reconciliation process + Diffing is a second updated fiber tre
 
 React writes to the DOM, updating inserting, deleting elements
 
-4. **Browser Paint**
+The render phase resulted in a list of DOM updates, and this list will npw get used in the commit phase.
 
-<br>
+### 4. Browser Paint
