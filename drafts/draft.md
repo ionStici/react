@@ -34,7 +34,7 @@ _..by updating state somewhere_
 
 ### 2. Render Phase
 
-2. **Render Phase** - react calls component functions and figures out how DOM should be updated, this happens internally inside React and does not produce visual changes yet
+2. **Render Phase** - react calls all component functions and figures out how DOM should be updated, this happens internally inside React and does not produce visual changes yet
 
    At the beginning of the render phase, React will go through the entire component tree, take all the component instances that triggered a re-render and render them, which means to call the corresponding component functions. This will create updated React elements which altogether make up the so-called virtual DOM.
 
@@ -82,4 +82,44 @@ React writes to the DOM, updating inserting, deleting elements
 
 The render phase resulted in a list of DOM updates, and this list will npw get used in the commit phase.
 
+The commit phase is where React writes to the DOM. React goes through the effects list that was created during rendering, and applies them one by one to the actual DOM elements that were in the already existing DOM tree.
+
+Committing is synchronoys (unlike the rendering phase, which can be paused): the DOM is updated in one go, it can't be interrupted. This is necessary so that the DOM never shows partial results, ensuring a consistent UI (in sync with state at all times). In fact, that's the whole point of dividing the entire process into the render phase and the commit phase, it's so that rendering can be paused, resumed and discarded, and then the result of all that rendering can be flushed to the DOM in one go.
+
+After the commit phase completes, the `workInProgress` fiber tree becomes the `current` tree for the next render cycle, because fiber trees are never discarded or created from scratch, instead, they are reused in order to save precious rendering time.
+
+The browser will then notice that the DOM has been changed and as a result, it will repaint the screen.
+
+The render phase is performed by the React library. The React DOM library is responsible for the commit phase.
+
 ### 4. Browser Paint
+
+<br>
+
+## How Diffing Works
+
+The diffing algorithm that is part of the reconciliation process.
+
+Diffing is comparing elements step-by-step between 2 renders based on thei position in the tree.
+
+Diffing uses 2 fundamental assumptions (rules): (1) Two elements of different types will produce different trees, (2) Elements with a stable key prop stay the same across renders. This allows React to go from 1.000.000.000 [O(n3)] to 1000 [O(n)] operaitons per 1000 elements.
+
+Two different situations that need to be considered:
+
+1. Having 2 different elements at the same position in the tree between 2 renders.
+
+   Changing a DOM element simply means that the type of the element has changed, for example from a `div` to a `header`. In a situation like this, React will assume that the element itself plus all its children are no longer valid, therefore all these elements will be destroyed and removed from the DOM (including their state).
+
+   After removing from the DOM, a new element will be rebuild with a brand new component instance as the child.
+
+   All this works the same for component instances.
+
+2. Having the same element at the same position in the tree, between 2 renders.
+
+   If after a render a element at a certain position in the tree is the same as before, the element will simply be kept in the DOM, as well all child elements including their state.
+
+   The same element at the same position in the tree stays the same and preserves state, and it works like this for DOM elements and for React elements as well.
+
+   New props or attributes are passed if they changed between renders without changing the element type.
+
+These are the only 2 situations that matter.
