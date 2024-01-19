@@ -123,3 +123,77 @@ Two different situations that need to be considered:
    New props or attributes are passed if they changed between renders without changing the element type.
 
 These are the only 2 situations that matter.
+
+<br>
+
+## The Key Prop
+
+The Key Prop is a special prop that we can use to tell the diffing algorithm that an element is unique. This works for both DOM elements and React elements.
+
+In practice this means that we can give each component instance a unique identification, which will allow React to distinguish between multiple instances of the same component type.
+
+When a key stays the same across renders, the element will be kept in the DOM (even if the position in the tree changes). This is why we have to use keys in lists.
+
+When a key changes between renders, the element will be destroyed and a new one will be created (even if the position in the tree is the same as before). Great to reset state, which is the second big use case of the key prop.
+
+<br>
+
+## Rules for Render Logic: Pure Components
+
+**Render Logic** - Code that lives at the top level of the component function; Participates in describing how the component view looks like; Code executed every time the component renders;
+
+**Event Handler Functions** - Code executed as a consequence of the event that the handler is listening for; Code that does things: update state, perform an HTTP request, read an input field, navigate to another page, etc.
+
+**Side effects** - modification of any data outside the function score (mutating external variables, HTTP requests, writing to DOM);
+
+**Pure functions** - a function that has **no** side effects; Functions that do not change any variable outside their scope; Given the same input, a pure function always returns the same output;
+
+### Rules for Render Logic
+
+1. Components must be pure when it comes to render logic: given the same props (input), a component instance should always return the same JSX (output).
+
+2. Render logic must produce no side effects: no interaction with the "outside world" is allowed. So, in render logic:
+
+   - Do NOT perform API calls
+   - Do NOT start timers
+   - Do NOT directly use the DOM API
+   - Do NOT mutate objects or variables outside of the function scope
+   - Do NOT update state (or refs): this will create an infinite loop
+
+These side effects, are only forbidden inside render logic. We have other options for running side effects: Side effects are allowed (and encouraged) in event handler functions (which are not part of the render logic). These is also a special hook to register side effects `useEffect`.
+
+<br>
+
+## State Update Batching
+
+Renders are not triggered immediately, but scheduled for when the JS engine has some "free time". There is also batching for multiple `setState` calls in event handlers.
+
+```jsx
+// Event handler function
+const reset = () => {
+  setCount(0);
+  console.log(count); // 7
+  setModal(false);
+  setPlay(true);
+};
+```
+
+Considering an event handle function with multiple state updates, these state updated will get batched into just **one** state update for the entire event handler.
+
+Updating multiple pieces of state won't immediately cause a re-render for each update, instead all pieces of state inside the envet handler are updated in one go, and only then will React trigger one single _render + commit_.
+
+What will the value of `count` be when logging it? At the point of logging the `count` state, this state will still hold the state before update. At this point we say that the state is stale, meaning that the state is no longer fresh and updated, because a state update will only be reflected in the state variable after the re-render. For this reason, we say that updating state in react is asynchronous.
+
+Updated state variables are not immediately available after `setState` call, but only after the re-render.
+
+This also applies when only one state variable is updated.
+
+If we need to update state based on previous update, we use `setState` with a callback.
+
+Starting with React 18, state batching is available in timeout functions, promises and DOM native event methods:
+
+```jsx
+setTimeout(reset, 1000);
+fetchStuff().then(reset);
+btn.addEventListener("click", reset);
+```
