@@ -197,3 +197,62 @@ setTimeout(reset, 1000);
 fetchStuff().then(reset);
 btn.addEventListener("click", reset);
 ```
+
+p.s. If we attempt to update the state while the new state is equal to the current state, React will not update the state and not re-render the component instance.
+
+p.s. In case we try to update the same state multiple times in a row by computing the new state from the current state, the next state updates actually will not use the updated state but instead the current state for each update. Because the state remains stale.
+
+<br>
+
+## How Events Work in React
+
+Event Delegation works in React as well.
+
+When we register an event handler on a JSX element, for example using the `onClick` prop, behind the scenes React actually registers only one event handler per event type at the root node of the fiber tree during the render phase.
+
+If we have multiple `onClick` handlers in our code, React will somehow bundle them all together and just add one big `onClick` handler to the `#root` node of the fiber tree.
+
+Behind the scenes, React performs event delegation for all events in our application.
+
+React delegates all events to the `#root` DOM container, where they will get handled, not in the place where we attach the `onClick` prop.
+
+### Synthetic Events
+
+When we declare and event handler like this one:
+
+```jsx
+<input onChange={(e) => setText(e.target.value)} />
+```
+
+..react gives us access to the event object that was created, just like in vanilla JS. However, in React, this event object is different.
+
+In vanilla JS we get access to the native DOM event object, React on the other hand will give us something called a synthetic event, which is a thin wrapper around the DOM's native event object.
+
+By wrapper, we mean that synthetic events are similar to native event objects, but they add or change some functionalities on top of them.
+
+These synthetic events have the same interface as native event objects, including important methods like `preventDefault`. What's special about synthetic events thought, and one of the reasons why the React team decided to implement them is the fact that they fix some browser incosistencies, so that events work in the exact same way in all browsers. Most synthetic events actually bubble (including focus, blur, and change which usually do not bubble), except for scroll.
+
+<br>
+
+## Libraries vs. Frameworks & The React Ecosystem
+
+**Framework** (all-in-one kit) - everything you need to build a complete application is included in the framework. Frameworks like Angular includes stuff like HTTP requests, styling, routing, form management, and more. The downside of this is that you're stuck with the framework's tools and conventions (which is not always bad).
+
+**Library** -
+
+React is a view library (not a framework). If you want to build a large-scale SPAs, you will need to include many 3rd-party external libraries for things like routing, styling, http requests, and so on, so all these functionalities are not part of React itself. You can choose multiple 3rd-party libraries to build a complete application. You need to research, download, learn, and stay-up-to-date with multiple external libraries.
+
+React has a large ecosystem of libraries that we can include in our React projects for different needs.
+
+- Routing: **React Router**, React Location
+- HTTP Requests: **fetch()**, Axios
+- Remote state management: **React Query**, SWR, Apollo
+- Global state management: **Context API**, **Redux**, Zustand
+- Styling: **CSS Modules, Styled Components, tailwindcss**
+- Form management: **React Hook Form**, Formik
+- Animations/transitions: Framer Motion, react-spring
+- UI components: Chakra, mantine
+
+Next.js, Remix, Gatsby are "opinionated" React frameworks built on top of React, they extend React's functionalities, providing solutions for routing, state management, styling, and more.
+
+We can consider this React frameworks as full-stack frameworks because they provide features like server-side rendering (SSR) and static-side generation (SSG), all by using React as the baselayer.
