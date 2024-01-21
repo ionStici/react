@@ -69,3 +69,55 @@ _We can create side effects in 2 different places in React:_
    - Executed after the component mounts (initial render), and after subsequent re-renders (according to dependency array).
 
    - The cleanup function will be called before the component re-renders or unmounts.
+
+## useEffect with Async
+
+```jsx
+useEffect(() => {
+  async function fetchData() {
+    const res = await fetch();
+    const data = await res.json();
+  }
+  fetchData();
+}, []);
+```
+
+When react's strict mode is activated in React 18, our effects will run twice, but only in development phase, that's why we usually get 2 console logs.
+
+<br>
+
+## The useEffect Dependency Array
+
+`useEffect` is like an event listener that is listening for one dependency to change.
+
+Whenever a dependency changes, it will execute the effect again.
+
+`useEffect` is a synchronization mechanism, a mechanism to synchronize effects with the state of the application.
+
+Whenever a dependency changes, the effect is executed again. Dependencies are always state or props. And when state or props changes, the component will re-render, this means that effects and the life cycle of a component instance are deeply interconnected.
+
+We can use the dependency array to run effects when the component renders and re-renders.
+
+The `useEffect` hook is about synchronization and the component lifecycle.
+
+```jsx
+useEffect(runEffect);
+useEffect(runEffect, []);
+useEffect(runEffect, [x, y, z]);
+```
+
+- **When we have multiple dependencies - `[x, y, z]` -** it means that the effect synchronizes with these dependencies, in terms of lifecycle it means that the effect will run on the initial render and also on each re-render triggered by updating one of the dependencies. The effect will be executed each time the component instance is being re-rendered by an update to `[x, y, z]`, but if other state or prop is updated then this particular effect will not be executed.
+
+- **An empty dependency array**: the effect synchronizes with no state or props, runs only on mount (initial render).
+
+- **No array at all**: effect synchronizes with everything, the effect will run on every render (usually bad).
+
+### When are effects executed?
+
+The process start with mounding (initial render) the component instance. Then, the result of rendering is committed to the dom, and then dom changes are painted onto the screen by the browser.
+
+Effects are only executed after the browser has painted the component instance on the screen, and not immediately after render. Why? Because effects may contain long-running processes such as fetching data.
+
+One important consequence of the fact that effects do not run during render is that if an effect sets state, then a second additional render will be required to display the UI correctly, because of this you should bot overuse effects. In other words: if an effect sets state, an **additional render** will be required.
+
+<br>
