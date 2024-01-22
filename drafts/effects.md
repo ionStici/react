@@ -120,4 +120,72 @@ Effects are only executed after the browser has painted the component instance o
 
 One important consequence of the fact that effects do not run during render is that if an effect sets state, then a second additional render will be required to display the UI correctly, because of this you should bot overuse effects. In other words: if an effect sets state, an **additional render** will be required.
 
+Again, code inside `useEffect` is executed after all the render logic code runs, so all the code that a component has.
+
 <br>
+
+## The useEffect Cleanup Function
+
+```jsx
+useEffect(() => {
+  // code ...
+
+  return () => "";
+}, []);
+```
+
+`useEffect` cleanup function
+
+- Function that we can return from an effect (optional)
+
+- Runs on two different occasions:
+
+  1. Before the effect is **executed again** (in order to cleanup the results of the previous side effect)
+  2. After a component has **unmounted**, (in order to give us the opportunity to reset the side effect that we created if that's necessary)
+
+<br>
+
+- Component renders -> Execute effect if dependency array includes updated data
+- Component unmounts -> Execute cleanup function
+
+When we need a cleanup function? Whenever the side effect keeps happening after the component has been re-rendered un unmounted. Examples: start timer -> stop timer, add event listener -> remove listener, etc.
+
+Each effect should do **only one thing.** Use one `useEffect` hook for each side effect. This makes effects easier to clean up.
+
+If you need to create multiple effects, just use multiple useEffect hooks.
+
+The cleanup function runs after the component has already unmounted, even so thanks to JS closures the cleanup function will remember the previous variables.
+
+<br>
+
+## Cleaning Up Data Fetching
+
+_Race condition_
+
+```jsx
+useEffect(() => {
+  const constroller = new AbortController();
+
+  async function fetchData() {
+    const res = fetch("apilink", { signal: controller.signal });
+  }
+
+  return () => controller.abort();
+}, [dep]);
+```
+
+## Listening to a Keypress
+
+Event listeners should be placed inside `useEffect` hook, because they are side effects.
+
+Each time the same component mounts, a new event listener is added to the document, always an additional one to the ones that we already have, so we have to cleanup our event listeners.
+
+```jsx
+useEffect(() => {
+  const callback = () => "";
+
+  document.addEventListener("keydown", callback);
+
+  return () => document.removeAddEventListenr("keydown", callback);
+}, []);
+```
