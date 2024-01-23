@@ -120,3 +120,84 @@ One custom hook should have one purpose, to make it reusable and portable (even 
 Rules of hooks apply to custom hooks too.
 
 A custom hook is just a JS function, it can receive and return any data. Custom hooks need to use one or more React hooks. The function name needs to start with the word `use` (not optional).
+
+### useLocalStorageState
+
+```jsx
+import { useState, useEffect } from "react";
+
+function useLocalStorageState(initialState, key) {
+  const [value, setValue] = useState(() => {
+    const storedValue = localStorage.getItem(key);
+    return storedValue ? JSON.parse(storedValue) : initialState;
+  });
+
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(value));
+  }, [value, initialState, key]);
+
+  return [value, setValue];
+}
+
+export { useLocalStorageState };
+
+function App() {
+  const [data, setData] = useLocalStorage([], "data");
+}
+```
+
+### useKey
+
+```jsx
+import { useEffect } from "react";
+
+function useKey(key, action) {
+  useEffect(() => {
+    const callback = (e) => {
+      if (e.code.toLowerCase() === key.toLowerCase()) action();
+    };
+
+    document.addEventListener("keydown", callback);
+    return () => document.removeEventListener("keydown", callback);
+  }, [key, action]);
+}
+
+export { useKey };
+
+function App() {
+  useKey("Enter", () => {});
+}
+```
+
+### useGeolocation
+
+```jsx
+function useGeolocation() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [position, setPosition] = useState({});
+  const [error, setError] = useState(null);
+
+  function getPosition() {
+    if (!navigator.geolocation) {
+      return setError("Your browser does not support geolocation");
+    }
+
+    setIsLoading(true);
+    navigator.geolocation.getCurrentPosition(
+      (loc) => {
+        setPosition({
+          lat: loc.coords.latitude,
+          lng: loc.coords.longitude,
+        });
+        setIsLoading(false);
+      },
+      (error) => {
+        setError(error.message);
+        setIsLoading(false);
+      }
+    );
+  }
+
+  return { isLoading, position, error, getPosition };
+}
+```

@@ -4,14 +4,27 @@
 
 Why React? Fast, modular, scalable, flexible, popular.
 
+## Table of Content
+
+- [JSX](#jsx)
+- [Babel Transformation](#babel-transformation)
+- [Nested JSX and Outer Elements](#nested-jsx-and-outer-elements)
+- [className](#classname)
+- [htmlFor](#htmlfor)
+- [Self-Closing Tags](#self-closing-tags)
+- [Curly Braces in JSX](#curly-braces-in-jsx)
+- [Event Listeners in JSX](#event-listeners-in-jsx)
+- [JSX and Conditionals](#jsx-and-conditionals)
+- [`map` in JSX](#map-in-jsx)
+
 <br>
 
 ## JSX
 
-**JSX** is a syntax extension for JavaScript, it allows developers to declaratively create HTML elements in JavaScript by writing HTML markup code directly inside of JavaScript files.
+**JSX** (JavaScript XML) is a syntax extension for JavaScript, that allows developers to declaratively write html elements directly within JavaScript code.
 
 ```jsx
-<h1>Hello</h1> // a JSX element
+<h1>Hello</h1> // JSX element
 ```
 
 JSX elements are treated as JS expressions, which means that we can store them in variables.
@@ -20,7 +33,7 @@ JSX elements are treated as JS expressions, which means that we can store them i
 const h1 = <h1 id="h1">Hello</h1>;
 ```
 
-JSX elements accept html attributes just like HTML elements do.
+JSX elements accept html attributes just like html elements do.
 
 _p.s. We can think of JSX elements as built-in react components._
 
@@ -28,12 +41,11 @@ _p.s. We can think of JSX elements as built-in react components._
 
 ## Babel Transformation
 
-Before reaching the browser, JSX code is compiled into regular JavaScript objects that create HTML elements on the page.
+Before reaching the browser, JSX code is compiled into regular JavaScript objects that create HTML elements on the DOM.
 
 This piece of JSX code:
 
 ```jsx
-// JSX
 const element = <h1>Hello, World!</h1>;
 ```
 
@@ -57,7 +69,7 @@ const list = (
 );
 ```
 
-JSX rules:
+**JSX rules:**
 
 1. If a JSX expression takes up more than one line, then you must wrap it in parentheses.
 2. Any JSX expression must have exactly one outer (parent) element.
@@ -65,10 +77,6 @@ JSX rules:
 ### React Fragment
 
 Use the `<Fragment>` react component (or the short `<>`) as the root element in case you need more outer elements.
-
-```jsx
-import { Fragment } from "react";
-```
 
 <br>
 
@@ -138,7 +146,7 @@ function App() {
 
 _Conditional rendering_
 
-- JSX inside **`if` statements** (note: we can't inject `if` into JSX)
+- JSX and **`if` statements** (note: we can't inject `if` into JSX)
 
   ```jsx
   let myName;
@@ -166,12 +174,12 @@ const arr = ["dog", "note", "cactus"];
 const list = arr.map((item) => <li key={item}>{item}</li>);
 ```
 
-Using `map` we can dynamically render JSX.
+Using `map` we can dynamically render JSX elements.
 
 ### The key attribute
 
-`key` is a JSX attribute, its value should be something unique (similar to an `id`).
+`key` is a special attribute, its value should be something unique.
 
-React uses them internally to keep track of lists rendered using the `map` method.
+React uses `key` internally to keep track of lists rendered using the `map` method.
 
 <br>

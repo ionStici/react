@@ -1,9 +1,18 @@
 # React
 
-- [Official React Website](https://react.dev/)
-- [New React Project](./react/react-project.md)
+- [react.dev](https://react.dev/)
+- [New React Project with Vite](./react/new-react-project.md)
+
+<div></div>
+
 - [React Essentials](./react/react-essentials.md)
+
 - [Styles in React](./react/styles-in-react.md)
+
+<div></div>
+
+<br>
+
 - [Functional Components](./react/functional-components.md)
 - [Props](./react/props.md)
 - [State: the useState Hook](./react/state.md)
