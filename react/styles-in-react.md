@@ -1,11 +1,6 @@
 # Styles in React
 
-Recommended tools for writing CSS in React apps:
-
-- CSS Modules
-- Tailwind CSS
-- Styled Components
-- Styled JSX
+Recommended tools for writing CSS in React apps: CSS Modules, Tailwind CSS, Styled Components.
 
 ## Inline Styles in React
 
@@ -36,8 +31,6 @@ export const styles = { fontSize: 25 };
 ```
 
 Store the styles inside an object and then inject that object into JSX.
-
-## Share Styles Across Multiple Components
 
 We can reuse styles across multiple components by keeping the styles in a separate JavaScript file and then exporting and reusing them.
 
