@@ -50,3 +50,73 @@ useEffect(() => {
 ```
 
 <br>
+
+## useRef
+
+We should not select DOM elements like this (even if it works):
+
+```jsx
+useEffect(() => {
+  const el = document.querySelector(".input");
+  el.focus();
+}, []);
+```
+
+React is declarative, and this is not the React way of doing things.
+
+Instead, we should use the `useRef` hook
+
+Ref stands for reference.
+
+- "Box" (object) with a mutable `.current` property that is persisted across renders ("normal" variables are always reset). In this object we can put any data that we want to be preserved between renders.
+
+```jsx
+const myRef = useRef(23);
+myRef.current = 1000;
+```
+
+When we use `useRef`, React will give us an object with a mutable `current` property, we can then write any data into this `current` property (and read from it).
+
+So, the `current` property's value stays the same between multiple renders.
+
+2 big use cases for `useRef`:
+
+1. Creating a variable that stays the same between renders (e.g. previous state, setTimeout id, etc.)
+2. Selecting and storing DOM elements.
+
+Refs are for data that is NOT rendered: usually only appear in event handlers or effects, not in JSX (otherwise use state)
+
+Do NOT write or react `.current` in render logic (like state), this would create an undesirable side effect, instead use a `useEffect` hook.
+
+|       | Persists across renders | Updating causes re-render | Immutable | Asynchronous Updates |
+| ----- | :---------------------: | :-----------------------: | :-------: | :------------------: |
+| State |           ✅            |            ✅             |    ✅     |          ✅          |
+| Refs  |           ✅            |            ❌             |    ❌     |          ❌          |
+
+### Selecting DOM elements with useRef
+
+```jsx
+function App() {
+  const inputEl = useRef(null);
+
+  useEffect(() => {
+    inputEl.current.focus();
+  }, []);
+
+  return <input ref={inputEl} />;
+}
+```
+
+When we work with DOM elements, the initial value of `useRef` should be `null`.
+
+<br>
+
+## Custom Hooks
+
+Reusing logic with custom hooks. Does logic contain any hooks? No, use regular functions. Yes, use custom hooks, which allow us to reuse non-visual logic in multiple components.
+
+One custom hook should have one purpose, to make it reusable and portable (even across multiple projects).
+
+Rules of hooks apply to custom hooks too.
+
+A custom hook is just a JS function, it can receive and return any data. Custom hooks need to use one or more React hooks. The function name needs to start with the word `use` (not optional).
