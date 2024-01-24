@@ -1,5 +1,7 @@
 # React
 
+_The library for web and native user interfaces._
+
 - [react.dev](https://react.dev/)
 - [New React Project with Vite](./new-react-project.md)
 
@@ -21,5 +23,12 @@
 <div></div>
 
 - [How React Works](./how-react-works.md)
+- [React Ecosystem](./react-ecosystem.md)
 
 <div></div>
+
+<!-- ```
+"rules": {
+  "react/prop-types": "off"
+}
+``` -->
