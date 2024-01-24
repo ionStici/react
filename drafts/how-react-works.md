@@ -1,35 +1,5 @@
 # Draft
 
-# Virtual DOM
-
-## Understanding the DOM manipulation problem
-
-Whenever the browser detects a change to the DOM, it rebuilds the _entire_ DOM only for that change, not considering that most elements were not updated. DOM manipulation is a slower process than most JavaScript operations.
-
-- _The problem:_ multiple inefficient DOM updates affecting the website performance.
-- _The solution:_ Virtual DOM.
-
-## The Virtual DOM
-
-By using a Virtual DOM, we prevent unnecessary DOM rebuilds, and only affect the elements that were updated, greatly improving the webpage performance and creating amazing user experiences.
-
-- The Virtual DOM is a JavaScript object that represents a copy of the real DOM object.
-- In React, for every DOM object, there is a corresponding Virtual DOM object.
-- Manipulating the virtual DOM is faster because nothing gets drawn on screen.
-
-Frameworks like Vue or React create their own representation of the DOM as a JavaScript object. Whenever a change is going to be made to the DOM, the framework makes a copy of this JavaScript object, makes the change to that copy, and compares the two JavaScript objects to detect what has changed and then it informs the browser of these changes and only those parts of the DOM are updated.
-
-Making changes to JavaScript objects and comparing so that only specific parts of the real DOM is updated, is far faster than trying to do the same with common DOM manipulations.
-
-## How it Works
-
-- When a JSX element is rendered, every single virtual DOM object gets updated.
-- Then, React compares the virtual DOM with a virtual DOM snapshot that was taken right before the update.
-- React figures out exactly which virtual DOM objects have changed (process called "diffing").
-- Then, React updates only the modified object on the real DOM.
-
-React can update only the necessary parts of the DOM and improve the performance.
-
 # React Developer Tools
 
 [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) extension allows to inspect React components.
@@ -48,45 +18,17 @@ In Chrome DevTools, we get two new tabs: **Components** and **Profiler**.
 
 <br>
 
-## How Diffing Works
-
-The diffing algorithm that is part of the reconciliation process.
-
-Diffing is comparing elements step-by-step between 2 renders based on thei position in the tree.
-
-Diffing uses 2 fundamental assumptions (rules): (1) Two elements of different types will produce different trees, (2) Elements with a stable key prop stay the same across renders. This allows React to go from 1.000.000.000 [O(n3)] to 1000 [O(n)] operaitons per 1000 elements.
-
-Two different situations that need to be considered:
-
-1. Having 2 different elements at the same position in the tree between 2 renders.
-
-   Changing a DOM element simply means that the type of the element has changed, for example from a `div` to a `header`. In a situation like this, React will assume that the element itself plus all its children are no longer valid, therefore all these elements will be destroyed and removed from the DOM (including their state).
-
-   After removing from the DOM, a new element will be rebuild with a brand new component instance as the child.
-
-   All this works the same for component instances.
-
-2. Having the same element at the same position in the tree, between 2 renders.
-
-   If after a render a element at a certain position in the tree is the same as before, the element will simply be kept in the DOM, as well all child elements including their state.
-
-   The same element at the same position in the tree stays the same and preserves state, and it works like this for DOM elements and for React elements as well.
-
-   New props or attributes are passed if they changed between renders without changing the element type.
-
-These are the only 2 situations that matter.
-
 <br>
 
-## The Key Prop
+## Components, Instances, Elements
 
-The Key Prop is a special prop that we can use to tell the diffing algorithm that an element is unique. This works for both DOM elements and React elements.
+**Components:** are JS functions that return JSX.
 
-In practice this means that we can give each component instance a unique identification, which will allow React to distinguish between multiple instances of the same component type.
+**An Instance:** is a reference to a component. Each time a component is used, React creates a new instance of that component, which includes its own state and lifecycle.
 
-When a key stays the same across renders, the element will be kept in the DOM (even if the position in the tree changes). This is why we have to use keys in lists.
+**An Element:** (or JSX) is a built-in component (object) that describes a DOM node. Each JSX element is converted to a `React.createElement()` call.
 
-When a key changes between renders, the element will be destroyed and a new one will be created (even if the position in the tree is the same as before). Great to reset state, which is the second big use case of the key prop.
+**Note:** React calls the component instances internally when it renders.
 
 <br>
 

@@ -22,7 +22,7 @@ _The library for web and native user interfaces._
 
 <div></div>
 
-- [How React Works](./how-react-works.md)
+- [How Rendering Works](./how-rendering-works.md)
 - [React Ecosystem](./react-ecosystem.md)
 
 <div></div>
