@@ -59,7 +59,7 @@ In Chrome DevTools, we get two new tabs: **Components** and **Profiler**.
 **Note:** React calls the component instances internally when it renders.
 
 <br>
-
+ 
 ## How Rendering Works
 
 ### 1. Render is Triggered

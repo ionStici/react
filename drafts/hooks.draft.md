@@ -24,33 +24,6 @@ less used hooks: `useRef`, `useCallback`, `useMemo`, `useTransition`, `useDeferr
 
 <br>
 
-## useState
-
-The initial value of `useState` that we pass only matter on the initial render.
-
-## Initializing State With a Callback (Lazy Initial State)
-
-We can initialize the state with a callback function that returns a value.
-
-This function as well is considered only on the initial render.
-
-Whenever the initial value of the `useState` hook depends on some sort of computation, we should pass in a callback function that React will execute on its initial render.
-
-Local Storage in React:
-
-```jsx
-const [data, setData] = useState(() => {
-  const storedData = localStorage.getItem("data");
-  return JSON.parse(storedData);
-});
-
-useEffect(() => {
-  localStorage.setItem("data", JSON.stringify(data));
-}, [data]);
-```
-
-<br>
-
 ## useRef
 
 We should not select DOM elements like this (even if it works):

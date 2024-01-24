@@ -1,12 +1,20 @@
 # The useState Hooks
 
-React Hooks are functions that let us manage the internal state of components and handle post-rendering side effects directly form our functional components.
+## Table of Content
+
+- [Update Function Component State](#update-function-component-state)
+- [Initializing State With a Callback](#initializing-state-with-a-callback)
+- [Previous State](#previous-state)
+- [Arrays in State](#arrays-in-state)
+- [Objects in State](#objects-in-state)
+- [Notes](#notes)
+- [State vs. Props](#state-vs-props)
 
 <br>
 
 ## Update Function Component State
 
-The _State Hook_ is a named export from the React library.
+The `useState` Hook is a named export from the React library.
 
 ```jsx
 import React, { useState } from "react";
@@ -29,7 +37,7 @@ Follow this naming pattern: `[toggle, setToggle]`
 1. _current state_ - the current value of this state.
 2. _state setter_ - a function that we can use to update the value of this state.
 
-As argument to `useState()` we can pass an _initial value_ that will be used during the first render. Use `null` if you don't have an initial value.
+As argument to `useState()` we can pass an _initial value_ that will be used during the initial render. Use `null` if you don't need an initial value.
 
 By updating the state using the state setter, **we trigger a component re-render**.
 
@@ -40,6 +48,22 @@ By updating the state using the state setter, **we trigger a component re-render
 **State is preserved throughout re-renders**, until the component is unmounted.
 
 _p.s._ We can make as many calls to `useState()` as we want. It's recommended to split the state into multiple sections, each responsible for its part of the application.
+
+<br>
+
+## Initializing State With a Callback
+
+_Lazy Initial State_
+
+```jsx
+useState(() => {
+  const data = localStorage.getItem("data");
+  if (!data) return 0;
+  return JSON.parse(data);
+});
+```
+
+When the initial value of the `useState` hook depends on some sort of computation, we can pass in a callback function that React will execute (only) on its initial render.
 
 <br>
 
@@ -81,7 +105,7 @@ We define an `arr` _static data model_ outside of our function component since i
 
 Then, the `nums` array contains _dynamic data_, meaning that it changes.
 
-When updating an array in state, we do not just add new data to the previous array, instead we replace the previous array with a brand new array. This means that any information that we want to save from the previous array needs to be explicitly copied over to our new array.
+When updating an array in state, we do not just add new data to the previous array, instead we replace the previous array with a brand new array. **This means that any data that we want to save from the previous array needs to be explicitly copied over to our new array.**
 
 <br>
 
@@ -125,26 +149,16 @@ Use state when you need to change something on the screen that a particular comp
 
 ### State
 
-- **Internal** data, owned by component
-
+- **Internal** data, owned by a component
 - Component "memory"
-
 - Can be updated by the component itself
-
 - Updating state causes component to re-render
-
 - Used to make components interactive
 
 ### Props
 
 - **External** data, owned by parent component
-
 - Similar to function parameters
-
 - Read-only
-
 - **Receiving new props causes component to re-render.** Usually when the parent's state has been updated
-
 - Used by parent to configure child component ("settings")
-
-<br>

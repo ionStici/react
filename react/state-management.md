@@ -1,5 +1,15 @@
 # Thinking in React
 
+## Table of Content
+
+- [State Management](#state-management)
+- [Stateless Components Inherit from Stateful Components](#stateless-components-inherit-from-stateful-components)
+- [Child Components Update Their Parents' state](#child-components-update-their-parents-state)
+- [Child Components Update Their Sibling Components](#child-components-update-their-sibling-components)
+- [Component Categories]()
+
+<br>
+
 ## State Management
 
 **Local State:** State needed only by one or few components. State that is defined in a component and only that component and child components have access to it (by passing via props).
@@ -7,48 +17,6 @@
 **Global State:** State that many components might need. Shared state that is accessible to every component in the entire application. Tools for managing global state: Context API & Redux.
 
 **Derived State:** state that is computed from an existing piece of state or from props.
-
-<br>
-
-## Lifting State Up
-
-**Lifting State Up:** whenever multiple sibling components need access to the same state, we move that piece of state up to the first common parent component.
-
-```jsx
-function App() {
-  const [items, setItems] = useState([]);
-
-  const handleAddItems = (item) => {
-    setItems((prev) => [...prev, item]);
-  };
-
-  return (
-    <>
-      <Form onAddItems={handleAddItems} />
-      <Items items={items} />
-    </>
-  );
-}
-
-function Form({ onAddItems }) {
-  const input = useRef(null);
-
-  const handleClick = () => {
-    onAddItems(input.current.value);
-  };
-
-  return (
-    <>
-      <input type="text" ref={input} />
-      <button>Click</button>
-    </>
-  );
-}
-
-function Items({ items }) {
-  return <p>{items.join(" ")}</p>;
-}
-```
 
 <br>
 
@@ -65,8 +33,8 @@ function Parent() {
   return <Child name={name} />;
 }
 
-function Child(props) {
-  return <h1>{props.name}</h1>;
+function Child({ name }) {
+  return <h1>{name}</h1>;
 }
 ```
 
@@ -92,9 +60,9 @@ function Child({ toggle, onClick }) {
 
 <br>
 
-## Child Components Update Sibling Components
+## Child Components Update Their Sibling Components
 
-A child component updates its parent’s state, and the parent passes that state to a sibling component.
+**Lifting State Up:** whenever multiple sibling components need access to the same state, we move that piece of state up to the first common parent component.
 
 _Concept:_ one stateless component displays information, and a different stateless component offer the ability to change that information.
 
@@ -115,6 +83,8 @@ function Parent() {
 }
 ```
 
+A child component updates its parent’s state, and the parent passes that state to a sibling component.
+
 <br>
 
 ## Component Categories
@@ -131,8 +101,8 @@ function Parent() {
 
 - **Structural Components**
 
-  - Pages, layouts of the app, Provides structure
-  - Result of composition of components
+  - Pages, layouts of the app, provides structure
+  - Result of component composition
 
 ### Component Composition
 
@@ -141,7 +111,7 @@ function Parent() {
 **Component Composition** - technique of combining different components using the `children` prop (or explicitly defined props) / for reusable and flexible components / to fix a prop drilling problem / great for creating layouts.
 
 ```jsx
-// Component Composition
+// Component Composition Example
 function App() {
   return (
     <Layout>
