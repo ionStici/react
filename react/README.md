@@ -2,7 +2,6 @@
 
 _The library for web and native user interfaces._
 
-- [react.dev](https://react.dev/)
 - [New React Project with Vite](./new-react-project.md)
 
 <div></div>
@@ -27,8 +26,13 @@ _The library for web and native user interfaces._
 
 <div></div>
 
-<!-- ```
-"rules": {
-  "react/prop-types": "off"
-}
-``` -->
+- [Forms in React](./react-forms.md)
+
+<div></div>
+
+### Resources
+
+- [React Official Website](https://react.dev/)
+- [React Roadmap](https://roadmap.sh/react)
+
+<!-- When react's strict mode is activated in React 18, our effects will run twice, but only in development phase, that's why we usually get 2 console logs. -->

@@ -1,8 +1,12 @@
-# React Forms
+# Forms in React
 
 ## Table of Content
 
-- []()
+- [Input onChange](#input-onchange)
+- [Controlled vs Uncontrolled](#controlled-vs-uncontrolled)
+- [Controlled Components](#controlled-components)
+- [Uncontrolled Components](#uncontrolled-components)
+- [useRef Hook](#useref-hook)
 
 <br>
 

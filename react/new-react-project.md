@@ -59,3 +59,9 @@ root.render(
 - `package-lock.json` contains the dependency tree installed in node_modules/.
 
 - `node_modules/` contains dependencies and sub-dependencies used by React.
+
+## React Developer Tools
+
+[React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) extension allows to inspect React components.
+
+In Chrome DevTools, we get two new tabs: **Components** and **Profiler**.

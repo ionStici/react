@@ -1,25 +1,3 @@
-# Draft
-
-# React Developer Tools
-
-[React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) extension allows to inspect React components.
-
-In Chrome DevTools, we get two new tabs: **Components** and **Profiler**.
-
-<br>
-
-<!-- The react code is processed in the build step, this means that the code we write will not be the code that ends up in the browser, we simply write code that is convenient for us the developer, then behind the scenes that code will be transformed before it reaches the browser.
-
-`index.js` file is the starting point of the react application. In here, all the react code is imported. After which, the `render` method will insert all these code in a single html document right inside the `div` element with the `root` id, but only after the build step. -->
-
-<br>
-<br>
-<br>
-
-<br>
-
-<br>
-
 ## Components, Instances, Elements
 
 **Components:** are JS functions that return JSX.
@@ -125,5 +103,3 @@ In vanilla JS we get access to the native DOM event object, React on the other h
 By wrapper, we mean that synthetic events are similar to native event objects, but they add or change some functionalities on top of them.
 
 These synthetic events have the same interface as native event objects, including important methods like `preventDefault`. What's special about synthetic events thought, and one of the reasons why the React team decided to implement them is the fact that they fix some browser incosistencies, so that events work in the exact same way in all browsers. Most synthetic events actually bubble (including focus, blur, and change which usually do not bubble), except for scroll.
-
-<br>

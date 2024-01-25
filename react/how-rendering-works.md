@@ -8,6 +8,7 @@
 - [Summary](#summary)
 - [How Diffing Works](#how-diffing-works)
 - [The Key Prop](#the-key-prop)
+- [The Virtual DOM](#the-virtual-dom)
 
 <br>
 
@@ -135,24 +136,18 @@ When a key stays the same across renders, the element will be kept in the DOM (e
 
 When a key changes between renders, the element will be destroyed and a new one will be created (even if the position in the tree is the same as before). Great to reset state, which is the second big use case of the `key` prop.
 
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
+<br>
 
-<!--
+## Virtual DOM
 
-# Virtual DOM
-
-## Understanding the DOM manipulation problem
+### Understanding the DOM manipulation problem
 
 Whenever the browser detects a change to the DOM, it rebuilds the _entire_ DOM only for that change, not considering that most elements were not updated. DOM manipulation is a slower process than most JavaScript operations.
 
 - _The problem:_ multiple inefficient DOM updates affecting the website performance.
 - _The solution:_ Virtual DOM.
 
-## The Virtual DOM
+### The Virtual DOM
 
 By using a Virtual DOM, we prevent unnecessary DOM rebuilds, and only affect the elements that were updated, greatly improving the webpage performance and creating amazing user experiences.
 
@@ -164,11 +159,11 @@ Frameworks like Vue or React create their own representation of the DOM as a Jav
 
 Making changes to JavaScript objects and comparing so that only specific parts of the real DOM is updated, is far faster than trying to do the same with common DOM manipulations.
 
-## How it Works
+### How it Works
 
 - When a JSX element is rendered, every single virtual DOM object gets updated.
 - Then, React compares the virtual DOM with a virtual DOM snapshot that was taken right before the update.
 - React figures out exactly which virtual DOM objects have changed (process called "diffing").
 - Then, React updates only the modified object on the real DOM.
 
-React can update only the necessary parts of the DOM and improve the performance. -->
+React can update only the necessary parts of the DOM and improve the performance.
