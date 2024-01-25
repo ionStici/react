@@ -174,3 +174,20 @@ function useGeolocation() {
   return { isLoading, position, error, getPosition };
 }
 ```
+
+<br>
+<br>
+<br>
+
+## Rules of Hooks
+
+Two main rules when using Hooks:
+
+- Only call Hooks at the top level
+- Only call Hooks from React functions
+
+[Hooks API Reference](https://reactjs.org/docs/hooks-reference.html)
+
+When React builds the Virtual DOM, the library calls the functions that define our components over and over again as the user interacts with the user interface. React keeps track of the data and functions that we are managing with Hooks based on their order in the function component’s definition. For this reason, we always call our Hooks at the top level; we never call hooks inside of loops, conditions, or nested functions.
+
+Secondly, Hooks can only be used in React Functions. We cannot use Hooks in class components and we cannot use Hooks in regular JavaScript functions. We’ve been working with useState() and useEffect() in function components, and this is the most common use. The only other place where Hooks can be used is within custom hooks. Custom Hooks are incredibly useful for organizing and reusing stateful logic between function components. For more on this topic, head to the [React Docs](https://reactjs.org/docs/hooks-custom.html).

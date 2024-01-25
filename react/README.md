@@ -21,12 +21,16 @@ _The library for web and native user interfaces._
 
 <div></div>
 
-- [How Rendering Works](./how-rendering-works.md)
-- [React Ecosystem](./react-ecosystem.md)
+- [Effects](./effects.md)
 
 <div></div>
 
 - [Forms in React](./react-forms.md)
+
+<div></div>
+
+- [How Rendering Works](./how-rendering-works.md)
+- [React Ecosystem](./react-ecosystem.md)
 
 <div></div>
 
