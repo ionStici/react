@@ -3,9 +3,10 @@
 ## Table of Content
 
 - [The Component Instance Lifecycle](#the-component-instance-lifecycle)
-- [Side Effects](#side-effects)
+- [What are Side Effects](#what-are-side-effects)
 - [The useEffect Hook](#the-useeffect-hook)
 - [The Dependency Array](#the-dependency-array)
+- [The Cleanup Function](#the-cleanup-function)
 
 <br>
 
@@ -23,7 +24,7 @@ We can execute code in these different phases of a component's lifecycle using t
 
 <br>
 
-## Side Effects
+## What are Side Effects
 
 A **side effect** is any interaction between a react component and the world outside that component. Examples: data fetching, timers, accessing the DOM, etc.
 
@@ -101,32 +102,7 @@ This means that if an effect sets state, then a second additional render will be
 
 <br>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## The useEffect Cleanup Function
+## The Cleanup Function
 
 ```jsx
 useEffect(() => {
@@ -136,119 +112,47 @@ useEffect(() => {
 }, []);
 ```
 
-`useEffect` cleanup function
+_The cleanup function runs on two different occasions:_
 
-- Function that we can return from an effect (optional)
+1. Before the effect is **executed again** (in case we need to cleanup the result of the previous side effect)
+2. After a component has **unmounted** (in case we need to reset the side effect created)
 
-- Runs on two different occasions:
+When we need a cleanup function (which is optional)? Whenever the side effect should be removed. Examples: start timer -> stop timer, add event listener -> remove listener, etc.
 
-  1. Before the effect is **executed again** (in order to cleanup the results of the previous side effect)
-  2. After a component has **unmounted**, (in order to give us the opportunity to reset the side effect that we created if that's necessary)
+Each effect should do only one thing, use one `useEffect` hook for each side effect, this makes effects easier to clean up.
 
-<br>
+The cleanup function runs after the component has already unmounted, and even so, thanks to JavaScript closures the cleanup function will still get access to the previous variable environment.
 
-- Component renders -> Execute effect if dependency array includes updated data
-- Component unmounts -> Execute cleanup function
+### Cleaning Up Data Fetching
 
-When we need a cleanup function? Whenever the side effect keeps happening after the component has been re-rendered un unmounted. Examples: start timer -> stop timer, add event listener -> remove listener, etc.
-
-Each effect should do **only one thing.** Use one `useEffect` hook for each side effect. This makes effects easier to clean up.
-
-If you need to create multiple effects, just use multiple useEffect hooks.
-
-The cleanup function runs after the component has already unmounted, even so thanks to JS closures the cleanup function will remember the previous variables.
-
-<br>
-
-## Cleaning Up Data Fetching
-
-_Race condition_
+_Race Condition_
 
 ```jsx
 useEffect(() => {
-  const constroller = new AbortController();
+  const controller = new AbortController();
 
   async function fetchData() {
-    const res = fetch("apilink", { signal: controller.signal });
+    const res = await fetch("apilink", { signal: controller.signal });
   }
+
+  fetchData();
 
   return () => controller.abort();
 }, [dep]);
 ```
 
-## Listening to a Keypress
-
-Event listeners should be placed inside `useEffect` hook, because they are side effects.
-
-Each time the same component mounts, a new event listener is added to the document, always an additional one to the ones that we already have, so we have to cleanup our event listeners.
+### Listening to a Keypress
 
 ```jsx
 useEffect(() => {
   const callback = () => "";
 
-  document.addEventListener("keydown", callback);
+  document.addEventListener("keypress", callback);
 
-  return () => document.removeAddEventListenr("keydown", callback);
+  return () => document.removeEventListener("keypress", callback);
 }, []);
 ```
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+Keypress event listeners should be placed inside the `useEffect` hook, because they are side effects.
 
-## Clean Up Effects
-
-Node: When we add event listeners to the DOM, it is important to remove those event listeners when we are done with them to avoid memory leaks!
-
-Because effects run after every render and not just once, React calls our cleanup function before each re-render and before unmounting to clean up each effect call.
-
-```js
-useEffect(() => {
-  btn.addEventListener("click", handleClick);
-
-  return () => {
-    btn.removeEventListener("click", handleClick);
-  };
-});
-```
-
-If our effect returns a function, then the `useEffect()` Hook always treats that as a cleanup function. React will call this cleanup function before the component re-renders or unmounts. Since this cleanup function is optional, it is our responsibility to return a cleanup function from our effect when our effect code could create memory leaks.
+Each time the same component mounts, a new event listener is added to the document, always an additional one to the ones that we already have, so we should cleanup these event listeners.
