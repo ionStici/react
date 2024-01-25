@@ -4,39 +4,31 @@ _The library for web and native user interfaces._
 
 - [New React Project with Vite](./new-react-project.md)
 
-<div></div>
-
 - [React Essentials](./react-essentials.md)
+
 - [Functional Components](./functional-components.md)
 
-<div></div>
-
 - [Props](./props.md)
+
 - [Styles in React](./styles-in-react.md)
 
-<div></div>
-
 - [State](./state.md)
-- [State Management](./state-management.md)
 
-<div></div>
+- [State Management](./state-management.md)
 
 - [Effects](./effects.md)
 
-<div></div>
+- [Custom Hooks](./custom-hooks.md)
+
+- [The useRef Hook](./useref.md)
 
 - [Forms in React](./react-forms.md)
 
-<div></div>
-
 - [How Rendering Works](./how-rendering-works.md)
-- [React Ecosystem](./react-ecosystem.md)
 
-<div></div>
+- [React Ecosystem](./react-ecosystem.md)
 
 ### Resources
 
 - [React Official Website](https://react.dev/)
 - [React Roadmap](https://roadmap.sh/react)
-
-<!-- When react's strict mode is activated in React 18, our effects will run twice, but only in development phase, that's why we usually get 2 console logs. -->
