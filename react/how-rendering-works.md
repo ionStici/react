@@ -2,6 +2,7 @@
 
 ## Table of Content
 
+- [Components, Instances, Elements](#components-instances-elements)
 - [1. Render is Triggered](#1-render-is-triggered)
 - [2. Render Phase](#2-render-phase)
 - [3. Commit Phase](#3-commit-phase)
@@ -9,6 +10,18 @@
 - [How Diffing Works](#how-diffing-works)
 - [The Key Prop](#the-key-prop)
 - [The Virtual DOM](#the-virtual-dom)
+
+<br>
+
+## Components, Instances, Elements
+
+**Components:** are JS functions that return JSX.
+
+**An Instance:** is a reference to a component. Each time a component is used, React creates a new instance of that component, which includes its own state and lifecycle.
+
+**An Element:** (or JSX) is a built-in component (object) that describes a DOM node. Each JSX element is converted to a `React.createElement()` call.
+
+**Note:** React calls the component instances internally when it renders.
 
 <br>
 
