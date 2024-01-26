@@ -26,11 +26,9 @@ _The library for web and native user interfaces._
 
 - [How Rendering Works](./how-rendering-works.md)
 
-- [How Events work]()
+- [How Events work](./how-events-work.md)
 
-- [State Batching]()
-
-- [Render Logic]()
+- [State Batching](./state-batching.md)
 
 - [React Ecosystem](./react-ecosystem.md)
 

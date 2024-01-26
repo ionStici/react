@@ -1,8 +1,5 @@
 # Next.js
 
-| [&#10697; Next.js Website](https://nextjs.org/) | [&#10697; Next.js Learn](https://nextjs.org/learn/foundations/about-nextjs) | [&#10697; Next.js Course ](https://www.udemy.com/course/nextjs-react-the-complete-guide/) |
-| ----------------------------------------------- | --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-
 - [Next.js Introduction](./intro.md)
 - [File-based Routing](./file-based-routing.md)
 

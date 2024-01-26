@@ -3,6 +3,7 @@
 ## Table of Content
 
 - [Components, Instances, Elements](#components-instances-elements)
+- [Render Logic](#render-logic)
 - [1. Render is Triggered](#1-render-is-triggered)
 - [2. Render Phase](#2-render-phase)
 - [3. Commit Phase](#3-commit-phase)
@@ -22,6 +23,31 @@
 **An Element:** (or JSX) is a built-in component (object) that describes a DOM node. Each JSX element is converted to a `React.createElement()` call.
 
 **Note:** React calls the component instances internally when it renders.
+
+<br>
+
+## Render Logic
+
+- **Render Logic:** Code that lives at the top level of the component function.
+- **Event Handler Functions:** Code executed as a consequence of an event.
+- **Side Effects:** Modifications of any data outside the function scope.
+- **Pure Functions:** Functions with **no** side effects.
+
+### Rules for Render Logic
+
+1. Components must be pure when it comes to render logic: given the same props (input), a component instance should always return the same JSX (output).
+
+2. Render logic must produce no side effects: no interaction with the "outside world" is allowed. So, within the render logic:
+
+   - Do NOT perform API calls
+   - Do NOT start timers
+   - Do NOT directly use the DOM API
+   - Do NOT mutate objects or variables outside of the function scope
+   - Do NOT update state (or refs): this will create an infinite loop
+
+These side effects should be performed in event handler functions and using the `useEffect` hook.
+
+Note: When react's strict mode is activated in React 18, our effects will run twice, but only in development phase, that's why we usually get 2 console logs.
 
 <br>
 

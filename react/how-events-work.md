@@ -1,16 +1,12 @@
-## How Events Work in React
+# How Events Work in React
 
-Event Delegation works in React as well.
+When we register an event handler on a JSX element, for example by using the `onClick` prop, behind the scenes React registers only one event handler per event type at the root node of the fiber tree during the render phase.
 
-When we register an event handler on a JSX element, for example using the `onClick` prop, behind the scenes React actually registers only one event handler per event type at the root node of the fiber tree during the render phase.
+This means that if we have multiple `onClick` handlers in our code, React will somehow bundle them all together and just add one big `onClick` handler to the `#root` node of the fiber tree.
 
-If we have multiple `onClick` handlers in our code, React will somehow bundle them all together and just add one big `onClick` handler to the `#root` node of the fiber tree.
+Behind the scenes, React performs event delegation for all our events to the `#root` DOM container, where they will get handler, and not in the place where we attach the `onClick` prop.
 
-Behind the scenes, React performs event delegation for all events in our application.
-
-React delegates all events to the `#root` DOM container, where they will get handled, not in the place where we attach the `onClick` prop.
-
-### Synthetic Events
+## Synthetic Events
 
 When we declare and event handler like this one:
 
@@ -18,7 +14,7 @@ When we declare and event handler like this one:
 <input onChange={(e) => setText(e.target.value)} />
 ```
 
-..react gives us access to the event object that was created, just like in vanilla JS. However, in React, this event object is different.
+..react gives us access to the event object that was created, just like in vanilla JS. However, in React this event object is different.
 
 In vanilla JS we get access to the native DOM event object, React on the other hand will give us something called a synthetic event, which is a thin wrapper around the DOM's native event object.
 
