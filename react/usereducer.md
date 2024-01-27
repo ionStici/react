@@ -28,6 +28,34 @@ export default function App() {
 
 <br>
 
+## useState vs useReducer
+
+### useState
+
+- Ideal for **single, independent pieces of state** (numbers, strings, single arrays, etc.)
+- Logic to update state is placed directly in event handlers or effects, **spread all over one or multiple components**
+- State is updated by **calling `setState(true)`**
+- **Imperative** state updates
+- Easy to understand and to use
+
+### useReducer
+
+- Ideal for multiple **related pieces of state and complex state** (e.g. object with many values and nested objects or arrays)
+- Logic to update state lives in **one central place, decoupled from components:** the reducer
+- State is updated by **dispatching an action** to a reducer
+- **Declarative** state updates: complex state transitions are mapped to actions `dispatch({ type: "startGame" })`
+- More difficult to understand and implement
+
+### When to use useReducer
+
+The `useReducer` hook is the way to go if:
+
+- You need multiple pieces of related state, including objects
+- If states frequently update together
+- Too many event handlers make components large and confusing
+
+<br>
+
 ## Code Example
 
 ```jsx
