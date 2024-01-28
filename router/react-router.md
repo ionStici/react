@@ -2,7 +2,6 @@
 
 ## Table of Content
 
-- [What is Routing?](./routing.md)
 - [Providing a Router](#providing-a-router)
 - [Linking to Routes](#linking-to-routes)
 - [Dynamic Routes](#dynamic-routes)

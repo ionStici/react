@@ -23,3 +23,28 @@ Depending on the kind of application you build, there are different ways to hand
 _React Router_ is a popular frontend routing solution designed specifically for React applications.
 
 <br>
+
+## Routing and SPAs
+
+### Routing
+
+- With routing, we match **different URLs** to **different UI views** (React components): **routes**
+- This enables users to **navigate between different apps screens**, using the browser URL
+- Keeps the UI **in sync** with the current browser URL
+- Allows us to build **Single-Page Applications**
+- React Router Library for routing in React. This kind of routine is only on the client side
+
+### Single-Page Applications
+
+- Application that is executed entirely on the client (browsers)
+- Routes: different URLs correspond to different views (components)
+- JavaScript (React) is used to update the page (DOM)
+- The page is never reloaded
+- Feels like a native app
+- Additional data might be loaded from a web API
+
+_SPA running on the client:_
+
+1. User clicks a router link
+2. URL is changed
+3. DOM is updated: React component corresponding to the new URL is rendered (load data from web API)

@@ -43,3 +43,19 @@ import "./style.css";
 This will make the CSS styles from `style.css` available to the importing module.
 
 <br>
+<br>
+<br>
+<br>
+<br>
+
+## Styling Options For React Applications
+
+| Styling Option    | Where?                          | How                   | Score       | Based On   |
+| ----------------- | ------------------------------- | --------------------- | ----------- | ---------- |
+| Inline CSS        | JSX elements                    | `style` prop          | JSX element | CSS        |
+| CSS or Sass file  | External file                   | `className` prop      | Entire app  | CSS        |
+| CSS Modules       | One external file per component | `className` prop      | Component   | CSS        |
+| CSS-in-JS         | External file of component file | Creates new component | Component   | JavaScript |
+| Utility-first CSS | JSX elements                    | `className` prop      | JSX element | CSS        |
+
+**Alternative to styling with CSS:** UI libraries like MUI, Chakra UI, Mantine, etc.
