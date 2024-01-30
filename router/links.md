@@ -1,10 +1,10 @@
-# Link and NavLink
-
-## Linking to Routes
+# Linking to Routes
 
 ```js
 import { Link, NavLink } from "react-router-dom";
+
 <Link to="/about">About</Link>
+
 <NavLink to="/about">About</NavLink>
 ```
 
@@ -17,7 +17,7 @@ The default behavior of an anchor tag (refreshing when the page loads) will be d
 
 If we provide a `/` forward slash, the path will be treated as an absolute path. React Router will assume this path is navigating from the root directory.
 
-Unlike the `Link` component, `NavLink` will automatically get an `'active'` class applied to it. We can pass a function to `className` or `style` to further customize the styling of an active or inactive `NavLink`:
+Unlike the `Link` component, `NavLink` will automatically get an `'active'` class applied to it when the path from the `to` prop matches.
 
 ```js
 <NavLink
@@ -27,3 +27,5 @@ Unlike the `Link` component, `NavLink` will automatically get an `'active'` clas
   About
 </NavLink>
 ```
+
+We can pass a function to `className` or `style` to further customize the styling of an active or inactive `NavLink`:

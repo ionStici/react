@@ -4,4 +4,4 @@
 - [Creating Routes](./routes.md)
 - [`Link` and `NavLink` Components](./links.md)
 - [Dynamic Routes](./dynamic-routes.md)
-- [The `Navigate` Component](./navigate.md)
+- [`Navigate` and `useNavigate`](./navigate.md)
