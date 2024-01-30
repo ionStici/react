@@ -13,7 +13,6 @@ npm i react-router-dom
 - [Creating Routes](#creating-routes)
 - [Nested Routes](#nested-routes)
 - [Index Routes](#index-routes)
-- [Dynamic Routes with URL Parameters](#dynamic-routes-with-url-parameters)
 
 <br>
 
@@ -80,24 +79,3 @@ When we visit `/about/team`, the router will render `<About />` and its child ro
 ```
 
 A nested `index` route will render at `<Outlet />` when it's parent route's `path` matches.
-
-<br>
-
-## Dynamic Routes with URL Parameters
-
-**Static Routes:** route that matches a unique path.
-
-**Dynamic Routes:** route that matches a pattern.
-
-**URL Parameters:** are dynamic segments of a URL that act as placeholders for more specific resources. They appear in a dynamic route as a colon `:` followed by a variable name.
-
-```jsx
-<Route path="about" element={<About />}>
-  <Route path="team/:name" element={<Team />} />
-</Route>
-```
-
-- The `team/:name` path contains the URL parameter `:name`
-- When the user navigates to pages such as `team/mike`, the `<About />` component will render
-- When the `<About />` component is rendered in this way, it can access the actual value of the `:name` URL parameter to determine how the `<Team />` component will render
-- A single route can have multiple parameters `team/:name/:id`

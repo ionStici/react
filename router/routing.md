@@ -20,6 +20,8 @@ Depending on the kind of application you build, there are different ways to hand
 
 **React Router is a popular frontend routing solution** designed specifically for React applications.
 
+<br>
+
 ## Routing and Single-Page Applications (SPAs)
 
 ### Routing
