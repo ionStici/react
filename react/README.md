@@ -13,15 +13,15 @@ _The library for web and native user interfaces._
 
 - [Props](./props.md)
 - [State](./state.md)
-- [State Management](./state-management.md)
-- [Forms in React](./react-forms.md)
+- [The useReducer Hook](./usereducer.md)
+- [The Context API](./context.md)
 
 <div></div>
 
 - [Effects](./effects.md)
 - [Custom Hooks](./custom-hooks.md)
+- [Forms in React](./react-forms.md)
 - [The useRef Hook](./useref.md)
-- [The useReducer Hook](./usereducer.md)
 
 <div></div>
 
