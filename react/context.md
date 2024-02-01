@@ -3,11 +3,8 @@
 ## Table of Content
 
 - [Context API](#context)
-
 - [Creating, Providing, Consuming a Context](#creating-providing-consuming-a-context)
-
 - [Custom Provider and Hook](#custom-provider-and-hook)
-
 - [Advanced State Management](#advanced-state-management)
 
 <br>
@@ -86,7 +83,7 @@ function DataProvider({ children }) {
 function useData() {
   const context = useContext(DataContext);
   if (context === undefined)
-    throw new Error("Data Context was used outside of the PostProvider");
+    throw new Error("DataContext was used outside of the PostProvider");
   return context;
 }
 
@@ -95,6 +92,12 @@ export { DataContext, useData };
 // 4. Use Context
 function App() {
   const { data, onAddData } = useData();
+
+  return (
+    <DataProvider>
+      <Components data={data} onAddData={onAddData} />
+    </DataProvider>
+  );
 }
 ```
 

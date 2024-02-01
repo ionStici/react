@@ -10,8 +10,20 @@ npm install json-server
 
 ```jsx
 useEffect(() => {
-  async function fetchNames() {
-    const res = await fetch(`http://localhost:9500/names`);
+  async function fetchObjects() {
+    const res = await fetch(`http://localhost:9500/objects`);
   }
 }, []);
+```
+
+```jsx
+async function createObjects(newObject) {
+  const res = await fetch(`http://localhost:9500/objects`, {
+    method: "POST",
+    body: JSON.stringify(newObject),
+    "Content-Type": "application/json",
+  });
+
+  const data = res.json();
+}
 ```
