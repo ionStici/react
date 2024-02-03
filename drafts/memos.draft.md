@@ -111,6 +111,10 @@ const SlowComponent = memo(function (props) {
 });
 ```
 
+```jsx
+export default memo(SlowComponent);
+```
+
 <br>
 
 ## Understanding useMemo and useCallback
@@ -181,3 +185,28 @@ function DataProvider({ children }) {
   return <DataContext value={value}>{children}</DataContext>;
 }
 ```
+
+<br>
+
+## Don't Optimize Prematurely!
+
+### DOs
+
+- **Find performance bottlenecks using the Profiler and visual inspection (laggy UI)**
+- Fix those real performance issues
+- Memoize expensive re-renders
+- Memoize expensive calculations
+- Optimize context if it has many consumers and changes often
+- Memoize context value + child components
+- Implement code splitting + lazy loading for SPA routes
+
+### DON'Ts
+
+- **Don't optimize prematurely!**
+- Don't optimize anything if there is nothing to optimize
+- Don't wrap all components in memo
+- Don't wrap all values in useMemo
+- Don't wrap all functions in useCallback
+- Don't optimize context if it's not slow and doesn't have many consumers
+
+<br>
