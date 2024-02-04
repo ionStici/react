@@ -1,6 +1,6 @@
 # Redux
 
-<!-- <div></div>
+<div></div>
 
 - [Core Redux API](./core-redux-api.md)
 - [Strategies for Complex State](./strategies.md)
@@ -10,4 +10,4 @@
 - [React Redux Library](./react-redux.md)
 - [Redux Toolkit](./redux-toolkit.md)
 
-<div></div> -->
+<div></div>

@@ -43,3 +43,7 @@ _Three cases where effects are overused:_
 3. **Synchronizing state changes with one another** (setting state based on another state variable). Try to use derived state and event handlers
 
 <br>
+
+## Closures in Effects
+
+Stale closure

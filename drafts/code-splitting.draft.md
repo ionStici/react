@@ -13,5 +13,24 @@
 ## Code Splitting
 
 ```jsx
+import { Suspense, lazy } from "react";
+import Spinner from "./components/Spinner";
+
 const Homepage = lazy(() => import("./pages/Homepage"));
+const Product = lazy(() => import("./pages/Product"));
+const Pricing = lazy(() => import("./pages/Pricing"));
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Suspense fallback={<Spinner />}>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/product" element={<Product />} />
+          <Route path="/pricing" element={<Pricing />} />
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
+  );
+}
 ```
