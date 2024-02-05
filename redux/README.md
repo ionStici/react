@@ -1,13 +1,11 @@
 # Redux
 
-<div></div>
+- [Terminology](./intro.md)
 
-- [Core Redux API](./core-redux-api.md)
-- [Strategies for Complex State](./strategies.md)
+- [createStore from Scratch](./scratch.md)
 
-<div></div>
+<!-- - [Core Redux API](./core-redux-api.md) -->
 
-- [React Redux Library](./react-redux.md)
-- [Redux Toolkit](./redux-toolkit.md)
+<!-- - [Strategies for Complex State](./strategies.md) -->
 
-<div></div>
+<!-- - [React Redux Library](./react-redux.md) -->

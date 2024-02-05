@@ -1,5 +1,3 @@
-[&larr; Back](./README.md)
-
 # React Redux Library
 
 ```
