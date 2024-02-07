@@ -1,3 +1,40 @@
+# Draft
+
+Async operations in Redux
+
+Middleware - a function that sits between dispatching the action and the store. Allows us to run code after dispatching, but before reaching the reducer in the store.
+
+Redux Thunk - a dispatched action goes into the Thunk Middleware, then we start fetching some data inside the Thunk, as soon as the data arrives, we place it into the action's payload and dispatch the action into the store.
+
+```jsx
+npm i redux-thunk
+```
+
+<br>
+
+## The Redux DevTools
+
+Install the redux chrome extension
+
+```
+npm i @redux-devtools/extension
+```
+
+```jsx
+import { composeWithDevTools } from "@redux-devtools/extension";
+
+const store = createStore(
+  reducer,
+  composeEnhancers(applyMiddleware(...middleware))
+);
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
 # Redux Async Actions with Middleware and Thunks
 
 **Middleware** - is the code that runs in the middle - usually between a framework receiving a request and producing a response.

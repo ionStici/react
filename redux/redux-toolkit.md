@@ -24,6 +24,7 @@ const options = {
   initialState: [],
   reducers: { addTodo: (state, action) => [...state, action.payload] },
 };
+
 const todosSlice = createSlice(options);
 ```
 

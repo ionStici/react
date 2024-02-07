@@ -1,19 +1,13 @@
-[&larr; Back](./README.md)
-
 # Core Redux API
 
 ## Table of Content
 
-- [Introduction / Terminology](./intro.md)
 - [createStore](#createstore)
 - [Action Objects and Action Creators](#action-objects-and-action-creators)
 - [The Reducer Function](#the-reducer-function)
 - [Dispatch Actions to the Store](#dispatch-actions-to-the-store)
 - [getState](#getstate)
 - [subscribe](#subscribe)
-- [unsubscribe](#unsubscribe)
-
-<div></div>
 
 <br>
 
@@ -39,7 +33,7 @@ Create the `store` object using the `createStore` helper function. It receives t
 ## Action Objects and Action Creators
 
 - State updates are triggered by _dispatching actions_.
-- **Actions** are object that contain information about a desired action event.
+- **Actions** are objects that contain information about a desired action event.
 
 <div></div>
 
@@ -87,6 +81,7 @@ The **Reducer** function is responsible for the state modifications that take pl
 
 ```js
 const initialState = { filter: false, items: [] };
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "filterOn":
@@ -159,9 +154,7 @@ const renderListener = () => {
 renderListener();
 ```
 
-<br>
-
-## unsubscribe
+### unsubscribe
 
 ```js
 const unsubscribe = store.subscribe(reactToChange);
