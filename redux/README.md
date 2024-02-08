@@ -1,6 +1,10 @@
 # Redux
 
-<!-- - [React Redux Library](./react-redux.md) -->
+### Modern Redux
+
+- [Redux Toolkit](./redux-toolkit.md)
+- [React Redux](./react-redux.md)
+<!-- - [Middleware](./middleware.md) -->
 
 ### Learn Redux
 

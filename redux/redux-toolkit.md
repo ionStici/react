@@ -1,18 +1,9 @@
-[&larr; Back](./README.md)
-
 # Redux Toolkit
 
 ```js
 // npm install @reduxjs/toolkit
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 ```
-
-## Table of Content
-
-- [createSlice](#createslice)
-- [Return Object - Actions](#return-object---actions)
-- [Return Object - Reducers](#return-object---reducers)
-- [configureStore](#configurestore)
 
 <br>
 
