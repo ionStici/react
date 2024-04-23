@@ -35,5 +35,3 @@ function App() {
 ```
 
 When we work with DOM elements, the initial value of `useRef` should be `null`.
-
-<br>

@@ -14,14 +14,12 @@ Recommended tools for writing CSS in React apps: CSS Modules, Tailwind CSS, Styl
 
 **Alternative to styling with CSS:** UI libraries like MUI, Chakra UI, Mantine, etc.
 
-<br>
-
 ## Inline Styles in React
 
 In React, we insert CSS declarations inside an object, and asign that object to the `style` attribute of an JSX element.
 
 ```jsx
-<h1 style={{ color: "red" }}>Hello World</h1>
+<h1 style={{ color: 'red' }}>Hello World</h1>
 ```
 
 Object literals inside JSX using double curly braces:
@@ -51,7 +49,7 @@ We can reuse styles across multiple components by keeping the styles in a separa
 ### Import a whole CSS file
 
 ```js
-import "./style.css";
+import './style.css';
 ```
 
 This will make the CSS styles from `style.css` available to the importing module.

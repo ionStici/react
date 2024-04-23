@@ -7,8 +7,8 @@
 - [props.children](#propschildren)
 - [Explicit Props](#explicit-props)
 - [defaultProps](#defaultprops)
-
-<br>
+- [Render Props Technique](#render-props-technique)
+- [Prop Types](#prop-types)
 
 ## Passing data with props
 
@@ -32,15 +32,13 @@ To access `props` within a component, we specify the `props` parameter in the co
 
 1. **Immutability:** _Props are read-only._ They cannot be modified within the component that receives them. If you need to modify the data, consider using state instead.
 
-2. **One-Way Data Flow:** React follows a unidirectional data flow pattern. This means that props can only be passed from parent components to child components, not in reverse.
+2. **One-Way Data Flow:** React follows an unidirectional data flow pattern. This means that props can only be passed from parent components to child components, not in reverse.
 
 3. **Destructuring Props:** For convenience and readability, its common to use destructuring to directly extract specific properties from the `props` object.
 
 ```jsx
 function Header({ userData }) {}
 ```
-
-<br>
 
 ## Event Handlers as Props
 
@@ -52,7 +50,7 @@ function Button({ onClick }) {
 }
 
 function App() {
-  const handleClick = () => console.log("click");
+  const handleClick = () => console.log('click');
   return <Button onClick={handleClick} />;
 }
 ```
@@ -63,8 +61,6 @@ function App() {
 
 - _Event Functions:_ prefix `handle` + the event type `Click`
 - _Props:_ prefix `on` + the event type `Click`
-
-<br>
 
 ## props.children
 
@@ -82,8 +78,6 @@ function App() {
 
 In this code example, `Layout` will render the string `Hello`. If the component is self-closing, then `children` will be `undefined.`
 
-<br>
-
 ## Explicit Props
 
 We can explicitly pass components or elements as props.
@@ -100,8 +94,6 @@ function Layout({ element }) {
 
 This approach offers more flexibility and control over where and how the passed elements are rendered within the `Layout` component.
 
-<br>
-
 ## defaultProps
 
 Define default values for your component's props using `defaultProps`.
@@ -112,6 +104,37 @@ function Nav({ property }) {
 }
 
 Nav.defaultProps = {
-  property: "value",
+  property: 'value',
+};
+```
+
+## Render Props Technique
+
+**"Render Props"** is a pattern for sharing code between React components using a prop whose value is a function.
+
+```jsx
+function App() {
+  return <RenderProp render={text => <p>{text}</p>} />;
+}
+
+function RenderProp({ render }) {
+  return render('Hello');
+}
+```
+
+The `RenderProp` component returns the output of the `render` function that it receives through props.
+
+## Prop Types
+
+_Data validation_
+
+```jsx
+import PropTypes from 'prop-types';
+
+function App({ data, id }) {}
+
+App.propTypes = {
+  data: PropTypes.object.isRequired,
+  id: PropTypes.string,
 };
 ```

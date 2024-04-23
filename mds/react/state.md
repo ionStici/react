@@ -15,14 +15,12 @@
 - [Child Components Update Their Sibling Components](#child-components-update-their-sibling-components)
 - [Component Categories](#component-categories)
 
-<br>
-
 ## Update Function Component State
 
 The `useState` Hook is a named export from the React library.
 
 ```jsx
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 function App() {
   const [count, setCount] = useState(1);
@@ -54,15 +52,13 @@ By updating the state using the state setter, **we trigger a component re-render
 
 _p.s._ We can make as many calls to `useState()` as we want. It's recommended to split the state into multiple sections, each responsible for its part of the application.
 
-<br>
-
 ## Initializing State With a Callback
 
 _Lazy Initial State_
 
 ```jsx
 useState(() => {
-  const data = localStorage.getItem("data");
+  const data = localStorage.getItem('data');
   if (!data) return 0;
   return JSON.parse(data);
 });
@@ -70,14 +66,12 @@ useState(() => {
 
 When the initial value of the `useState` hook depends on some sort of computation, we can pass in a callback function that React will execute (only) on its initial render.
 
-<br>
-
 ## Previous State
 
 ```jsx
 function App() {
   const [count, setCount] = useState(1);
-  const increment = () => setCount((prev) => prev + 1);
+  const increment = () => setCount(prev => prev + 1);
 
   return <button onClick={increment}>Increment: {count}</button>;
 }
@@ -87,8 +81,6 @@ function App() {
 - The value returned by this state setter callback will be used as the next state value.
 
 This approach guarantees that we are working with the most current value of state.
-
-<br>
 
 ## Arrays in State
 
@@ -100,9 +92,9 @@ const arr = [1, 3, 5, 7];
 function App() {
   const [nums, setNums] = useState([9, 12]);
 
-  const handleClick = () => useState((prev) => [...arr, ...prev]);
+  const handleClick = () => useState(prev => [...arr, ...prev]);
 
-  return <button onClick={handleClick}>{nums.join(" ")}</button>;
+  return <button onClick={handleClick}>{nums.join(' ')}</button>;
 }
 ```
 
@@ -112,8 +104,6 @@ Then, the `nums` array contains _dynamic data_, meaning that it changes.
 
 When updating an array in state, we do not just add new data to the previous array, instead we replace the previous array with a brand new array. **This means that any data that we want to save from the previous array needs to be explicitly copied over to our new array.**
 
-<br>
-
 ## Objects in State
 
 ```jsx
@@ -121,14 +111,12 @@ function App() {
   const [pair, setPair] = useState({});
 
   const handleClick = (name, value) => {
-    setPair((prev) => ({ ...prev, name: value }));
+    setPair(prev => ({ ...prev, name: value }));
   };
 }
 ```
 
 When updating the object with new data, first we copy the values from the previous object and only then we set more values, the same technique as when working with arrays.
-
-<br>
 
 ## Notes
 
@@ -148,8 +136,6 @@ React updates the actual DOM only where necessary. This means you don't have to 
 
 Use state when you need to change something on the screen that a particular component is responsible for.
 
-<br>
-
 ## State vs. Props
 
 ### State
@@ -168,8 +154,6 @@ Use state when you need to change something on the screen that a particular comp
 - **Receiving new props causes component to re-render.** Usually when the parent's state has been updated
 - Used by parent to configure child component ("settings")
 
-<br>
-
 ## State Management
 
 **Local State:** State needed only by one or few components. State that is defined in a component and only that component and child components have access to it (by passing via props).
@@ -177,8 +161,6 @@ Use state when you need to change something on the screen that a particular comp
 **Global State:** State that many components might need. Shared state that is accessible to every component in the entire application. Tools for managing global state: Context API & Redux.
 
 **Derived State:** state that is computed from an existing piece of state or from props.
-
-<br>
 
 ## Stateless Components Inherit from Stateful Components
 
@@ -189,7 +171,7 @@ A child component can access the state of its parent component through props.
 
 ```jsx
 function Parent() {
-  const [name, setName] = useState("John");
+  const [name, setName] = useState('John');
   return <Child name={name} />;
 }
 
@@ -201,24 +183,20 @@ function Child({ name }) {
 - `props` for storing information that can be changed only by a different component.
 - `state` for storing information that the component itself can change.
 
-<br>
-
 ## Child Components Update Their Parents' state
 
 ```jsx
 function Parent() {
   const [toggle, setToggle] = useState(true);
-  const changeState = () => setToggle((prev) => !prev);
+  const changeState = () => setToggle(prev => !prev);
 
   return <Child toggle={toggle} onClick={changeState} />;
 }
 
 function Child({ toggle, onClick }) {
-  return <button onClick={onClick}>{toggle + ""}</button>;
+  return <button onClick={onClick}>{toggle + ''}</button>;
 }
 ```
-
-<br>
 
 ## Child Components Update Their Sibling Components
 
@@ -227,12 +205,12 @@ function Child({ toggle, onClick }) {
 _Concept:_ one stateless component displays information, and a different stateless component offer the ability to change that information.
 
 ```jsx
-const ChildOne = (props) => <button onClick={props.onClick}>Click</button>;
-const ChildTwo = (props) => <p>{props.text}</p>;
+const ChildOne = props => <button onClick={props.onClick}>Click</button>;
+const ChildTwo = props => <p>{props.text}</p>;
 
 function Parent() {
-  const [text, setText] = useState("Hello");
-  const changeState = () => setText("Hello World");
+  const [text, setText] = useState('Hello');
+  const changeState = () => setText('Hello World');
 
   return (
     <>
@@ -244,8 +222,6 @@ function Parent() {
 ```
 
 A child component updates its parent’s state, and the parent passes that state to a sibling component.
-
-<br>
 
 ## Component Categories
 

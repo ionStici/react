@@ -7,8 +7,6 @@
 - [Custom Provider and Hook](#custom-provider-and-hook)
 - [Advanced State Management](#advanced-state-management)
 
-<br>
-
 ## Context API
 
 **Context API:** allows components everywhere in the tree to read state that a context shares; system to pass data throughout the app; it allows us to transmit global state to the entire app.
@@ -21,19 +19,17 @@ _Context API parts:_
 
 Whenever the context `value` is updated, _all consumers re-render_.
 
-<br>
-
 ## Creating, Providing, Consuming a Context
 
 ```jsx
-import { createContext, useContext } from "react";
+import { createContext, useContext } from 'react';
 
 // 1. Create a Context
 const PostsContext = createContext(null);
 
 function App() {
   const [posts, setPosts] = useState([]);
-  const handleAddPost = (post) => setPosts((posts) => [...posts, post]);
+  const handleAddPost = post => setPosts(posts => [...posts, post]);
   const handleClearPosts = () => setPosts([]);
 
   return (
@@ -57,12 +53,10 @@ function Components() {
 }
 ```
 
-<br>
-
 ## Custom Provider and Hook
 
 ```jsx
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from 'react';
 
 // 1. Create Context
 const DataContext = createContext(null);
@@ -70,7 +64,7 @@ const DataContext = createContext(null);
 // 2. Create Custom Provider
 function DataProvider({ children }) {
   const [data, setData] = useState([]);
-  const handleAddData = (el) => setData((prev) => [...prev, el]);
+  const handleAddData = el => setData(prev => [...prev, el]);
 
   return (
     <DataContext.Provider value={{ data, onAddData: handleAddData }}>
@@ -83,7 +77,7 @@ function DataProvider({ children }) {
 function useData() {
   const context = useContext(DataContext);
   if (context === undefined)
-    throw new Error("DataContext was used outside of the PostProvider");
+    throw new Error('DataContext was used outside of the PostProvider');
   return context;
 }
 
@@ -100,8 +94,6 @@ function App() {
   );
 }
 ```
-
-<br>
 
 ## Advanced State Management
 

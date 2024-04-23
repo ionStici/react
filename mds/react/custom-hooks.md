@@ -1,17 +1,10 @@
 # Custom Hooks
 
-## Table of Content
-
-- [React Hooks and Their Rules](#react-hooks-and-their-rules)
-- [Custom Hooks](#custom-hooks)
-
-<br>
-
 ## React Hooks and Their Rules
 
 **The Rules of Hooks:** Hooks must be called at the top level, and only from functional components or custom hooks.
 
-**React Hooks** are special built-in function that allow us to "hook" into the React internal mechanism.
+**React Hooks** are special built-in functions that allow us to "hook" into the React internal mechanism.
 
 In other words, hooks are APIs that expose some internal React functionality, such as: creating and accessing state from the fiber tree; registering side effects in the fiber tree; manual DOM selections; etc.
 
@@ -23,11 +16,9 @@ _Less used hooks:_ `useRef`, `useCallback`, `useMemo`, `useTransition`, `useDefe
 
 _Other hooks:_ `useLayoutEffect`, `useDebugValue`, `useImperativeHandle`, `useId`.
 
-<br>
-
 ## Custom Hooks
 
-Reusing logic with custom hooks. Does logic contain any hooks. No, use regular functions. Yes, create a custom hook, which allows us to **reuse non-visual logic in multiple components**.
+Reusing logic with custom hooks. Does logic contains any hooks? No, then use regular functions. Yes, then create a custom hook, which allows us to **reuse non-visual logic in multiple components**.
 
 One custom hook should have only one purpose, to make it reusable and portable (even across multiple projects). Rules of hooks apply to custom hooks too.
 
@@ -38,7 +29,7 @@ One custom hook should have only one purpose, to make it reusable and portable (
 ### useLocalStorageState
 
 ```jsx
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 function useLocalStorageState(key, initialValue) {
   const [value, setValue] = useState(() => {
@@ -56,7 +47,7 @@ function useLocalStorageState(key, initialValue) {
 export { useLocalStorageState };
 
 function App() {
-  const [test, setTest] = useLocalStorageState("test", [0]);
+  const [test, setTest] = useLocalStorageState('test', [0]);
 }
 ```
 
@@ -65,18 +56,18 @@ function App() {
 ```jsx
 function useKeypress(key, action) {
   useEffect(() => {
-    const callback = (e) => {
+    const callback = e => {
       if (e.code.toLowerCase() === key.toLowerCase()) action();
     };
 
-    document.addEventListener("keydown", callback);
-    return () => document.removeEventListener("keydown", callback);
+    document.addEventListener('keydown', callback);
+    return () => document.removeEventListener('keydown', callback);
   }, [action, key]);
 }
 
 function App() {
-  const log = () => console.log("success");
-  useKeypress("Enter", log);
+  const log = () => console.log('success');
+  useKeypress('Enter', log);
   return null;
 }
 ```
@@ -91,20 +82,20 @@ function useGeolocation() {
 
   function getPosition() {
     if (!navigator.geolocation) {
-      return setError("Your browser does not support geolocation");
+      return setError('Your browser does not support geolocation');
     }
 
     setIsLoading(true);
 
     navigator.geolocation.getCurrentPosition(
-      (location) => {
+      location => {
         setPosition({
           lat: location.coords.latitude,
           lng: location.coords.longitude,
         });
         setIsLoading(false);
       },
-      (error) => {
+      error => {
         setError(error.message);
         setIsLoading(false);
       }

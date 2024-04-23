@@ -8,24 +8,22 @@
 - [Uncontrolled Components](#uncontrolled-components)
 - [useRef Hook](#useref-hook)
 
-<br>
-
 ## Input onChange
 
 ```jsx
 function ControlledInput() {
-  const [userInput, setUserInput] = useState(null);
-  const [submitData, setSubmitData] = useState(null);
+  const [userInput, setUserInput] = useState();
+  const [submitData, setSubmitData] = useState();
 
   const handleUserInput = ({ target }) => {
     setUserInput(target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
 
     setSubmitData(userInput);
-    setUserInput(""); // clear input
+    setUserInput(''); // clear input
   };
 
   return (
@@ -48,8 +46,6 @@ The input becomes part of the application state.
 
 **Controlled Inputs**: React controls the value of the input field.
 
-<br>
-
 ## Controlled vs Uncontrolled
 
 - An [**uncontrolled component**](https://reactjs.org/docs/uncontrolled-components.html) is a component that maintains its own internal state.
@@ -62,8 +58,6 @@ A controlled component, on the other hand, has no memory. If you ask it for info
 In React, when you give an `<input />` a value attribute, then something strange happens: the `<input />` BECOMES controlled. It stops using its internal storage. This is a more "React" way of doing things.
 
 More information about controlled and uncontrolled components in the [React Forms Documentation](https://reactjs.org/docs/forms.html)
-
-<br>
 
 ## Controlled Components
 
@@ -79,20 +73,16 @@ With this approach, we are set up to perform immediate validation on every chang
 
 Though change-by-change validation like this is common enough, in some cases we may only care about a form’s value after it has been submitted. In these scenarios, keeping the input value up to date on every change can feel like overkill. This is where uncontrolled components come into play.
 
-<br>
-
 ## Uncontrolled Components
 
 - [Uncontrolled Components](https://reactjs.org/docs/uncontrolled-components.html)
-
-<br>
 
 ## useRef Hook
 
 Another approach for dealing with forms in React is by using the `useRef` hook.
 
 ```jsx
-import { useRef } from "react";
+import { useRef } from 'react';
 
 function App() {
   const input = useRef(null);
@@ -101,5 +91,3 @@ function App() {
 ```
 
 `useRef` - select DOM elements.
-
-<br>

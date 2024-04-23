@@ -2,37 +2,45 @@
 
 _The library for web and native user interfaces._
 
-<div></div>
+## Fundamentals
 
 - [New React Project with Vite](./new-react-project.md)
 - [React Essentials](./react-essentials.md)
-- [Functional Components](./functional-components.md)
-- [Styles in React](./styles-in-react.md)
 
-<div></div>
+## Props and State
 
 - [Props](./props.md)
 - [State](./state.md)
+
+## State Management
+
 - [The useReducer Hook](./usereducer.md)
 - [The Context API](./context.md)
 
-<div></div>
+## Effects and useRef
 
 - [Effects](./effects.md)
-- [Custom Hooks](./custom-hooks.md)
-- [Forms in React](./react-forms.md)
 - [The useRef Hook](./useref.md)
 
-<div></div>
+## Hooks and Forms
+
+- [Custom Hooks](./custom-hooks.md)
+- [Forms in React](./react-forms.md)
+
+## Styles in React
+
+- [Styles in React](./styles-in-react.md)
+- [CSS Modules](./css-modules.md)
+- [Styled Components](./styled-comp.md)
+
+## How React Works
 
 - [How Rendering Works](./how-rendering-works.md)
 - [How Events work](./how-events-work.md)
 - [State Batching](./state-batching.md)
 - [React Ecosystem](./react-ecosystem.md)
 
-<div></div>
-
-### Resources
+## Resources
 
 - [React Official Website](https://react.dev/)
 - [React Roadmap](https://roadmap.sh/react)

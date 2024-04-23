@@ -8,8 +8,6 @@
 - [The Dependency Array](#the-dependency-array)
 - [The Cleanup Function](#the-cleanup-function)
 
-<br>
-
 ## The Component Instance Lifecycle
 
 The lifecycle of a component instance encompasses 3 phases:
@@ -22,22 +20,18 @@ The lifecycle of a component instance encompasses 3 phases:
 
 We can execute code in these different phases of a component's lifecycle using the `useEffect` hook.
 
-<br>
-
 ## What are Side Effects
 
 A **side effect** is any interaction between a react component and the world outside that component. Examples: data fetching, timers, accessing the DOM, etc.
 
-**Note:** Side effects should not be defined in the render logic.
+**Important:** Side effects should not be defined in the render logic.
 
 We can create side effects in 2 different places in React: inside **Event Handlers** and using the **`useEffect` hook**.
-
-<br>
 
 ## The useEffect Hook
 
 ```jsx
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 function App() {
   const [data, setData] = useState(null);
@@ -51,7 +45,7 @@ function App() {
 
     fetchData();
 
-    return () => console.log("Cleanup");
+    return () => console.log('Cleanup');
   }, []);
 
   return <p>JSX</p>;
@@ -69,8 +63,6 @@ function App() {
 - Optionally, `useEffect` can return a cleanup function that will be called **before** the component re-renders or unmounts.
 
 - Effects are executed after the component mounts (initial render), and after subsequent re-renders (according to the dependency array).
-
-<br>
 
 ## The Dependency Array
 
@@ -100,15 +92,13 @@ Effects are only executed after the browser has painted the component instance o
 
 This means that if an effect sets state, then a second additional render will be required to display the UI correctly (don't overuse effects).
 
-<br>
-
 ## The Cleanup Function
 
 ```jsx
 useEffect(() => {
   // code ...
 
-  return () => "";
+  return () => '';
 }, []);
 ```
 
@@ -132,7 +122,7 @@ useEffect(() => {
   const controller = new AbortController();
 
   async function fetchData() {
-    const res = await fetch("apilink", { signal: controller.signal });
+    const res = await fetch('apilink', { signal: controller.signal });
   }
 
   fetchData();
@@ -145,11 +135,11 @@ useEffect(() => {
 
 ```jsx
 useEffect(() => {
-  const callback = () => "";
+  const callback = () => '';
 
-  document.addEventListener("keypress", callback);
+  document.addEventListener('keypress', callback);
 
-  return () => document.removeEventListener("keypress", callback);
+  return () => document.removeEventListener('keypress', callback);
 }, []);
 ```
 

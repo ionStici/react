@@ -6,11 +6,11 @@ npm create vite@latest my-react-app
 
 ## Predefined Scripts
 
-- `npm run dev` starts the development server
+- `dev` starts the development server
 
-- `npm run build` bundles the app into static files for production
+- `build` bundles the app into static files for production
 
-- `npm run preview` preview the production version of the app
+- `preview` preview the production version of the app
 
 ## Rendering a Component
 
@@ -18,14 +18,14 @@ _Boilerplate Code_
 
 ```jsx
 // main.jsx
-import React from "react";
-import ReactDOM from "react-dom/client";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
 function App() {
   return <h1>Hello, React!</h1>;
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
@@ -50,7 +50,7 @@ root.render(
 
 - `src/` folder for the actual application code.
 
-- `src/App.jsx` contains a function component that returns JSX and which is exported so that `src/main.jsx` could import and render it in the browser.
+- `src/App.jsx` contains a function component that returns JSX and which is exported so that `src/main.jsx` could import and render it.
 
 - `index.html` is the HTML document into which react will insert all the content.
 
@@ -59,9 +59,3 @@ root.render(
 - `package-lock.json` contains the dependency tree installed in node_modules/.
 
 - `node_modules/` contains dependencies and sub-dependencies used by React.
-
-## React Developer Tools
-
-[React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) extension allows to inspect React components.
-
-In Chrome DevTools, we get two new tabs: **Components** and **Profiler**.
