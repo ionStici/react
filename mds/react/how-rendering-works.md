@@ -12,8 +12,6 @@
 - [The Key Prop](#the-key-prop)
 - [The Virtual DOM](#the-virtual-dom)
 
-<br>
-
 ## Components, Instances, Elements
 
 **Components:** are JS functions that return JSX.
@@ -23,8 +21,6 @@
 **An Element:** (or JSX) is a built-in component (object) that describes a DOM node. Each JSX element is converted to a `React.createElement()` call.
 
 **Note:** React calls the component instances internally when it renders.
-
-<br>
 
 ## Render Logic
 
@@ -49,8 +45,6 @@ These side effects should be performed in event handler functions and using the 
 
 Note: When react's strict mode is activated in React 18, our effects will run twice, but only in development phase, that's why we usually get 2 console logs.
 
-<br>
-
 ## 1. Render is Triggered
 
 _..by updating state somewhere_
@@ -58,8 +52,6 @@ _..by updating state somewhere_
 Two situations that trigger renders: **(1) Initial render** of the application, **(2) State is updated** in a component instance **(re-render)**
 
 Internally, the render process is triggered for the entire application, but the DOM is updated by React only where the updated happened.
-
-<br>
 
 ## 2. Render Phase
 
@@ -99,8 +91,6 @@ The **Render Phase** in React involves determining how the DOM should be updated
 
 - **Outcode:** The reconciliation and diffing processes result is an updated Fiber tree and a list of necessary DOM updates. These are prepated for the next phase but not yet applied to the DOM.
 
-<br>
-
 ## 3. Commit Phase
 
 - **DOM Updates:** The Render Phase results in a list of DOM updates. In the Commit Phase, React applies these updates to the actual DOM.
@@ -112,8 +102,6 @@ The **Render Phase** in React involves determining how the DOM should be updated
 - **Division of Responsibilities:** The React library handles the Render Phase, while the React DOM library is responsible for the Commit Phase.
 
 - **Browser Response:** Following DOM updates, the browser repaints the screen to reflect changes.
-
-<br>
 
 ## Summary
 
@@ -136,8 +124,6 @@ After the Render Phase comes the **Commit Phase**. This phase is about applying 
 3. **Single Pass:** The Commit Phase happens in a single pass. React goes through the entire tree and makes all the DOM updates in one go.
 
 4. **No Interruption:** Unlike the Render Phase, the operations in the Commit Phase cannot be interrupted. Once React starts making changes to the DOM, it completes the entire process.
-
-<br>
 
 ## How Diffing Works
 
@@ -163,8 +149,6 @@ _In the diffing process, React considers two main scenarios:_
    - This preservation applies to both DOM elements and React components.
    - If there are any changes in props or attributes, React updates these specifics while maintaining the element and its type.
 
-<br>
-
 ## The Key Prop
 
 The `key` prop is a special prop that we can use in order to tell the diffing algorithm that an element is unique. This works for both DOM elements and React elements.
@@ -174,8 +158,6 @@ In practice this means that we can give each component instance a unique identif
 When a key stays the same across renders, the element will be kept in the DOM (even if the position in the tree changes). This is why we have to use keys in lists.
 
 When a key changes between renders, the element will be destroyed and a new one will be created (even if the position in the tree is the same as before). Great to reset state, which is the second big use case of the `key` prop.
-
-<br>
 
 ## Virtual DOM
 
