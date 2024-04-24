@@ -1,11 +1,5 @@
 # Performance Optimization
 
-## Table of Content
-
-- []()
-
-<br>
-
 ## Performance Optimization and Wasted Renders
 
 1. **Prevent Wasted Renders:** `memo`; `useMemo`; `useCallback`; Passing elements as `children` or regular prop;
@@ -24,8 +18,6 @@ A component instance only gets re-rendered in 3 different situations: (1) State 
 
 **Profiler Developer Tool:** Analyze renders and re-renders
 
-<br>
-
 ## A Surprising Optimization Trick With children
 
 ```jsx
@@ -40,7 +32,7 @@ function Test() {
 
   return (
     <div>
-      <button onClick={() => setCount((c) => c + 1)}>Increase: {count}</button>
+      <button onClick={() => setCount(c => c + 1)}>Increase: {count}</button>
       <SlowComponent />
     </div>
   );
@@ -59,7 +51,7 @@ function Counter({ children }) {
 
   return (
     <div>
-      <button onClick={() => setCount((c) => c + 1)}>Increase: {count}</button>
+      <button onClick={() => setCount(c => c + 1)}>Increase: {count}</button>
       {children}
     </div>
   );
@@ -82,15 +74,13 @@ In both examples the component tree is exactly the same.
 
 **Optimized Example:** When `count` state changes, only `Counter` re-renders. `SlowComponent` being passed as `children`, _does not re-render because it is not a direct child of `Counter`_. This structure prevents `SlowComponent` from re-rendering unnecessarily.
 
-<br>
-
 ## `memo`
 
 **Memoization:** Optimization technique that executes a pure function once, and saves the result in memory (cache). If we try to execute the function again with the **same arguments as before**, the previously saved result will be returned (cached result), **without executing the function again**. We can use this technique in React to optimize our applications.
 
 **Memoize** components with `memo`, objects with `useMemo`, functions with `useCallback`. This will help us prevent wasted renders and improve the overall application speed / responsiveness.
 
-**`memo`** function is used to create a memoized component that will **not re-render when its parent re-renders**, as lon as the **props stay the same between renders.**
+**`memo`** function is used to create a memoized component that will **not re-render when its parent re-renders**, as the **props stay the same between renders.**
 
 `memo` only affects props (input). A memoized component will still re-render when its own state changes or when a context that it's subscribed to changes.
 
@@ -103,7 +93,7 @@ Only makes sense when the component is **heavy** (slow rendering), **re-renders 
 ### `memo` in Practice
 
 ```jsx
-import { memo } from "react";
+import { memo } from 'react';
 
 // memoized component
 const SlowComponent = memo(function (props) {
@@ -112,10 +102,9 @@ const SlowComponent = memo(function (props) {
 ```
 
 ```jsx
+// or..
 export default memo(SlowComponent);
 ```
-
-<br>
 
 ## Understanding useMemo and useCallback
 
@@ -146,7 +135,7 @@ export default memo(SlowComponent);
 ### `useMemo`
 
 ```jsx
-import { memo, useCallback, useMemo, useState } from "react";
+import { memo, useCallback, useMemo, useState } from 'react';
 
 const [count, setCount] = useState(0);
 
@@ -155,7 +144,7 @@ const options = useMemo(() => {
 }, [count]);
 ```
 
-Whanever we return from this function will be saved in the cache.
+Whatever we return from this function will be saved in the cache.
 
 If we leave the dependency array empty, the value will only be computed once in the beginning and will then never change.
 
@@ -163,11 +152,9 @@ If we leave the dependency array empty, the value will only be computed once in 
 
 ```jsx
 const handleAddPost = useCallback(function handleAddPost(post) {
-  setPosts((posts) => [post, ...posts]);
+  setPosts(posts => [post, ...posts]);
 }, []);
 ```
-
-<br>
 
 ## Optimizing Context
 
@@ -175,7 +162,7 @@ We need to optimize a context in case three things are true at the same time: th
 
 ```jsx
 function DataProvider({ children }) {
-  const handleUpdate = () => "";
+  const handleUpdate = () => '';
 
   const value = useMemo(() => {
     return { data, onUpdate: handleUpdate };
@@ -185,8 +172,6 @@ function DataProvider({ children }) {
   return <DataContext value={value}>{children}</DataContext>;
 }
 ```
-
-<br>
 
 ## Don't Optimize Prematurely!
 
@@ -208,5 +193,3 @@ function DataProvider({ children }) {
 - Don't wrap all values in useMemo
 - Don't wrap all functions in useCallback
 - Don't optimize context if it's not slow and doesn't have many consumers
-
-<br>

@@ -83,21 +83,21 @@ The **Render Phase** in React involves determining how the DOM should be updated
 
 - **Fibers:** Fibers are not recreated on every render (the fiber tree is never destroyed), instead it's a mutable data structure that is mutated over and over again in future reconciliation steps.
 
-- **Fiber Role:** The state and props of any component instance are internally stored inside the corresponding fiber in the fiber tree. Each fiber also contains a queue of work to do, like updaitng state, registering side effects, DOM updates, etc.
+- **Fiber Role:** The state and props of any component instance are internally stored inside the corresponding fiber in the fiber tree. Each fiber also contains a queue of work to do, like updating state, registering side effects, DOM updates, etc.
 
-- **Asynchronous Fiber Processing:** The linked list structure of the Fiber tree allows React to process updated asynchronously. This enables features like Suspense or transitions in React 18, allowing rendering to be paused and resumed without blocking the browser's JavaScript engine.
+- **Asynchronous Fiber Processing:** The linked list structure of the Fiber tree allows React to process updates asynchronously. This enables features like Suspense or transitions in React 18, allowing rendering to be paused and resumed without blocking the browser's JavaScript engine.
 
 ### Reconciliation Process in Action
 
-- **Outcode:** The reconciliation and diffing processes result is an updated Fiber tree and a list of necessary DOM updates. These are prepated for the next phase but not yet applied to the DOM.
+- **Outcome:** The reconciliation and diffing processes result is an updated Fiber tree and a list of necessary DOM updates. These are prepared for the next phase but not yet applied to the DOM.
 
 ## 3. Commit Phase
 
 - **DOM Updates:** The Render Phase results in a list of DOM updates. In the Commit Phase, React applies these updates to the actual DOM.
 
-- **Synchronous Operation:** The Commit Phase is synchronous, the DOM is updated is one go, it can't be interrupted. This is necessary so that the DOM never shows partial results, ensuring a consistent UI. In fact, that's the whole point of dividing the entire process into the render and commit phase.
+- **Synchronous Operation:** The Commit Phase is synchronous, the DOM is updated in one go, it can't be interrupted. This is necessary so that the DOM never shows partial results, ensuring a consistent UI. In fact, that's the whole point of dividing the entire process into the render and commit phase.
 
-- **Transition to Current Tree:** Post Commit Phase, the `workInProgree` Fiber tree becomes the `current` tree for the next render cycle. This reuse of Fiber trees saves rendering time.
+- **Transition to Current Tree:** Post Commit Phase, the `workInProgress` Fiber tree becomes the `current` tree for the next render cycle. This reuse of Fiber trees saves rendering time.
 
 - **Division of Responsibilities:** The React library handles the Render Phase, while the React DOM library is responsible for the Commit Phase.
 
@@ -153,7 +153,7 @@ _In the diffing process, React considers two main scenarios:_
 
 The `key` prop is a special prop that we can use in order to tell the diffing algorithm that an element is unique. This works for both DOM elements and React elements.
 
-In practice this means that we can give each component instance a unique identification, which will allow React to distinguish between multiple instances of the same component type.
+In practice this means that we can give each component instance an unique identification, which will allow React to distinguish between multiple instances of the same component type.
 
 When a key stays the same across renders, the element will be kept in the DOM (even if the position in the tree changes). This is why we have to use keys in lists.
 

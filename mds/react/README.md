@@ -19,7 +19,7 @@ _The library for web and native user interfaces._
 
 ## Effects and useRef
 
-- [Effects](./effects.md)
+- [useEffect Hook](./effects.md)
 - [The useRef Hook](./useref.md)
 
 ## Hooks and Forms
@@ -39,6 +39,12 @@ _The library for web and native user interfaces._
 - [How Events work](./how-events-work.md)
 - [State Batching](./state-batching.md)
 - [React Ecosystem](./react-ecosystem.md)
+
+## Performance
+
+- [Performance Optimization](./memos.md)
+- [Code Splitting](./code-splitting.md)
+- [Rules of effects](./effects-rules.md)
 
 ## Resources
 

@@ -19,4 +19,4 @@ React Ecosystem Resources: [dev.to](https://dev.to/avinashvagh/react-ecosystem-i
 
 Next.js, Remix, Gatsby are "opinionated" React frameworks built on top of React, they extend React's functionalities, providing solutions for routing, state management, styling, and more.
 
-We can consider these React frameworks as full-stack frameworks because they provide features like server-side rendering (SSR) and static-side generation (SSG), all by using React as the baselayer.
+We can consider these React frameworks as full-stack frameworks because they provide features like server-side rendering (SSR) and static-side generation (SSG), all by using React as the base layer.
