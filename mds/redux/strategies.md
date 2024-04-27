@@ -11,8 +11,6 @@
 - [Passing Store Data](#passing-store-data)
 - [Feature Components](#feature-components)
 
-<br>
-
 ## Slices
 
 - **Slices:** top-level state properties.
@@ -22,7 +20,7 @@
 const initialState = {
   todos: [],
   filter: true,
-  searchTerm: "",
+  searchTerm: '',
 };
 ```
 
@@ -31,21 +29,17 @@ The `initialState` general purposes:
 1. Plan out the general structure of the state.
 2. Provide an initial state value to the reducer function.
 
-<br>
-
 ## Slices and Actions
 
 - State with multiple slices - individual actions only change one slice at a time.
 - The `type` property follows the pattern: `'sliceName/actionDescriptor'`.
 
 ```js
-store.dispatch({ type: "searchTerm/setSearchTerm", payload: "homework" });
-store.dispatch({ type: "searchTerm/clearSearchTerm" });
+store.dispatch({ type: 'searchTerm/setSearchTerm', payload: 'homework' });
+store.dispatch({ type: 'searchTerm/clearSearchTerm' });
 ```
 
 `payload` - additional data passed to the reducer in order to carry out the desired change-of-state.
-
-<br>
 
 ## Reducer: Immutable Updates
 
@@ -66,8 +60,6 @@ return {
 - The same is true for the inner array, first we spread the entire array items into a new array, and then add a new item.
 - The `map()` method is a great tool for achieving the same results as the spread operator, since it returns a new array.
 
-<br>
-
 ## Reducer Composition
 
 - **Reducer Composition Pattern** - separate reducers responsible for individual slices.
@@ -77,7 +69,7 @@ return {
 const initialTodos = [];
 const todosReducer = (todos = initialTodos, action) => {};
 
-const initialFilter = "";
+const initialFilter = '';
 const filterReducer = (filter = initialFilter, action) => {};
 
 const rootReducer = (state = {}, action) => {
@@ -99,12 +91,10 @@ When an `action` is dispatched to the `store`:
 
 The `initialState` object has been replaced by individual `initialSliceName` variables which are used as default values for the state of each slice reducer. Then, all slice reducers are called within `rootReducer` to update their slices of state.
 
-<br>
-
 ## combineReducers
 
 ```js
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers } from 'redux';
 
 const reducers = {
   todos: todosReducer,
@@ -119,8 +109,6 @@ const store = createStore(rootReducer);
 - The returned `rootReducer` is passed to `createStore()` to create the `store` object.
 
 When an action is dispatched to the `store`, the `rootReducer` is executed which then calls each slice reducer and pass along the action and the appropriate slice of state.
-
-<br>
 
 ## Redux Structure
 
@@ -145,8 +133,6 @@ src/
 - `app/store.js` purpose is to create the `rootReducer` and the Redux `store`.
 - The `features/` directory, and its subdirectories, contain the code relating to each individual slice.
 
-<br>
-
 ## Passing Store Data
 
 Passing Store Data Through the Top-Level `<App />` React Component
@@ -157,14 +143,12 @@ In Redux applications, we pass data to components: state slices and dispatch met
 
 The distribution of `store.dispatch` methods and the slices of state to all of the feature-components, via the `<App />` component, begins in the `index.js` file.
 
-<br>
-
 ```js
 // index.js
-import { App } from "./app/App.js";
-import { store } from "./app/store.js";
+import { App } from './app/App.js';
+import { store } from './app/store.js';
 
-const root = createRoot(document.getElementById("root"));
+const root = createRoot(document.getElementById('root'));
 
 const render = () => {
   root.render(<App state={store.getState()} dispatch={store.dispatch} />);
@@ -176,8 +160,8 @@ store.subscribe(render);
 
 ```js
 // app.js
-import { Comp1 } from "./comp1.js";
-import { Comp2 } from "./comp2.js";
+import { Comp1 } from './comp1.js';
+import { Comp2 } from './comp2.js';
 
 export function App(props) {
   const { state, dispatch } = props;
@@ -190,8 +174,6 @@ export function App(props) {
   );
 }
 ```
-
-<br>
 
 ## Feature Components
 
@@ -219,5 +201,3 @@ Plugging in a feature-component to a Redux application involves the following st
 // 2. initialSliceState
 // 3. Slice Reducer
 ```
-
-<br>

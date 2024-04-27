@@ -6,20 +6,10 @@
 npm i react-router-dom
 ```
 
-<br>
-
-## Table of Content
-
-- [Creating Routes](#creating-routes)
-- [Nested Routes](#nested-routes)
-- [Index Routes](#index-routes)
-
-<br>
-
 ## Creating Routes
 
 ```jsx
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 export default function App() {
   return (
@@ -39,8 +29,6 @@ export default function App() {
 - Using the `path` and `element` props inside the `<Route />` component, we indicate which component to render at which URL path.
 - If the user accesses a URL path that does not exist, we can render a default component using the `path="*"` prop
 
-<br>
-
 ## Nested Routes
 
 When nesting routes, the child route `path` is relative to the parent route `path`.
@@ -56,7 +44,7 @@ When nesting routes, the child route `path` is relative to the parent route `pat
 When the url matches `/about`, the `<About />` component will render, and if it matches `/about/team` then the `<Team />` component will render in addition to `About`.
 
 ```jsx
-import { Outlet } from "react-router-dom";
+import { Outlet } from 'react-router-dom';
 
 function About() {
   return <Outlet />;
@@ -66,8 +54,6 @@ function About() {
 We have to indicate explicitly where to render the `<Team />` component within `<About />` parent component. For this, we use the `<Outlet />` component inside the parent `<About />` component.
 
 When we visit `/about/team`, the router will render `<About />` and its child route component `<Team />` wherever the `<Outlet />` component is defined. The router will replace `<Outlet />` with our defined child route.
-
-<br>
 
 ## Index Routes
 

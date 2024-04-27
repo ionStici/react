@@ -1,16 +1,9 @@
 # Navigate
 
-## Table of Content
-
-- [The `Navigate` Component](#the-navigate-component)
-- [The `useNavigate` Hook](#the-usenavigate-hook)
-
-<br>
-
 ## The `Navigate` Component
 
 ```jsx
-import { Navigate } from "react-router-dom";
+import { Navigate } from 'react-router-dom';
 
 // Navigate inside Route for URL redirecting
 <Route index element={<Navigate replace to="cities" />} />;
@@ -32,8 +25,6 @@ If the `Navigate` component is rendered, the user will automatically be taken to
 
 **Use Cases:** Commonly used for redirecting a user after an action, like a successful form submission or if the user lands on a page they shouldn't access (e.g., a restricted page without the necessary permissions).
 
-<br>
-
 ## The `useNavigate` Hook
 
 React Router provides a mechanism for updating the browser's location imperatively using the `useNavigate` hook. The `useNavigate` hook returns a `navigate` function that allows us to specify a path where we'd like to navigate.
@@ -45,13 +36,13 @@ React Router provides a mechanism for updating the browser's location imperative
 - **Use Cases:** Useful for navigating after certain actions like form submissions, button clicks, or other interactive elements.
 
 ```js
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 function Comp() {
   const navigate = useNavigate();
 
-  const goHomepage = () => navigate("/");
-  const goProfile = () => navigate("/profile");
+  const goHomepage = () => navigate('/');
+  const goProfile = () => navigate('/profile');
   const goBack = () => navigate(-1);
   const goForward = () => navigate(1);
 }

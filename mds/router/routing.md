@@ -2,7 +2,7 @@
 
 **Routing** is the process by which a web application uses the current browser URL (Uniform Resource Locator) to determine what content to show a user. By organizing an application’s content and displaying only what the user has requested to see, routing allows for rich, engaging, and clear user experiences.
 
-**A Router** is tool that watches changes in the url and prevents de default browser behavior of sending a request in case the url updates, then it enables React to update the UI based on the new url string.
+**A Router** is a tool that watches changes in the url and prevents de default browser behavior of sending a request in case the url updates, then it enables React to update the UI based on the new url string.
 
 **The basic structure of URLs:**
 
@@ -19,8 +19,6 @@ Every URL is essentially a request for some resource and each component of the U
 Depending on the kind of application you build, there are different ways to handle the requests coming into your server. A popular **back-end solution is to use the Express routing framework.**
 
 **React Router is a popular frontend routing solution** designed specifically for React applications.
-
-<br>
 
 ## Routing and Single-Page Applications (SPAs)
 

@@ -1,14 +1,5 @@
 # Dynamic Routes
 
-## Table of Content
-
-- [Dynamic Routes and URL Parameters](#url-parameters)
-- [The useParams Hook](#the-useparams-hook)
-- [useSearchParams and Query Parameters](#usesearchparams-and-query-parameters)
-- [Storing State in the URL](#storing-state-in-the-url)
-
-<br>
-
 ## Dynamic Routes and URL Parameters
 
 **Dynamic Routes** allow to handle different URL segments with just one route configuration.
@@ -22,12 +13,10 @@
 - `:id` is a URL parameter, it's a variable part of the URL that can take different values, allowing the same route to match multiple different paths.
 - A single route can have multiple parameters `posts/:post/:id`
 
-<br>
-
 ## The useParams Hook
 
 ```jsx
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
 function Post() {
   const { id } = useParams();
@@ -38,8 +27,6 @@ We can access the **URL parameters** from a **dynamic route** using the **`usePa
 
 `useParams` extracts the `:id` parameter from the URL, for example given the `posts/537` URL, `useParams` will return `{ id: '537' }`.
 
-<br>
-
 ## useSearchParams and Query Parameters
 
 **Query Parameters** are appended to the end of the URL with a `?` and usually follow the format `key=value`. They are often used for optional filters, search terms, storing state.
@@ -49,14 +36,14 @@ For example in this URL `url.com/posts?search=react&seaction=props`, `search=rea
 **`useSearchParams`** is a hook that provides a way to read and manipulate the query parameters in the URL.
 
 ```jsx
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from 'react-router-dom';
 
 function Post() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   // Get a specific query parameter
-  const query = searchParams.get("search");
-  const section = searchParams.get("section");
+  const query = searchParams.get('search');
+  const section = searchParams.get('section');
 
   // Function to update the query parameter
   const update = (newQuery, section) => {
@@ -70,8 +57,6 @@ In this example, `useSearchParams` is used to read and update the `search` and `
 `useSearchParams` is similar to `useState`, it returns a stateful value and a function to update them.
 
 It's helpful for features like search filters, pagination, etc., where the application state is reflected and controlled via URL query parameters.
-
-<br>
 
 ## Storing State in the URL
 

@@ -9,13 +9,11 @@
 - [getState](#getstate)
 - [subscribe](#subscribe)
 
-<br>
-
 ## createStore
 
 ```js
 // npm install redux
-import { createStore } from "redux";
+import { createStore } from 'redux';
 
 const initialState = true;
 const reducer = (state = initialState, action) => state;
@@ -28,8 +26,6 @@ Create the `store` object using the `createStore` helper function. It receives t
 - The **`store`** object holds the entire state of an application.
 - It provides useful methods for interacting with its state.
 
-<br>
-
 ## Action Objects and Action Creators
 
 - State updates are triggered by _dispatching actions_.
@@ -41,7 +37,7 @@ Create the `store` object using the `createStore` helper function. It receives t
 2. And then optionally a `payload` property with some data which is sent to the `store`.
 
 ```js
-const action = { type: "addTodo", payload: "do that" };
+const action = { type: 'addTodo', payload: 'do that' };
 ```
 
 ### Action Creators
@@ -51,7 +47,7 @@ const action = { type: "addTodo", payload: "do that" };
 Action Creators are called and passed directly to the `store.dispatch()` method.
 
 ```js
-const toggle = () => ({ type: "toggle" });
+const toggle = () => ({ type: 'toggle' });
 store.dispatch(toggle());
 ```
 
@@ -62,13 +58,11 @@ Before the reducer of an application is even written, we should write action cre
 Assign action types as read-only constants, then reference these constants wherever they are used.
 
 ```js
-const TOGGLE_LIST = "toggle";
+const TOGGLE_LIST = 'toggle';
 const toggle = () => ({ type: TOGGLE_LIST });
 ```
 
 _Convention:_ write these constants in uppercase and underscores.
-
-<br>
 
 ## The Reducer Function
 
@@ -84,10 +78,10 @@ const initialState = { filter: false, items: [] };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "filterOn":
+    case 'filterOn':
       return { ...state, filter: true };
 
-    case "filterOff":
+    case 'filterOff':
       return { ...state, filter: false };
 
     default:
@@ -99,8 +93,6 @@ const reducer = (state = initialState, action) => {
 - In the `switch` statement, the reducer will check for the `type` of the desired state change.
 - After matching the `type` action, it will produce and return the state change as written.
 - If nothing macthes, it will just return the current state.
-
-<br>
 
 ## Dispatch Actions to the Store
 
@@ -114,13 +106,9 @@ store.dispatch(toggle());
 - This will execute the reducer function with the same action object.
 - Assuming that `action.type` is recognized by the reducer, the state will be updated and returned.
 
-<br>
-
 ## getState
 
 `store.getState()` returns the current value of the store's state.
-
-<br>
 
 ## subscribe
 
@@ -162,5 +150,3 @@ unsubscribe();
 ```
 
 `store.subscribe()` returns an `unsubscribe` function that if called it will stop the listener from responding to changes made to the `store`.
-
-<br>

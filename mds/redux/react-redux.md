@@ -11,15 +11,13 @@ npm install react-redux
 - [useSelector() Hook](#useselector-hook)
 - [useDispatch() Hook](#usedispatch-hook)
 
-<br>
-
 ## The Provider Component
 
 ```js
-// index.hs
-import { App } from "./app/App.js";
-import { store } from "./app/store.js";
-import { Provider } from "react-redux";
+// index.js
+import { App } from './app/App.js';
+import { store } from './app/store.js';
+import { Provider } from 'react-redux';
 
 root.render(
   <Provider store={store}>
@@ -33,8 +31,6 @@ root.render(
 
 The `<Provider>` component gives the components of an app access to the Redux store without the need to pass the store directly to the React components through props.
 
-<br>
-
 ## Selectors
 
 Using the `<Provider>` component, the Redux `store` is provided to the React Components.
@@ -46,18 +42,14 @@ A _selector_ is a pure function (no side effects) that selects and returns data 
 - Takes `state` as an argument.
 - Returns what is needed by the component from `state`.
 
-<br>
-
 ```js
-export const selectFilter = (state) => state.filter;
-export const selectTodoText = (state) => state.todos.map((todo) => todo.text);
+export const selectFilter = state => state.filter;
+export const selectTodoText = state => state.todos.map(todo => todo.text);
 ```
 
 _Convention:_ selector names start with `select` and then the piece of data we retrieve.
 
 _Use case:_ Selectors are used together with the `useSelector` hook to retrieve the needed data.
-
-<br>
 
 ## useSelector() Hook
 
@@ -67,12 +59,12 @@ _Use case:_ Selectors are used together with the `useSelector` hook to retrieve 
 
 ```js
 // Todos.js
-import { useSelector } from "react-redux";
-import { selectTodos } from "todosSlice.js";
+import { useSelector } from 'react-redux';
+import { selectTodos } from 'todosSlice.js';
 
 export const Todos = () => {
   const todos = useSelector(selectTodos);
-  const todosById = useSelector((state) => state.todos[props.id]);
+  const todosById = useSelector(state => state.todos[props.id]);
 
   return <p>{todos}</p>;
 };
@@ -88,14 +80,12 @@ export const Todos = () => {
 2. Selectors are created to give instructions on retrieving data from the store.
 3. `useSelector()` is called within a child component of `<Provider>` for executing selector instructions to retrieve data and subscribe to re-rendering.
 
-<br>
-
 ## useDispatch() Hook
 
 ```js
-import { useSelector, useDispatch } from "react-redux";
-import { selectTodo } from "./todoSlice.js";
-import { removeTodo } from "./todoSlice.js";
+import { useSelector, useDispatch } from 'react-redux';
+import { selectTodo } from './todoSlice.js';
+import { removeTodo } from './todoSlice.js';
 
 const Todo = () => {
   const todo = useSelector(selectTodo);
@@ -106,5 +96,3 @@ const Todo = () => {
 ```
 
 The `useDispatch` hook allows you to dispatch actions from any component that is a descendent of the `<Provider>` component, avoiding passing a reference of `store.dispatch` through props. Both approaches accomplish the same thing but `useDispatch()` avoids props drilling.
-
-<br>
