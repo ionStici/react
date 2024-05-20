@@ -1,5 +1,4 @@
 # IDs
 
-https://www.npmjs.com/package/uuid
-
-https://www.npmjs.com/package/nanoid
+- [uuid - npm](https://www.npmjs.com/package/uuid)
+- [nanoid - npm](https://www.npmjs.com/package/nanoid)

@@ -91,7 +91,7 @@ function UserComponent() {
 }
 ```
 
-- UserComponent`dispatches the`fetchUserData` thunk when the component mounts.
+- `UserComponent` dispatches the `fetchUserData` thunk when the component mounts.
 - `fetchUserData` is a **thunk** that fetches user data from an API. It dispatches different actions based on whether the fetch is successful of fails.
 - `fetchUserData` is a **thunk** because it returns an asynchronous function that dispatches actions based on the success or failure of an API request.
 
