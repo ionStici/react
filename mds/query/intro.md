@@ -10,6 +10,13 @@ npm i @tanstack/react-query
 npm i @tanstack/react-query-devtools
 ```
 
+## Table of Contents
+
+- [Why React Query](#why-react-query)
+- [Setting Up React Query](#setting-up-react-query)
+- [useQuery](#usequery)
+- [Mutations](#mutations)
+
 ## Why React Query
 
 1. **Simplified Data Fetching:** React Query abstracts the complexity of data fetching, reducing boilerplate code.
