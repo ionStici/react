@@ -177,3 +177,5 @@ Text.defaultProps = {
 
 const App = () => <Text size="large">Hello</Text>;
 ```
+
+## attrs
