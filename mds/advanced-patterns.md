@@ -79,12 +79,12 @@ export default function App() {
 }
 ```
 
-#### Key Concepts
+### Key Concepts
 
 1. **Parent Component:** The main component that holds the state and provides the context for its child components.
 2. **Child Components:** Smaller components that are used to build up the structure of the parent component. These components communicate with the parent component to share state and behavior.
 
-#### Steps to Implement
+### Steps to Implement
 
 1. **Create the Parent Component:** This component will manage the state and provide any necessary context to its child components using React’s `Context` API.
 2. **Create the Child Components:** These components will use the context provided by the parent component to access the shared state and behavior.
