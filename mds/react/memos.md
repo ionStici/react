@@ -1,5 +1,14 @@
 # Performance Optimization
 
+## Table of Contents
+
+- [Performance Optimization and Wasted Renders](#performance-optimization-and-wasted-renders)
+- [A Surprising Optimization Trick With `children`](#a-surprising-optimization-trick-with-children)
+- [Memoization with `memo`](#memoization-with-memo)
+- [Understanding useMemo and useCallback](#understanding-usememo-and-usecallback)
+- [Optimizing Context](#optimizing-context)
+- [Don't Optimize Prematurely!](#dont-optimize-prematurely)
+
 ## Performance Optimization and Wasted Renders
 
 1. **Prevent Wasted Renders:** `memo`; `useMemo`; `useCallback`; Passing elements as `children` or regular prop;
@@ -14,11 +23,11 @@ A component instance only gets re-rendered in 3 different situations: (1) State 
 
 **Remember:** a render does not mean that the DOM actually gets updated, it just means the component function gets called. But this can be an expensive operation.
 
-**Wasted render:** a render that didn't produce any change in the DOM. This becomes a problem ONLY when renders they happen too frequently or when the component is very slow, resulting in not updating the UI fast enough after the user performs a certain action.
+**Wasted render:** a render that didn't produce any change in the DOM. This becomes a problem ONLY when renders happen too frequently or when the component is very slow, resulting in not updating the UI fast enough after the user performs a certain action.
 
 **Profiler Developer Tool:** Analyze renders and re-renders
 
-## A Surprising Optimization Trick With children
+## A Surprising Optimization Trick With `children`
 
 ```jsx
 // laggy example
@@ -59,11 +68,9 @@ function Counter({ children }) {
 
 function Test() {
   return (
-    <>
-      <Counter>
-        <SlowComponent />
-      </Counter>
-    </>
+    <Counter>
+      <SlowComponent />
+    </Counter>
   );
 }
 ```
@@ -74,13 +81,13 @@ In both examples the component tree is exactly the same.
 
 **Optimized Example:** When `count` state changes, only `Counter` re-renders. `SlowComponent` being passed as `children`, _does not re-render because it is not a direct child of `Counter`_. This structure prevents `SlowComponent` from re-rendering unnecessarily.
 
-## `memo`
+## Memoization with `memo`
 
 **Memoization:** Optimization technique that executes a pure function once, and saves the result in memory (cache). If we try to execute the function again with the **same arguments as before**, the previously saved result will be returned (cached result), **without executing the function again**. We can use this technique in React to optimize our applications.
 
 **Memoize** components with `memo`, objects with `useMemo`, functions with `useCallback`. This will help us prevent wasted renders and improve the overall application speed / responsiveness.
 
-**`memo`** function is used to create a memoized component that will **not re-render when its parent re-renders**, as the **props stay the same between renders.**
+The **`memo`** function is used to create a memoized component that will **not re-render when its parent re-renders**, as the **props stay the same between renders.**
 
 `memo` only affects props (input). A memoized component will still re-render when its own state changes or when a context that it's subscribed to changes.
 
@@ -169,7 +176,7 @@ function DataProvider({ children }) {
     0, [data];
   });
 
-  return <DataContext value={value}>{children}</DataContext>;
+  return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
 }
 ```
 

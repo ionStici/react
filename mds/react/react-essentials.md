@@ -4,14 +4,13 @@
 
 Why React? Fast, modular, scalable, flexible, popular.
 
-## Table of Content
+## Table of Contents
 
 - [JSX](#jsx)
 - [Babel Transformation](#babel-transformation)
 - [Nested JSX and Outer Elements](#nested-jsx-and-outer-elements)
   - [React Fragment](#react-fragment)
-- [className](#classname)
-- [htmlFor](#htmlfor)
+- [className and htmlFor](#classname-and-htmlfor)
 - [Self-Closing Tags](#self-closing-tags)
 - [Curly Braces in JSX](#curly-braces-in-jsx)
 - [Event Listeners in JSX](#event-listeners-in-jsx)
@@ -76,7 +75,7 @@ const list = (
 
 Use the `<Fragment>` react component (or the short `<>`) as the root element in case you need more outer elements.
 
-## className
+## className and htmlFor
 
 To set a `class` attribute in JSX, we use the `className` keyword instead.
 
@@ -84,9 +83,7 @@ To set a `class` attribute in JSX, we use the `className` keyword instead.
 <h1 className="heading-1">Hello</h1>
 ```
 
-## htmlFor
-
-In JSX, the `for` attribute is written as `htmlFor`.
+The `for` attribute is written as `htmlFor`.
 
 ```jsx
 <label htmlFor="name">Name</label>

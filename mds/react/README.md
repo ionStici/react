@@ -10,28 +10,40 @@ _The library for web and native user interfaces._
 ## Props and State
 
 - [Props](./props.md)
-- [State](./state.md)
+- [State : the `useState` hook](./state.md)
 
 ## State Management
 
-- [The useReducer Hook](./usereducer.md)
+- [The `useReducer` Hook](./usereducer.md)
 - [The Context API](./context.md)
 
-## Effects and useRef
+##
 
-- [useEffect Hook](./effects.md)
-- [The useRef Hook](./useref.md)
+- [The `useEffect` Hook](./effects.md)
 
-## Hooks and Forms
+- [The `useRef` Hook](./useref.md)
 
 - [Custom Hooks](./custom-hooks.md)
-- [Forms in React](./react-forms.md)
+
+- [Performance Optimization](./memos.md)
 
 ## Styles in React
 
 - [Styles in React](./styles-in-react.md)
 - [CSS Modules](./css-modules.md)
 - [Styled Components](./styled-comp.md)
+
+## Forms
+
+- [Forms in React](./react-forms.md)
+- [react-hook-form](./react-hook-form.md)
+
+## Resources
+
+- [React Official Website](https://react.dev/)
+- [React Roadmap](https://roadmap.sh/react)
+
+<!--
 
 ## How React Works
 
@@ -42,11 +54,7 @@ _The library for web and native user interfaces._
 
 ## Performance
 
-- [Performance Optimization](./memos.md)
 - [Code Splitting](./code-splitting.md)
 - [Rules of effects](./effects-rules.md)
 
-## Resources
-
-- [React Official Website](https://react.dev/)
-- [React Roadmap](https://roadmap.sh/react)
+-->

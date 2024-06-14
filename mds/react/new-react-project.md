@@ -1,16 +1,24 @@
 # New React Project with Vite
 
 ```
-npm create vite@latest my-react-app
+npm create vite@latest react-app
 ```
 
-## Predefined Scripts
+## Directory Structure
 
-- `dev` starts the development server
+- `public/` folder for static assets.
 
-- `build` bundles the app into static files for production
+- `src/` folder for the actual application code.
 
-- `preview` preview the production version of the app
+- `src/App.jsx` contains a function component that returns JSX and which is exported so that `src/main.jsx` could import and render it into the DOM.
+
+- `index.html` is the HTML document into which react will insert all the content.
+
+- `package.json` contains descriptive and functional metadata about a project.
+
+- `package-lock.json` contains the dependency tree installed in node_modules/.
+
+- `node_modules/` contains dependencies and sub-dependencies used by React.
 
 ## Rendering a Component
 
@@ -44,18 +52,10 @@ root.render(
 
 - `<React.StrictMode>` is an optional utility component that helps detect potential problems.
 
-## Directory Structure
+## Predefined Scripts
 
-- `public/` folder for static assets.
+- `dev` starts the development server
 
-- `src/` folder for the actual application code.
+- `build` bundles the app into static files for production
 
-- `src/App.jsx` contains a function component that returns JSX and which is exported so that `src/main.jsx` could import and render it.
-
-- `index.html` is the HTML document into which react will insert all the content.
-
-- `package.json` contains descriptive and functional metadata about a project.
-
-- `package-lock.json` contains the dependency tree installed in node_modules/.
-
-- `node_modules/` contains dependencies and sub-dependencies used by React.
+- `preview` preview the production version of the app

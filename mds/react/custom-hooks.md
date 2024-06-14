@@ -8,7 +8,7 @@
 
 In other words, hooks are APIs that expose some internal React functionality, such as: creating and accessing state from the fiber tree; registering side effects in the fiber tree; manual DOM selections; etc.
 
-Hooks always start with the work `use`. React comes with almost 20 built-in hooks:
+Hooks always start with the word `use`. React comes with almost 20 built-in hooks:
 
 _The most important hooks:_ `useState`, `useEffect`, `useReducer`, `useContext`.
 

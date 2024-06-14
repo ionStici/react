@@ -1,6 +1,6 @@
 # Effects and Data fetching
 
-## Table of Content
+## Table of Contents
 
 - [The Component Instance Lifecycle](#the-component-instance-lifecycle)
 - [What are Side Effects](#what-are-side-effects)

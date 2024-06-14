@@ -1,14 +1,13 @@
 # Props
 
-## Table of Content
+## Table of Contents
 
 - [Passing data with props](#passing-data-with-props)
 - [Event Handlers as Props](#event-handlers-as-props)
 - [props.children](#propschildren)
 - [Explicit Props](#explicit-props)
+- [Component Composition](#component-composition)
 - [defaultProps](#defaultprops)
-- [Render Props Technique](#render-props-technique)
-- [Prop Types](#prop-types)
 
 ## Passing data with props
 
@@ -55,7 +54,7 @@ function App() {
 }
 ```
 
-`App` passes the `handleClick` function to the `Button` component as a prop named `onClick`. The `Button` child component then uses this props as an event handler for its click event.
+`App` passes the `handleClick` function to the `Button` component as a prop named `onClick`. The `Button` child component then uses this prop as an event handler for its click event.
 
 **Naming Convention**
 
@@ -94,6 +93,29 @@ function Layout({ element }) {
 
 This approach offers more flexibility and control over where and how the passed elements are rendered within the `Layout` component.
 
+### Component Composition
+
+**Component Composition** is a technique of combining different components using the `children` props (or explicitly defined props), making it easier to build complex UIs and avoiding the prop drilling problem.
+
+```jsx
+function App() {
+  return (
+    <Layout>
+      <Header>
+        <Logo />
+        <Navigation />
+      </Header>
+      <MainContent>
+        <Item />
+        <Item />
+      </MainContent>
+    </Layout>
+  );
+}
+```
+
+Prop drilling occurs when a prop needs to be passed through multiple levels of nested components that do not use the prop themselves, but are merely intermediaries to pass the prop to a deeply nested child component that actually needs it.
+
 ## defaultProps
 
 Define default values for your component's props using `defaultProps`.
@@ -105,36 +127,5 @@ function Nav({ property }) {
 
 Nav.defaultProps = {
   property: 'value',
-};
-```
-
-## Render Props Technique
-
-**"Render Props"** is a pattern for sharing code between React components using a prop whose value is a function.
-
-```jsx
-function App() {
-  return <RenderProp render={text => <p>{text}</p>} />;
-}
-
-function RenderProp({ render }) {
-  return render('Hello');
-}
-```
-
-The `RenderProp` component returns the output of the `render` function that it receives through props.
-
-## Prop Types
-
-_Data validation_
-
-```jsx
-import PropTypes from 'prop-types';
-
-function App({ data, id }) {}
-
-App.propTypes = {
-  data: PropTypes.object.isRequired,
-  id: PropTypes.string,
 };
 ```

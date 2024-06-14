@@ -1,18 +1,16 @@
 # The useState Hooks
 
-## Table of Content
+## Table of Contents
 
 - [Update Function Component State](#update-function-component-state)
 - [Initializing State With a Callback](#initializing-state-with-a-callback)
 - [Previous State](#previous-state)
-- [Arrays in State](#arrays-in-state)
-- [Objects in State](#objects-in-state)
-- [Notes](#notes)
+- [Arrays and Objects in State](#arrays-and-objects-in-state)
 - [State vs. Props](#state-vs-props)
 - [State Management](#state-management)
 - [Stateless Components Inherit from Stateful Components](#stateless-components-inherit-from-stateful-components)
 - [Child Components Update Their Parents' state](#child-components-update-their-parents-state)
-- [Child Components Update Their Sibling Components](#child-components-update-their-sibling-components)
+- [Child Components Update Sibling Components](#child-components-update-sibling-components)
 - [Component Categories](#component-categories)
 
 ## Update Function Component State
@@ -23,11 +21,9 @@ The `useState` Hook is a named export from the React library.
 import React, { useState } from 'react';
 
 function App() {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(0);
 
-  const handleClick = () => {
-    setCount(count + 1);
-  };
+  const handleClick = () => setCount(1);
 
   return <button onClick={handleClick}>Number: {count}</button>;
 }
@@ -82,51 +78,33 @@ function App() {
 
 This approach guarantees that we are working with the most current value of state.
 
-## Arrays in State
-
-JavaScript arrays are the best data model for managing and rendering JSX lists.
-
-```jsx
-const arr = [1, 3, 5, 7];
-
-function App() {
-  const [nums, setNums] = useState([9, 12]);
-
-  const handleClick = () => useState(prev => [...arr, ...prev]);
-
-  return <button onClick={handleClick}>{nums.join(' ')}</button>;
-}
-```
-
-We define an `arr` _static data model_ outside of our function component since it doesn't need to be recreated each time our component re-renders.
-
-Then, the `nums` array contains _dynamic data_, meaning that it changes.
-
-When updating an array in state, we do not just add new data to the previous array, instead we replace the previous array with a brand new array. **This means that any data that we want to save from the previous array needs to be explicitly copied over to our new array.**
-
-## Objects in State
+## Arrays and Objects in State
 
 ```jsx
 function App() {
-  const [pair, setPair] = useState({});
+  const [list, setList] = useState([1]);
+  const [data, setData] = useState({ name: 'John' });
 
-  const handleClick = (name, value) => {
-    setPair(prev => ({ ...prev, name: value }));
+  const handleClick = () => {
+    setList(prev => [...prev, 2]);
+    setData(prev => ({ ...prev, hobby: 'Coding' }));
   };
+
+  return <button onClick={handleClick}>Click</button>;
 }
 ```
 
-When updating the object with new data, first we copy the values from the previous object and only then we set more values, the same technique as when working with arrays.
+When updating the state, the state setter function replaces the previous value with a new value that it returns.
 
-## Notes
+**This means that any data that we want to preserve from a previous array or object must be explicitly copied over to the new array or object.** _First we copy the values from the previous array or object by destructuring it, and only then we add new data._
 
-React expects you to never modify the state directly, instead always use the state setter.
+## State vs. Props
 
-A React App is basically just a lot of components, setting state and passing props to one another.
+React expects you to never modify the state directly, instead always use the state setter function.
 
-`props` for data that can be changed only by another component. `state` for data that the component itself can change.
+- `props` for data that can be changed only by another component, `state` for data that the component itself can change.
 
-`props` for building re-usable components. `useState` for changing what we see on the screen dynamically.
+- `props` for building re-usable components, `useState` for changing what we see on the screen dynamically.
 
 When the state updates, it triggers a re-render of the component using the new state data, including child components that receive that data as a prop.
 
@@ -135,8 +113,6 @@ React updates the actual DOM only where necessary. This means you don't have to 
 `state` is completely encapsulated to its component (unless you pass `state` data to a child component as `props`).
 
 Use state when you need to change something on the screen that a particular component is responsible for.
-
-## State vs. Props
 
 ### State
 
@@ -198,7 +174,7 @@ function Child({ toggle, onClick }) {
 }
 ```
 
-## Child Components Update Their Sibling Components
+## Child Components Update Sibling Components
 
 **Lifting State Up:** whenever multiple sibling components need access to the same state, we move that piece of state up to the first common parent component.
 
@@ -239,27 +215,3 @@ A child component updates its parent’s state, and the parent passes that state
 
   - Pages, layouts of the app, provides structure
   - Result of component composition
-
-### Component Composition
-
-**Prop Drilling** occurs when a parent component passes data down to its children and then those children pass the same data down to their own children.
-
-**Component Composition** - technique of combining different components using the `children` prop (or explicitly defined props) / for reusable and flexible components / to fix a prop drilling problem / great for creating layouts.
-
-```jsx
-// Component Composition Example
-function App() {
-  return (
-    <Layout>
-      <NavBar>
-        <Logo />
-      </NavBar>
-
-      <List>
-        <Box />
-        <Box />
-      </List>
-    </Layout>
-  );
-}
-```
