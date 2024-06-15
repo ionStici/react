@@ -13,7 +13,7 @@ React has a large ecosystem of libraries that we can use in our projects.
 - Styling: **CSS Modules, Styled Components, TailwindCSS**
 - Animation: Framer Motion, React Spring
 - UI Components: Material-UI, Chakra UI, Mantine, Ant Design, Headless UI, DaisyUI
-- HTTP Requests: **fetch()**, Axios
+- HTTP Requests: fetch(), Axios
 
 React Ecosystem Resources: [dev.to](https://dev.to/avinashvagh/react-ecosystem-in-2024-418k), [builder.io](https://www.builder.io/blog/react-js-in-2023)
 

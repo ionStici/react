@@ -1,4 +1,4 @@
-# Advanced React Patterns
+# React Patterns
 
 ## Table of Contents
 

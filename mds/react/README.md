@@ -2,41 +2,39 @@
 
 _The library for web and native user interfaces._
 
-## Fundamentals
-
 - [New React Project with Vite](./new-react-project.md)
+
 - [React Essentials](./react-essentials.md)
 
-## Props and State
-
 - [Props](./props.md)
-- [State : the `useState` hook](./state.md)
 
-## State Management
+- [State](./state.md)
 
 - [The `useReducer` Hook](./usereducer.md)
-- [The Context API](./context.md)
 
-##
+- [The Context API](./context.md)
 
 - [The `useEffect` Hook](./effects.md)
 
-- [The `useRef` Hook](./useref.md)
+- [Built-in Hooks](./hooks.md)
 
 - [Custom Hooks](./custom-hooks.md)
 
+- [React Patterns](./patterns.md)
+
 - [Performance Optimization](./memos.md)
 
-## Styles in React
+- [Styling React Apps](./styling-react.md)
 
-- [Styles in React](./styles-in-react.md)
-- [CSS Modules](./css-modules.md)
 - [Styled Components](./styled-comp.md)
 
-## Forms
-
 - [Forms in React](./react-forms.md)
+
 - [react-hook-form](./react-hook-form.md)
+
+- [Axios](./axios.md)
+
+- [React Query](./react-query.md)
 
 ## Resources
 
@@ -45,6 +43,8 @@ _The library for web and native user interfaces._
 
 <!--
 
+- [React Hot Toast](./react-hot-toast.md)
+
 ## How React Works
 
 - [How Rendering Works](./how-rendering-works.md)
@@ -52,7 +52,7 @@ _The library for web and native user interfaces._
 - [State Batching](./state-batching.md)
 - [React Ecosystem](./react-ecosystem.md)
 
-## Performance
+
 
 - [Code Splitting](./code-splitting.md)
 - [Rules of effects](./effects-rules.md)

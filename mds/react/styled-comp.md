@@ -14,39 +14,25 @@ npm install styled-components
 - [`css` helper function](#css-helper-function)
 - [Extending Styles](#extending-styles)
 - [Variations](#variations)
+- [The `attrs` Function](#the-attrs-function)
 
 ## The `styled` Function
 
-After the `styled` function, we chain the name of the HTML element we want to style, which returns a styled React component.
-
-These styled components can receive all the same props that regular JSX elements can receive.
+The `styled` function is used to create styled React components by chaining the name of the HTML element you want to style. Styled components can accept all the same props as regular JSX elements.
 
 ```jsx
 import styled from 'styled-components';
 
-const StyledApp = styled.div`
-  padding: 20px;
-`;
-
 const Button = styled.button`
-  color: #ef233c;
   font-size: 30px;
-
-  &:hover {
-    color: #d90429;
-  }
 `;
 
-const App = () => (
-  <StyledApp>
-    <Button onClick={() => ''}>Click</Button>;
-  </StyledApp>
-);
+const App = () => <Button onClick={() => ''}>Click</Button>;
 ```
 
-Styled components support nested selectors, so you can use `&:hover {}` within them to define styles for different states.
+You can use `&` nested selectors within styled components.
 
-**Note:** Don't define your styled components inside the render logic of a React component.
+**Note:** Avoid defining your styled components within the render logic of a React component.
 
 ## Global Styles
 
@@ -68,45 +54,30 @@ export default GlobalStyles;
 // App.jsx
 import GlobalStyles from './styles/GlobalStyles';
 
-function App() {
+export default function App() {
   return (
-    <>
+    <div>
       <GlobalStyles />
-      <main></main>
-    </>
+      <Components />
+    </div>
   );
 }
 ```
 
 ## Conditional Styling
 
-Conditionally apply styles based on props passed to the component.
+Conditionally apply styles based on `props` passed to the component.
 
 ```jsx
 const Heading = styled.h1`
   ${props =>
-    props.as === 'h1' &&
-    css`
-      font-size: 30px;
-      font-weight: 600;
-    `}
-
-  ${props =>
     props.as === 'h2' &&
     css`
-      font-size: 20px;
-      font-weight: 500;
+      font-size: 30px;
     `}
 `;
 
-function App() {
-  return (
-    <div>
-      <Heading as="h1" />
-      <Heading as="h2" />
-    </div>
-  );
-}
+const App = () => <Heading as="h2" />;
 ```
 
 The `as` prop is a special prop that allows you to change the underlying HTML element of a styled component dynamically.
@@ -121,7 +92,6 @@ import styled, { css } from 'styled-components';
 const buttonStyles = css`
   border: none;
   font-family: inherit;
-  color: inherit;
 `;
 
 const Button = styled.button`
@@ -133,6 +103,8 @@ const Button = styled.button`
 Useful for sharing styles between multiple components or for conditional styling.
 
 ## Extending Styles
+
+Extending Styles in styled-components allows you to build upon existing styled components by creating new ones that inherit and add to the original component's styles, promoting code reuse and consistency.
 
 ```jsx
 const Button = styled.button`
@@ -147,6 +119,8 @@ const App = () => <RedButton>Click</RedButton>;
 ```
 
 ## Variations
+
+_Code Example_
 
 ```jsx
 import styled, { css } from 'styled-components';
@@ -167,15 +141,31 @@ const sizes = {
 // Dynamically apply styles based on the `size` prop
 const Text = styled.p`
   color: #333;
-  ${props => sizes[props.size]}
+  ${props => sizes[props.$size]}
 `;
 
 // Set a default variation
 Text.defaultProps = {
-  size: 'medium',
+  $size: 'medium',
 };
 
-const App = () => <Text size="large">Hello</Text>;
+const App = () => <Text $size="large">Hello</Text>;
 ```
 
-## attrs
+## The `attrs` Function
+
+The `attrs` function allows you to add implicit attributes to your styled components.
+
+```jsx
+import styled from 'styled-components';
+
+const Input = styled.input.attrs({
+  type: 'text',
+})`
+  font-size: 20px;
+`;
+
+const App = () => <Input />;
+```
+
+By chaining `attrs` to `styled.input`, you can define static or dynamic attributes for the element. These attributes can be set using either a plain object or a function that returns an object.
