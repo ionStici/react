@@ -6,13 +6,13 @@ React is a view **library** (not a framework). If you want to build large-scale 
 
 React has a large ecosystem of libraries that we can use in our projects.
 
-- Routing: **React Router**, React Location
-- Client State Management: **Context API**, **Redux**, Zustand
-- Server State Management: **React Query**, SWE, Apollo
-- Form Handling: **React Hook Form**, Formik
-- Styling: **CSS Modules, Styled Components, TailwindCSS**
+- Routing: React Router, React Location
+- Client State Management: Context API, Redux, Zustand
+- Server State Management: React Query, SWE, Apollo
+- Form Handling: React Hook Form, Formik
+- Styling: CSS Modules, Styled Components, TailwindCSS
 - Animation: Framer Motion, React Spring
-- UI Components: Material-UI, Chakra UI, Mantine, Ant Design, Headless UI, DaisyUI
+- UI Components: Material-UI, Chakra UI, Mantine
 - HTTP Requests: fetch(), Axios
 
 React Ecosystem Resources: [dev.to](https://dev.to/avinashvagh/react-ecosystem-in-2024-418k), [builder.io](https://www.builder.io/blog/react-js-in-2023)

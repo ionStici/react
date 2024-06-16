@@ -2,59 +2,68 @@
 
 _The library for web and native user interfaces._
 
-- [New React Project with Vite](./new-react-project.md)
+### Fundamentals
 
+- [New React Project with Vite](./new-react-project.md)
 - [React Essentials](./react-essentials.md)
 
+### Props and State
+
 - [Props](./props.md)
-
 - [State](./state.md)
+- [The useRef Hook](./useref.md)
 
-- [The `useReducer` Hook](./usereducer.md)
+### State Management
 
+- [The useReducer Hook](./usereducer.md)
 - [The Context API](./context.md)
 
-- [The `useEffect` Hook](./effects.md)
+### Effects
 
-- [Built-in Hooks](./hooks.md)
+- [The useEffect Hook](./effects.md)
+- [Rules of effects](./effects-rules.md)
 
-- [Custom Hooks](./custom-hooks.md)
-
-- [React Patterns](./patterns.md)
-
-- [Performance Optimization](./memos.md)
-
-- [Styling React Apps](./styling-react.md)
-
-- [Styled Components](./styled-comp.md)
+### Forms
 
 - [Forms in React](./react-forms.md)
-
 - [react-hook-form](./react-hook-form.md)
 
-- [Axios](./axios.md)
+### Styling
 
-- [React Query](./react-query.md)
+- [Styling React Apps](./styling-react.md)
+- [Styled Components](./styled-comp.md)
+- [Framer Motion](./framer-motion.md)
 
-## Resources
-
-- [React Official Website](https://react.dev/)
-- [React Roadmap](https://roadmap.sh/react)
-
-<!--
-
-- [React Hot Toast](./react-hot-toast.md)
-
-## How React Works
+### How React Works
 
 - [How Rendering Works](./how-rendering-works.md)
 - [How Events work](./how-events-work.md)
 - [State Batching](./state-batching.md)
-- [React Ecosystem](./react-ecosystem.md)
 
+### Advanced Techniques
 
+- [Custom Hooks](./custom-hooks.md)
+- [React Patterns](./patterns.md)
+- [React Portals](./portals.md)
 
+### Performance
+
+- [Performance Optimization](./memos.md)
 - [Code Splitting](./code-splitting.md)
-- [Rules of effects](./effects-rules.md)
 
--->
+### Remote State
+
+- [React Query](./react-query.md)
+- [Axios](./axios.md)
+
+### 3rd Party Libraries
+
+- [React Ecosystem](./react-ecosystem.md)
+- [React Router](./router/README.md)
+- [React Hot Toast](./react-hot-toast.md)
+- [React Icons](./react-icons.md)
+
+### Resources
+
+- [React Official Website](https://react.dev/)
+- [React Roadmap](https://roadmap.sh/react)

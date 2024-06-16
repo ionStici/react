@@ -23,3 +23,5 @@ function App() {
 
 - The `Toaster` component should be included at the root of the application to handle the rendering of toast notifications.
 - The `toast` function is used for triggering toast notifications.
+
+[Options for Customization](https://react-hot-toast.com/docs/toaster)

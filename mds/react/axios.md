@@ -32,8 +32,6 @@ async function fetchData() {
 
 ## Axios + React Query
 
-### GET
-
 ```jsx
 async function fetchData() {
   const { data } = await axios.get('api-url.com');
@@ -42,21 +40,6 @@ async function fetchData() {
 
 function Component() {
   const { data } = useQuery('data', fetchData);
-  return null;
-}
-```
-
-### POST
-
-```jsx
-async function postData(newData) {
-  const { data } = await axios.post('api-url.com', newData);
-  return data;
-}
-
-function Component() {
-  const { mutate } = useMutation(postData);
-  const handleSubmit = newData => mutate(newData);
   return null;
 }
 ```
