@@ -24,10 +24,14 @@ These frameworks can be seen as full-stack solutions because they offer features
 
 - **Auth / Database / Backend:** `Supabase` `Firebase` `Next.js`
 
-## Libraries
+## Third-Party Libraries
 
-- [axios](./axios.md) - Promise-based HTTP client
 - [react-query](./react-query.md) - Server State Management
+- [axios](./axios.md) - Promise-based HTTP client
 - [react-router-dom](./router/react-router.md) - Client-Side Routing
 - [react-hook-form](./react-hook-form.md) - Form Handling Hook
 - [react-hot-toast](./react-hot-toast.md) - Animated notifications
+
+### Other good to know libraries
+
+[react-icons](./react-icons.md), [react-svg](./react-svg.md), [gh-pages](./gh-pages.md), [json-server](./json-server.md)

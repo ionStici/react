@@ -1,6 +1,6 @@
-# Json Server
+# json-server
 
-[json-server - npm](https://www.npmjs.com/package/json-server)
+[json-server](https://www.npmjs.com/package/json-server)
 
 ```
 npm install json-server
@@ -11,6 +11,7 @@ npm install json-server
 ```
 
 ```jsx
+// GET
 useEffect(() => {
   async function fetchObjects() {
     const res = await fetch(`http://localhost:9500/objects`);
@@ -19,11 +20,12 @@ useEffect(() => {
 ```
 
 ```jsx
+// POST
 async function createObjects(newObject) {
   const res = await fetch(`http://localhost:9500/objects`, {
-    method: 'POST',
+    method: "POST",
     body: JSON.stringify(newObject),
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   });
 
   const data = res.json();
