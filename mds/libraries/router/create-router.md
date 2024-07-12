@@ -6,9 +6,9 @@ It takes an array of route objects, each route object specifies the path, the co
 
 ```jsx
 // App.jsx
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import User, { loader as userLoader } from 'User';
-import UserUpdate, { action as userUpdateDataAction } from 'UserUpdate';
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import User, { loader as userLoader } from "User";
+import UserUpdate, { action as userUpdateDataAction } from "UserUpdate";
 
 const router = createBrowserRouter([
   {
@@ -16,17 +16,16 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       {
-        path: '/',
+        path: "/",
         element: <Home />,
       },
       {
-        path: '/user',
+        path: "/user",
         element: <User />,
         loader: userLoader,
-        errorElement: <Error />,
       },
       {
-        path: '/user/update',
+        path: "/user/update",
         element: <UserUpdate />,
         action: userUpdateDataAction,
       },
@@ -47,8 +46,8 @@ The `useLoaderData` react router hook provides the data returned by the loader f
 
 ```jsx
 // User.jsx
-import { useLoaderData } from 'react-router-dom';
-import { getUser } from 'userAPI';
+import { useLoaderData } from "react-router-dom";
+import { getUser } from "userAPI";
 
 function User() {
   const user = useLoaderData();
@@ -74,8 +73,8 @@ When a `<Form>` is submitted, a request is made to the async action function, th
 
 ```jsx
 // UserUpdate.jsx
-import { Form, redirect, useActionData } from 'react-router-dom';
-import { updateUserData } from 'userAPI';
+import { Form, redirect, useActionData } from "react-router-dom";
+import { updateUserData } from "userAPI";
 
 function UserUpdate() {
   const formErrors = useActionData();
@@ -96,7 +95,7 @@ export async function action({ request }) {
   const errors = {};
 
   if (validate(data)) {
-    errors.phone = 'Wrong phone format.';
+    errors.phone = "Wrong phone format.";
   }
 
   if (Object.keys(errors).length > 0) return errors;
@@ -115,11 +114,11 @@ How to display a page-level loading element when the app fetches data.
 
 ```jsx
 // Layout.jsx
-import { Outlet, useNavigation } from 'react-router-dom';
+import { Outlet, useNavigation } from "react-router-dom";
 
 function Layout() {
   const navigation = useNavigation();
-  const isLoading = navigation.state === 'loading';
+  const isLoading = navigation.state === "loading";
 
   if (isLoading) return <p>Loading...</p>;
 
@@ -133,14 +132,14 @@ Pre-fetch data from a specified endpoint (action) without directly navigating to
 
 ```jsx
 // About.jsx
-import { useFetcher } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useFetcher } from "react-router-dom";
+import { useEffect } from "react";
 
 function About() {
   const fetcher = useFetcher();
 
   useEffect(() => {
-    fetcher.load('/user');
+    fetcher.load("/user");
   }, [fetcher]);
 
   return null;

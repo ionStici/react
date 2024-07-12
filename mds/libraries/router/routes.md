@@ -1,7 +1,5 @@
 # React Routes
 
-[React Router Official Website](https://reactrouter.com/)
-
 ```jsx
 npm i react-router-dom
 ```
@@ -9,7 +7,7 @@ npm i react-router-dom
 ## Creating Routes
 
 ```jsx
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 export default function App() {
   return (
@@ -44,7 +42,7 @@ When nesting routes, the child route `path` is relative to the parent route `pat
 When the url matches `/about`, the `<About />` component will render, and if it matches `/about/team` then the `<Team />` component will render in addition to `About`.
 
 ```jsx
-import { Outlet } from 'react-router-dom';
+import { Outlet } from "react-router-dom";
 
 function About() {
   return <Outlet />;

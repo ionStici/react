@@ -3,13 +3,13 @@
 ## The `Navigate` Component
 
 ```jsx
-import { Navigate } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
 
 // Navigate inside Route for URL redirecting
 <Route index element={<Navigate replace to="cities" />} />;
 ```
 
-The `Navigate` component is used to declaratively redirect users to another route. t's typically used in the rendering logic of a component.
+The `Navigate` component is used to declaratively redirect users to another route. It's typically used in the rendering logic of a component.
 
 A common case for redirecting a user: a user wants to access a `/profile` page that requires authentication but is not currently signed in.
 
@@ -36,13 +36,13 @@ React Router provides a mechanism for updating the browser's location imperative
 - **Use Cases:** Useful for navigating after certain actions like form submissions, button clicks, or other interactive elements.
 
 ```js
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function Comp() {
   const navigate = useNavigate();
 
-  const goHomepage = () => navigate('/');
-  const goProfile = () => navigate('/profile');
+  const goHomepage = () => navigate("/");
+  const goProfile = () => navigate("/profile");
   const goBack = () => navigate(-1);
   const goForward = () => navigate(1);
 }

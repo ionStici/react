@@ -7,19 +7,19 @@ npm install react-hook-form
 ```
 
 ```jsx
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 
 export default function App() {
-  const defaultValues = { defaultValues: { name: 'John' } };
+  const defaultValues = { defaultValues: { name: "John" } };
   const { register, handleSubmit, formState } = useForm(defaultValues);
   const { errors } = formState;
 
-  const onSubmit = data => console.log(data);
-  const onError = err => console.log(err);
+  const onSubmit = (data) => console.log(data);
+  const onError = (err) => console.log(err);
 
   return (
     <form onSubmit={handleSubmit(onSubmit, onError)}>
-      <input type="text" {...register('name', { required: 'Required' })} />
+      <input type="text" {...register("name", { required: "Required" })} />
       {errors?.name?.message && <span>{errors.name.message}</span>}
     </form>
   );
@@ -36,10 +36,10 @@ export default function App() {
 ```jsx
 <input
   type="number"
-  {...register('age', {
-    required: 'Required',
-    min: { value: 18, message: '18+' },
-    validate: value => Number.isInteger(+value) || 'Wrong format',
+  {...register("age", {
+    required: "Required",
+    min: { value: 18, message: "18+" },
+    validate: (value) => Number.isInteger(+value) || "Wrong format",
   })}
 />
 ```
@@ -47,11 +47,11 @@ export default function App() {
 ```jsx
 <input
   type="email"
-  {...register('email', {
-    required: 'Email is required',
+  {...register("email", {
+    required: "Email is required",
     pattern: {
       value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
-      message: 'Invalid email address',
+      message: "Invalid email address",
     },
   })}
 />
