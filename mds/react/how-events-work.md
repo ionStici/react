@@ -11,7 +11,7 @@ Behind the scenes, React performs event delegation for all our events to the `#r
 When we declare an event handler like this one:
 
 ```jsx
-<input onChange={e => setText(e.target.value)} />
+<input onChange={(e) => setText(e.target.value)} />
 ```
 
 ..react gives us access to the event object that was created, just like in vanilla JS. However, in React this event object is different.

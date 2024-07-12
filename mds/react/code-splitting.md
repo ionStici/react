@@ -13,15 +13,20 @@
 ## Code Splitting in React
 
 ```jsx
-import { Suspense, lazy } from 'react';
-import Spinner from './components/Spinner';
+import { Suspense, lazy, useState } from "react";
 
-const LazyComponent = lazy(() => import('./LazyComponent'));
+import Spinner from "components/Spinner";
+
+const Home = lazy(() => import("page/Home"));
+const About = lazy(() => import("page/About"));
 
 function App() {
+  const [page, setPage] = useState("home");
+
   return (
     <Suspense fallback={<Spinner />}>
-      <LazyComponent />
+      {page === "home" && <Home />}
+      {page === "about" && <About />}
     </Suspense>
   );
 }

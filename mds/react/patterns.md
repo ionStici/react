@@ -14,7 +14,7 @@ This pattern is particularly useful when direct insertion of JSX via the `childr
 
 ```jsx
 function App() {
-  return <List items={apiData} render={item => <li>{item}</li>} />;
+  return <List items={apiData} render={(item) => <li>{item}</li>} />;
 }
 ```
 
@@ -40,7 +40,7 @@ function Display({ message }) {
 
 // Higher-Order Component (HOC)
 function withEnhancement(WrappedComponent) {
-  const message = 'Hello from HOC!';
+  const message = "Hello from HOC!";
   return <WrappedComponent {...props} message={message} />;
 }
 
@@ -61,7 +61,7 @@ An HOC is a pure function with zero side-effects. It doesn't modify the original
 
 ```jsx
 // Counter.jsx
-import React, { useState, createContext, useContext } from 'react';
+import React, { useState, createContext, useContext } from "react";
 
 // 1. Create a Context
 const CounterContext = createContext();
@@ -69,8 +69,8 @@ const CounterContext = createContext();
 // 2. Create Parent Component
 function Counter({ children }) {
   const [count, setCount] = useState(0);
-  const increase = () => setCount(c => c + 1);
-  const decrease = () => setCount(c => c - 1);
+  const increase = () => setCount((c) => c + 1);
+  const decrease = () => setCount((c) => c - 1);
 
   return (
     <CounterContext.Provider value={{ count, increase, decrease }}>
@@ -114,7 +114,7 @@ export default Counter;
 
 ```jsx
 // App.jsx
-import Counter from './Counter';
+import Counter from "./Counter";
 
 export default function App() {
   return (

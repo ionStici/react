@@ -1,5 +1,10 @@
 # React Ecosystem
 
+- **Client State Management:** useState, useReducer, Context API.
+- **Server State Management:** React Query, fetch(), Axios.
+
+# React Ecosystem
+
 **Framework:** (all-in-one kit) everything you need to build a complete app is included.
 
 React is a view **library** (not a framework). If you want to build large-scale SPAs, you will need to include many 3rd-party external libraries for things like routing, styling, http requests, and so on, because all these functionalities are not part of React itself.

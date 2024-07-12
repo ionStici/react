@@ -6,12 +6,19 @@ _The library for web and native user interfaces._
 
 - [New React Project with Vite](./new-react-project.md)
 - [React Essentials](./react-essentials.md)
-- [Passing Props](./props.md)
 
 ### State Management
 
+- [Passing Props](./props.md)
 - [The useState Hook](./state.md)
+
+<div></div>
+
 - [The useRef Hook](./useref.md)
+- [Forms in React](./react-forms.md)
+
+<div></div>
+
 - [The useReducer Hook](./usereducer.md)
 - [The Context API](./context.md)
 
@@ -19,14 +26,6 @@ _The library for web and native user interfaces._
 
 - [The useEffect Hook](./effects.md)
 - [Rules of effects](./effects-rules.md)
-
-<br>
-<br>
-<br>
-
-### Forms
-
-- [Forms in React](./react-forms.md)
 
 ### Styling
 
@@ -36,8 +35,8 @@ _The library for web and native user interfaces._
 ### How React Works
 
 - [How Rendering Works](./how-rendering-works.md)
-- [How Events work](./how-events-work.md)
 - [State Batching](./state-batching.md)
+- [How Events work](./how-events-work.md)
 
 ### Advanced Techniques
 
@@ -47,13 +46,8 @@ _The library for web and native user interfaces._
 
 ### Performance
 
-- [Performance Optimization](./memos.md)
+- [Performance Optimizations](./memos.md)
 - [Code Splitting](./code-splitting.md)
+- [Error Boundary](./error-boundary.md)
 
-### 3rd Party Libraries
-
-- [React Ecosystem](./react-ecosystem.md)
-
-### Resources
-
-- [React Official Website](https://react.dev/)
+### [The React Ecosystem](./../libraries/react-ecosystem.md)

@@ -26,12 +26,12 @@ One custom hook should have only one purpose, to make it reusable and portable (
 - Custom hooks need to use one or more React hooks.
 - The function name of a custom hook needs to start with the word `use` (not optional).
 
-### useLocalStorageState
+### useLocalStorageState Custom Hook
 
 ```jsx
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-function useLocalStorageState(key, initialValue) {
+export function useLocalStorageState(key, initialValue) {
   const [value, setValue] = useState(() => {
     const storedValue = localStorage.getItem(key);
     return storedValue ? JSON.parse(storedValue) : initialValue;
@@ -44,75 +44,7 @@ function useLocalStorageState(key, initialValue) {
   return [value, setValue];
 }
 
-export { useLocalStorageState };
-
 function App() {
-  const [test, setTest] = useLocalStorageState('test', [0]);
-}
-```
-
-### useKeypress
-
-```jsx
-function useKeypress(key, action) {
-  useEffect(() => {
-    const callback = e => {
-      if (e.code.toLowerCase() === key.toLowerCase()) action();
-    };
-
-    document.addEventListener('keydown', callback);
-    return () => document.removeEventListener('keydown', callback);
-  }, [action, key]);
-}
-
-function App() {
-  const log = () => console.log('success');
-  useKeypress('Enter', log);
-  return null;
-}
-```
-
-### useGeolocation
-
-```jsx
-function useGeolocation() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [position, setPosition] = useState({});
-  const [error, setError] = useState(null);
-
-  function getPosition() {
-    if (!navigator.geolocation) {
-      return setError('Your browser does not support geolocation');
-    }
-
-    setIsLoading(true);
-
-    navigator.geolocation.getCurrentPosition(
-      location => {
-        setPosition({
-          lat: location.coords.latitude,
-          lng: location.coords.longitude,
-        });
-        setIsLoading(false);
-      },
-      error => {
-        setError(error.message);
-        setIsLoading(false);
-      }
-    );
-  }
-
-  return { isLoading, position, error, getPosition };
-}
-
-function App() {
-  const { isLoading, position, error, getPosition } = useGeolocation();
-  const handleClick = () => getPosition();
-
-  useEffect(() => {
-    console.log(isLoading, position, error);
-  }, [isLoading, position, error]);
-
-  return <button onClick={handleClick}>Click</button>;
+  const [age, setAge] = useLocalStorageState("age", 25);
 }
 ```

@@ -6,24 +6,6 @@
 npm install styled-components
 ```
 
-```jsx
-import { BiLoaderAlt } from "react-icons/bi";
-
-import styled, { keyframes } from "styled-components";
-
-const rotate = keyframes`  to {
-    transform: rotate(1turn)
-  }`;
-
-const SpinnerMini = styled(BiLoaderAlt)`
-  width: 2.4rem;
-  height: 2.4rem;
-  animation: ${rotate} 1.5s infinite linear;
-`;
-
-export default SpinnerMini;
-```
-
 ## Table of Contents
 
 - [The `styled` Function](#the-styled-function)
@@ -31,8 +13,9 @@ export default SpinnerMini;
 - [Conditional Styling](#conditional-styling)
 - [`css` helper function](#css-helper-function)
 - [Extending Styles](#extending-styles)
-- [Variations](#variations)
+- [Variations Technique](#variations-technique)
 - [The `attrs` Function](#the-attrs-function)
+- [keyframes Animations](#keyframes-animations)
 
 ## The `styled` Function
 
@@ -136,7 +119,7 @@ const RedButton = styled(Button)`
 const App = () => <RedButton>Click</RedButton>;
 ```
 
-## Variations
+## Variations Technique
 
 _Code Example_
 
@@ -162,11 +145,6 @@ const Text = styled.p`
   ${(props) => sizes[props.$size]}
 `;
 
-// Set a default variation
-Text.defaultProps = {
-  $size: "medium",
-};
-
 const App = () => <Text $size="large">Hello</Text>;
 ```
 
@@ -187,3 +165,18 @@ const App = () => <Input />;
 ```
 
 By chaining `attrs` to `styled.input`, you can define static or dynamic attributes for the element. These attributes can be set using either a plain object or a function that returns an object.
+
+## keyframes Animations
+
+```jsx
+import styled, { keyframes } from "styled-components";
+
+const rotate = keyframes`
+to {
+  transform: rotate(1turn)
+}`;
+
+const Spinner = styled.div`
+  animation: ${rotate} 1.5s infinite linear;
+`;
+```

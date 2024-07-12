@@ -1,6 +1,6 @@
 # How Rendering Works
 
-## Table of Content
+## Table of Contents
 
 - [Components, Instances, Elements](#components-instances-elements)
 - [Render Logic](#render-logic)
@@ -43,7 +43,7 @@
 
 These side effects should be performed in event handler functions and using the `useEffect` hook.
 
-Note: When react's strict mode is activated in React 18, our effects will run twice, but only in development phase, that's why we usually get 2 console logs.
+Note: When react's strict mode is activated, our effects will run twice, but only in development phase, that's why we usually get 2 console logs.
 
 ## 1. Render is Triggered
 
@@ -85,7 +85,7 @@ The **Render Phase** in React involves determining how the DOM should be updated
 
 - **Fiber Role:** The state and props of any component instance are internally stored inside the corresponding fiber in the fiber tree. Each fiber also contains a queue of work to do, like updating state, registering side effects, DOM updates, etc.
 
-- **Asynchronous Fiber Processing:** The linked list structure of the Fiber tree allows React to process updates asynchronously. This enables features like Suspense or transitions in React 18, allowing rendering to be paused and resumed without blocking the browser's JavaScript engine.
+- **Asynchronous Fiber Processing:** The linked list structure of the Fiber tree allows React to process updates asynchronously. This enables features like Suspense or transitions, allowing rendering to be paused and resumed without blocking the browser's JavaScript engine.
 
 ### Reconciliation Process in Action
 
