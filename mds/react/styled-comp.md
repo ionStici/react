@@ -6,6 +6,24 @@
 npm install styled-components
 ```
 
+```jsx
+import { BiLoaderAlt } from "react-icons/bi";
+
+import styled, { keyframes } from "styled-components";
+
+const rotate = keyframes`  to {
+    transform: rotate(1turn)
+  }`;
+
+const SpinnerMini = styled(BiLoaderAlt)`
+  width: 2.4rem;
+  height: 2.4rem;
+  animation: ${rotate} 1.5s infinite linear;
+`;
+
+export default SpinnerMini;
+```
+
 ## Table of Contents
 
 - [The `styled` Function](#the-styled-function)
@@ -21,13 +39,13 @@ npm install styled-components
 The `styled` function is used to create styled React components by chaining the name of the HTML element you want to style. Styled components can accept all the same props as regular JSX elements.
 
 ```jsx
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Button = styled.button`
   font-size: 30px;
 `;
 
-const App = () => <Button onClick={() => ''}>Click</Button>;
+const App = () => <Button onClick={() => ""}>Click</Button>;
 ```
 
 You can use `&` nested selectors within styled components.
@@ -38,7 +56,7 @@ You can use `&` nested selectors within styled components.
 
 ```js
 // styles/GlobalStyles.js
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
 * {
@@ -52,7 +70,7 @@ export default GlobalStyles;
 
 ```jsx
 // App.jsx
-import GlobalStyles from './styles/GlobalStyles';
+import GlobalStyles from "./styles/GlobalStyles";
 
 export default function App() {
   return (
@@ -70,8 +88,8 @@ Conditionally apply styles based on `props` passed to the component.
 
 ```jsx
 const Heading = styled.h1`
-  ${props =>
-    props.as === 'h2' &&
+  ${(props) =>
+    props.as === "h2" &&
     css`
       font-size: 30px;
     `}
@@ -87,7 +105,7 @@ The `as` prop is a special prop that allows you to change the underlying HTML el
 The [`css`](https://styled-components.com/docs/api#css) helper function allows you to define a block of CSS that can be reused throughout your styled components.
 
 ```js
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 const buttonStyles = css`
   border: none;
@@ -123,7 +141,7 @@ const App = () => <RedButton>Click</RedButton>;
 _Code Example_
 
 ```jsx
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 // Variations
 const sizes = {
@@ -141,12 +159,12 @@ const sizes = {
 // Dynamically apply styles based on the `size` prop
 const Text = styled.p`
   color: #333;
-  ${props => sizes[props.$size]}
+  ${(props) => sizes[props.$size]}
 `;
 
 // Set a default variation
 Text.defaultProps = {
-  $size: 'medium',
+  $size: "medium",
 };
 
 const App = () => <Text $size="large">Hello</Text>;
@@ -157,10 +175,10 @@ const App = () => <Text $size="large">Hello</Text>;
 The `attrs` function allows you to add implicit attributes to your styled components.
 
 ```jsx
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Input = styled.input.attrs({
-  type: 'text',
+  type: "text",
 })`
   font-size: 20px;
 `;

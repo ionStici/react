@@ -11,67 +11,34 @@ _Context API parts:_
 Whenever the context `value` is updated, _all consumers re-render_.
 
 ```jsx
-import { createContext, useContext, useState } from 'react';
+// DataContext.jsx
+import { createContext, useContext, useState } from "react";
 
 // 1. Create Context
-const ListContext = createContext(null);
+const DataContext = createContext(null);
 
-export default function App() {
-  const [list, setList] = useState([]);
-
-  return (
-    // 2. Provide the Context to child components
-    <ListContext.Provider value={{ list, setList }}>
-      <Component />
-    </ListContext.Provider>
-  );
-}
-
-function Component() {
-  // 3. Consuming the Context
-  const { list, setList } = useContext(ListContext);
-}
-```
-
-## Context + useReducer with Custom Provider and Hook
-
-_Code Example_
-
-```jsx
-import { useReducer, createContext, useContext } from 'react';
-
-const initialState = { text: 'Click' };
-
-const reducer = function (state, action) {
-  switch (action.type) {
-    case 'update':
-      return { ...state, text: action.payload };
-    default:
-      throw new Error('Unknown Action');
-  }
-};
-
-const DataContext = createContext();
-
-function DataProvider({ children }) {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const handleClick = () => dispatch({ type: 'update', payload: 'Clicked' });
+// 2. Create Custom Context Provider
+export default function DataProvider({ children }) {
+  const [data, setData] = useState(null);
 
   return (
-    <DataContext.Provider value={{ state, handleClick }}>
+    <DataContext.Provider value={{ data, setData }}>
       {children}
     </DataContext.Provider>
   );
 }
 
-function useData() {
-  const context = useContext(DataContext);
-  if (!context)
-    throw new Error('DataContext was used outside of the DataProvider');
-  return context;
+// 3. Create Custom useData Hook
+export function useData() {
+  return useContext(DataContext);
 }
+```
 
-export default function App() {
+```jsx
+import DataProvider, { useData } from "DataContext";
+
+function App() {
+  // 4. Provide the Context
   return (
     <DataProvider>
       <Component />
@@ -80,7 +47,7 @@ export default function App() {
 }
 
 function Component() {
-  const { state, handleClick } = useData();
-  return <button onClick={handleClick}>{state.text}</button>;
+  // 5. Use the Context
+  const { data, setData } = useData();
 }
 ```

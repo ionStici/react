@@ -18,7 +18,7 @@ Why React? Fast, modular, scalable, flexible, popular.
 - [`map` in JSX](#map-in-jsx)
   - [The key attribute](#the-key-attribute)
 - [React Functional Components](#react-functional-components)
-  - [React Developer Tools](#react-developer-tools)
+- [React Developer Tools](#react-developer-tools)
 
 ## JSX
 
@@ -40,7 +40,7 @@ _p.s. We can think of JSX elements as built-in react components._
 
 ## Babel Transformation
 
-Before reaching the browser, JSX code is compiled into regular JavaScript objects that create HTML elements on the DOM.
+Before reaching the browser, JSX code is compiled into regular JavaScript objects that create HTML elements into the DOM.
 
 This piece of JSX code:
 
@@ -52,7 +52,7 @@ is transformed by Babel into this:
 
 ```js
 // JS
-const element = React.createElement('h1', null, 'Hello, World!');
+const element = React.createElement("h1", null, "Hello, World!");
 ```
 
 ## Nested JSX and Outer Elements
@@ -104,7 +104,7 @@ Code within curly braces inside a JSX expression will be treated as JS code.
 They mark the beginning and the end of a JS injection into JSX.
 
 ```jsx
-const myName = 'John';
+const myName = "John";
 const hello = <p>Hello, {myName}</p>;
 ```
 
@@ -114,7 +114,7 @@ We can place JS expressions inside JSX curly braces, but not statements.
 
 ```jsx
 function App() {
-  const handleClick = () => console.log('hi');
+  const handleClick = () => console.log("hi");
   return <button onClick={handleClick}>Click</button>;
 }
 ```
@@ -139,7 +139,7 @@ _Conditional rendering_
 - **Ternary Operator** (inside JSX)
 
   ```jsx
-  const p = <p>{true ? 'first' : 'second'}</p>;
+  const p = <p>{true ? "first" : "second"}</p>;
   ```
 
 - **`&&`**
@@ -151,8 +151,8 @@ _Conditional rendering_
 ## `map` in JSX
 
 ```jsx
-const arr = ['dog', 'note', 'cactus'];
-const list = arr.map(item => <li key={item}>{item}</li>);
+const arr = ["dog", "note", "cactus"];
+const list = arr.map((item) => <li key={item}>{item}</li>);
 ```
 
 Using `map` we can dynamically render JSX elements.

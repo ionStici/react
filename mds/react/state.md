@@ -1,8 +1,8 @@
-# The useState Hooks
+# The useState Hook
 
 ## Table of Contents
 
-- [Update Function Component State](#update-function-component-state)
+- [Using the State Hook](#using-the-state-hook)
 - [Initializing State With a Callback](#initializing-state-with-a-callback)
 - [Previous State](#previous-state)
 - [Arrays and Objects in State](#arrays-and-objects-in-state)
@@ -13,12 +13,12 @@
 - [Child Components Update Sibling Components](#child-components-update-sibling-components)
 - [Component Categories](#component-categories)
 
-## Update Function Component State
+## Using the State Hook
 
 The `useState` Hook is a named export from the React library.
 
 ```jsx
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -54,7 +54,7 @@ _Lazy Initial State_
 
 ```jsx
 useState(() => {
-  const data = localStorage.getItem('data');
+  const data = localStorage.getItem("data");
   if (!data) return 0;
   return JSON.parse(data);
 });
@@ -67,7 +67,7 @@ When the initial value of the `useState` hook depends on some sort of computatio
 ```jsx
 function App() {
   const [count, setCount] = useState(1);
-  const increment = () => setCount(prev => prev + 1);
+  const increment = () => setCount((prev) => prev + 1);
 
   return <button onClick={increment}>Increment: {count}</button>;
 }
@@ -83,11 +83,11 @@ This approach guarantees that we are working with the most current value of stat
 ```jsx
 function App() {
   const [list, setList] = useState([1]);
-  const [data, setData] = useState({ name: 'John' });
+  const [data, setData] = useState({ name: "John" });
 
   const handleClick = () => {
-    setList(prev => [...prev, 2]);
-    setData(prev => ({ ...prev, hobby: 'Coding' }));
+    setList((prev) => [...prev, 2]);
+    setData((prev) => ({ ...prev, hobby: "Coding" }));
   };
 
   return <button onClick={handleClick}>Click</button>;
@@ -147,7 +147,7 @@ A child component can access the state of its parent component through props.
 
 ```jsx
 function Parent() {
-  const [name, setName] = useState('John');
+  const [name, setName] = useState("John");
   return <Child name={name} />;
 }
 
@@ -164,13 +164,13 @@ function Child({ name }) {
 ```jsx
 function Parent() {
   const [toggle, setToggle] = useState(true);
-  const changeState = () => setToggle(prev => !prev);
+  const changeState = () => setToggle((prev) => !prev);
 
   return <Child toggle={toggle} onClick={changeState} />;
 }
 
 function Child({ toggle, onClick }) {
-  return <button onClick={onClick}>{toggle + ''}</button>;
+  return <button onClick={onClick}>{toggle + ""}</button>;
 }
 ```
 
@@ -181,12 +181,12 @@ function Child({ toggle, onClick }) {
 _Concept:_ one stateless component displays information, and a different stateless component offer the ability to change that information.
 
 ```jsx
-const ChildOne = props => <button onClick={props.onClick}>Click</button>;
-const ChildTwo = props => <p>{props.text}</p>;
+const ChildOne = (props) => <button onClick={props.onClick}>Click</button>;
+const ChildTwo = (props) => <p>{props.text}</p>;
 
 function Parent() {
-  const [text, setText] = useState('Hello');
-  const changeState = () => setText('Hello World');
+  const [text, setText] = useState("Hello");
+  const changeState = () => setText("Hello World");
 
   return (
     <>

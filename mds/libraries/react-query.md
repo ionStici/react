@@ -96,9 +96,9 @@ function UpdateItem({ id }) {
   }
 
   const { mutate, isPending } = useMutation({
-    mutationFn: id => updateItem(id),
+    mutationFn: (id) => updateItem(id),
     onSuccess: () => handleInvalidateQueries(),
-    onError: err => console.log(err),
+    onError: (err) => console.log(err),
   });
 
   function handleUpdateItem() {
@@ -118,6 +118,12 @@ The `useQueryClient` hook provides access to the `QueryClient` instance.
 **Query Invalidation** allows you to refresh queries to get the latest data. This is useful when you perform mutations that affect the data fetched by queries.
 
 We can perform query invalidation using the `invalidateQueries` function, it accepts the `queryKey` identifier, so it will only invalidate the required queries.
+
+## Prefetching
+
+**Prefetching** - fetching data that might become necessary before we actually need that data to render it on the user interface.
+
+?
 
 ## React Query Features
 

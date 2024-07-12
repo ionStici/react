@@ -1,8 +1,6 @@
 # useRef
 
-We should not select DOM elements using `querySelector` (even if it works), because React is declarative, and this is not the "React way" of doing things. Instead, we should use the `useRef` hook (ref stands for reference).
-
-`useRef` creates an object with a mutable `.current` property that persists across renders (variable defined in the render logic will always reset). In this object we can put any data that we want to be preserved between renders.
+`useRef` creates an object with a mutable `.current` property that persists across renders. In this object we can put any data that we want to be preserved between renders. Regular variables defined in the render logic will always reset at re-render.
 
 ```jsx
 const myRef = useRef(23);
@@ -18,9 +16,11 @@ _Two big use cases for `useRef`:_
 
 Do NOT write or read the `.current` property in the render logic, this would create an undesirable side effect, instead use it in a `useEffect` hook.
 
-Main refs characteristics: it persists across renders, it doesn't cause re-renders, it is mutable, synchronous updates.
+**Main refs characteristics:** it persists across renders, it doesn't cause re-renders, it is mutable, synchronous updates.
 
-**Selecting DOM elements with useRef:**
+## Selecting DOM elements with useRef
+
+We should not select DOM elements using `querySelector` (even if it works), because React is declarative, and this is not the "React way" of doing things. Instead, we should use the `useRef` hook (ref stands for reference).
 
 ```jsx
 function App() {
@@ -34,4 +34,4 @@ function App() {
 }
 ```
 
-When we work with DOM elements, the initial value of `useRef` should be `null`.
+If we don't have an initial value for `useRef`, use `null` or `undefined`.

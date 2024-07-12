@@ -2,14 +2,14 @@
 
 ## Table of Contents
 
-- [Passing data with props](#passing-data-with-props)
+- [Passing Data with Props](#passing-data-with-props)
 - [Event Handlers as Props](#event-handlers-as-props)
-- [props.children](#propschildren)
+- [The children Prop](#the-children-prop)
 - [Explicit Props](#explicit-props)
 - [Component Composition](#component-composition)
-- [defaultProps](#defaultprops)
+- [Default Props](#default-props)
 
-## Passing data with props
+## Passing Data with Props
 
 In React, we use "props" to pass data from parent components to child components.
 
@@ -49,7 +49,7 @@ function Button({ onClick }) {
 }
 
 function App() {
-  const handleClick = () => console.log('click');
+  const handleClick = () => console.log("click");
   return <Button onClick={handleClick} />;
 }
 ```
@@ -61,9 +61,9 @@ function App() {
 - _Event Functions:_ prefix `handle` + the event type `Click`
 - _Props:_ prefix `on` + the event type `Click`
 
-## props.children
+## The children Prop
 
-`props.children` is a special prop, automatically passed to every component, that renders whatever is included between the component's opening and closing JSX tags.
+`props.children` is a special prop, automatically passed to every component, it renders whatever is included between the component's opening and closing JSX tags.
 
 ```js
 function Layout(props) {
@@ -93,7 +93,7 @@ function Layout({ element }) {
 
 This approach offers more flexibility and control over where and how the passed elements are rendered within the `Layout` component.
 
-### Component Composition
+## Component Composition
 
 **Component Composition** is a technique of combining different components using the `children` props (or explicitly defined props), making it easier to build complex UIs and avoiding the prop drilling problem.
 
@@ -116,16 +116,14 @@ function App() {
 
 Prop drilling occurs when a prop needs to be passed through multiple levels of nested components that do not use the prop themselves, but are merely intermediaries to pass the prop to a deeply nested child component that actually needs it.
 
-## defaultProps
+## Default Props
 
-Define default values for your component's props using `defaultProps`.
+Define default values for your component's props.
 
 ```jsx
-function Nav({ property }) {
-  return <p>{property}</p>;
+function Component({ name = "Guest", ...props }) {
+  return <Text {...props}>{name}</Text>;
 }
-
-Nav.defaultProps = {
-  property: 'value',
-};
 ```
+
+**Prop Forwarding:** By using the spread operator we can receive and forward all props from one component to another.

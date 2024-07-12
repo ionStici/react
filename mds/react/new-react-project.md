@@ -14,7 +14,7 @@ npm create vite@latest react-app
 
 - `index.html` is the HTML document into which react will insert all the content.
 
-- `package.json` contains descriptive and functional metadata about a project.
+- `package.json` contains descriptive and functional metadata about the project.
 
 - `package-lock.json` contains the dependency tree installed in node_modules/.
 
@@ -26,14 +26,14 @@ _Boilerplate Code_
 
 ```jsx
 // main.jsx
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from "react";
+import ReactDOM from "react-dom/client";
 
 function App() {
   return <h1>Hello, React!</h1>;
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
