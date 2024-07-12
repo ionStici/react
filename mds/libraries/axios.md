@@ -7,39 +7,39 @@ npm install axios
 ```
 
 ```js
-import axios from 'axios';
+import axios from "axios";
 ```
 
 ## GET Request
 
 ```jsx
-axios.get('api-url.com');
+async function getData() {
+  const response = await axios.get("api/data");
+}
 ```
+
+We use `axios.get` to send a GET request to the specified URL.
 
 ## POST Request
 
 ```jsx
-axios.post('api-url.com', { name: 'Data', description: 'Data description' });
-```
-
-## Async/Await
-
-```jsx
-async function fetchData() {
-  const response = await axios.get('api-url.com');
+async function postData(data) {
+  const response = await axios.post("api/data", data);
 }
 ```
+
+We use `axios.post` to send a POST request to the specified URL, passing the `data` we receive as the second argument.
 
 ## Axios + React Query
 
 ```jsx
-async function fetchData() {
-  const { data } = await axios.get('api-url.com');
+async function getData() {
+  const { data } = await axios.get("api/data");
   return data;
 }
 
-function Component() {
-  const { data } = useQuery('data', fetchData);
-  return null;
+function ReactComponent() {
+  const { data } = useQuery("data", getData);
+  return <RenderData data={data} />;
 }
 ```
