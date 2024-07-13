@@ -31,6 +31,7 @@ These frameworks can be seen as full-stack solutions because they offer features
 - [react-router-dom](./router/react-router.md) - Client-Side Routing
 - [react-hook-form](./react-hook-form.md) - Form Handling Hook
 - [react-hot-toast](./react-hot-toast.md) - Animated notifications
+- [tailwindcss](./tailwind.md) - Utility-first CSS framework
 
 ### Other good to know libraries
 

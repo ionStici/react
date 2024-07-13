@@ -1,6 +1,6 @@
 # React
 
-_The [**React**](./mds/react/README.md) library and its [ecosystem](./mds/libraries/react-ecosystem.md)._
+The [**React**](./mds/react/README.md) library and its [ecosystem](./mds/libraries/react-ecosystem.md).
 
 This repository contains a collection of lessons focused on React and its ecosystem, covering a wide range of topics from basic concepts to advanced techniques.
 

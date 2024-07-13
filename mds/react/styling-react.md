@@ -5,12 +5,16 @@
 - [Vanilla CSS](#vanilla-css)
 - [Inline CSS in React](#inline-css-in-react)
 - [CSS Modules](#css-modules)
+
+<div></div>
+
 - [Styled Components](./styled-comp.md)
+- [Tailwind CSS](./../libraries/tailwind.md)
 
 ## Vanilla CSS
 
 ```js
-import './style.css';
+import "./style.css";
 ```
 
 Import a CSS file to make the styles available to the application.
@@ -20,7 +24,7 @@ Import a CSS file to make the styles available to the application.
 In React, we can assign an object containing CSS declarations to the `style` attribute of an JSX element.
 
 ```jsx
-<h1 style={{ color: 'red' }}>Hello World</h1>
+<h1 style={{ color: "red" }}>Hello World</h1>
 ```
 
 - Hyphenated CSS properties use camelCase.
@@ -42,10 +46,10 @@ CSS Modules aren't natively supported by web browsers. Instead, they function as
   This naming convention lets React and Webpack know that we are using CSS Modules.
 
 ```jsx
-import css from './styles.module.css';
-import colors from './colors.module.css';
+import css from "./styles.module.css";
+import colors from "./colors.module.css";
 
 <p className={css.smText}>Hello</p>; // Using a class name
 <p className={`${css.bigText} ${colors.red}`}>World</p>; // Multiple class names
-<p className={css['btn--active']}>Hi</p>; // Class name that contains dashes
+<p className={css["btn--active"]}>Hi</p>; // Class name that contains dashes
 ```
