@@ -1,5 +1,9 @@
 # Tailwind CSS
 
+The best place to learn Tailwind CSS is from the [official documentation](https://tailwindcss.com/docs/installation).
+
+## What is Tailwind CSS
+
 [**Tailwind CSS**](https://tailwindcss.com/) is a utility-first CSS framework packed with classes that can be composed to build any design, directly in your markup.
 
 **Utility-first CSS approach:** writing tiny classes with one single purpose, and then combining them to build entire layouts. In tailwind, these classes are already written for us. So we're not gonna write any new CSS, but instead use some of tailwind's hundreds of classes.
