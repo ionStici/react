@@ -32,6 +32,7 @@ These frameworks can be seen as full-stack solutions because they offer features
 - [react-hook-form](./react-hook-form.md) - Form Handling Hook
 - [react-hot-toast](./react-hot-toast.md) - Animated notifications
 - [tailwindcss](./tailwind.md) - Utility-first CSS framework
+- [framer-motion](./framer-motion.md) - React animation library
 
 ### Other good to know libraries
 
