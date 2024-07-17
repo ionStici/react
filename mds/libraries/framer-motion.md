@@ -6,6 +6,19 @@
 npm install framer-motion
 ```
 
+## Table of Contents
+
+- [The `motion` Component](#the-motion-component)
+- [The `initial` and `exit` Props](#the-initial-and-exit-props)
+- [Hover, Focus, Active States](#hover-focus-active-states)
+- [Variants](#variants)
+- [Staggering](#staggering)
+- [Keyframes](#keyframes)
+- [The useAnimate Hook](#the-useanimate-hook)
+- [The `layout` Prop](#the-layout-prop)
+- [Orchestrating Multi-Element Animations](#orchestrating-multi-element-animations)
+- [Animating Shared Elements](#animating-shared-elements)
+
 ## The `motion` Component
 
 The `motion` component renders the specified HTML element with enhanced animation capabilities.
@@ -64,7 +77,9 @@ function Component({ children, isOpen }) {
 ```
 
 - `initial` : Defines the starting state of the animation.
+
 - `animate` : Defines the state after the element appears.
+
 - `exit` : Defines the animation when the element is removed.
 
 The `AnimatePresence` component is needed for the `exit` animation to work.
@@ -85,52 +100,39 @@ return (
 ```
 
 - `whileHover` : Defines the animation when the element is hovered.
+
 - `whileTap` : Defines the animation when the element is tapped.
+
 - `whileFocus` : Defines the animation when the element is focused.
 
 ## Variants
 
-Variants allow defining multiple animation states and reusing them across components.
+**Variants** are objects that contain named animation states.
+
+You apply variants to a `motion` component by using the `variants` prop and specifying which variant should be active using the `initial`, `animate`, and `exit` props.
 
 ```jsx
-function Modal({ children }) {
-  const variants = {
-    hidden: { opacity: 0, y: 50, scale: 0.95 },
-    visible: { opacity: 1, y: 0, scale: 1 },
-  };
+function List({ items }) {
+  const listVariants = { hidden: { opacity: 0 }, visible: { opacity: 1 } };
+  const itemVariants = { hidden: { opacity: 0 }, visible: { opacity: 1 } };
 
   return (
-    <motion.dialog
-      variants={variants}
-      initial="hidden"
-      animate="visible"
-      exit="hidden"
-    >
-      {children}
-    </motion.dialog>
+    <motion.ul variants={listVariants} initial="hidden" animate="visible">
+      {items.map((item) => {
+        return (
+          <motion.li variants={itemVariants} key={item}>
+            {item}
+          </motion.li>
+        );
+      })}
+    </motion.ul>
   );
 }
 ```
 
-Variants can be used to coordinate animations between parent and child components.
+Variants can be used to coordinate animations between parent and child components. The parent component can define the overall animation states, and the child components can inherit and synchronize with those states.
 
-```jsx
-function ModalContent() {
-  return (
-    <Modal>
-      <motion.div
-        variants={{
-          hidden: { opacity: 0, scale: 0.5 },
-          visible: { opacity: 1, scale: 1 },
-        }}
-        transition={{ type: "spring" }}
-      />
-    </Modal>
-  );
-}
-```
-
-Child components can inherit variant animations from parent components.
+From our code example, the `motion.li` components will implicitly use the `hidden` and `visible` states from `itemVariants` because the parent `motion.ul` component has `initial="hidden"` and `animate="visible"` props set. This means that the children (`motion.li`) will automatically inherit these states unless explicitly overridden.
 
 ## Staggering
 
@@ -138,7 +140,7 @@ Staggering animations allows for delaying the start of each animation in a seque
 
 ```jsx
 return (
-  <motion.ul variants={{ visible: { transition: { staggerChildren: 0.05 } } }}>
+  <motion.ul transition={{ staggerChildren: 0.05 }}>
     {items.map((item) => (
       <li initial={{ opacity: 0 }} animate={{ opacity: 1 }}></li>
     ))}
@@ -150,11 +152,15 @@ Staggering helps create more dynamic and engaging animations by offsetting the s
 
 ## Keyframes
 
+Keyframes allow for defining animations that move through multiple states.
+
 ```jsx
-return <motion.li animate={{ scale: [0.8, 1.3, 1] }}></motion.li>;
+return <motion.li animate={{ scale: [0.8, 1.3, 1] }} />;
 ```
 
 ## The useAnimate Hook
+
+The `useAnimate` hook allows for programmatic control of animations.
 
 ```jsx
 import { motion, useAnimate, stagger } from "framer-motion";
@@ -178,3 +184,43 @@ function Component() {
   );
 }
 ```
+
+The `useAnimate` hook provides greater flexibility and control over animations, allowing you to trigger animations based on state changes or other events.
+
+## The `layout` Prop
+
+To enable Framer Motion's layout animations, we simply set the `layout` prop of a `motion` component.
+
+```jsx
+return <motion.li layout />;
+```
+
+Any layout change that happens as the result of a re-render will be animated.
+
+## Orchestrating Multi-Element Animations
+
+To orchestrate multi-element animations, use the `AnimatePresence` component with the `mode` prop set to `"wait"`.
+
+This approach ensures that animations of multiple elements are coordinated and performed sequentially.
+
+```jsx
+function Text({ text }) {
+  return (
+    <AnimatePresence mode="wait">
+      <motion.p key={text} animate={{ scale: [1, 1.2, 1] }}>
+        {text}
+      </motion.p>
+    </AnimatePresence>
+  );
+}
+```
+
+**Re-triggering Animations via Keys:** Changing the key of a component forces React to treat it as a new component, thereby re-triggering the animation.
+
+## Animating Shared Elements
+
+```jsx
+return <motion.div layoutId="tag-indicator" />;
+```
+
+Using the `layoutId` prop allows elements with the same `layoutId` to smoothly transition between different layouts.
