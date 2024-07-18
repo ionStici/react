@@ -18,6 +18,7 @@ npm install framer-motion
 - [The `layout` Prop](#the-layout-prop)
 - [Orchestrating Multi-Element Animations](#orchestrating-multi-element-animations)
 - [Animating Shared Elements](#animating-shared-elements)
+- [Scroll-based Animations](#scroll-based-animations)
 
 ## The `motion` Component
 
@@ -224,3 +225,37 @@ return <motion.div layoutId="tag-indicator" />;
 ```
 
 Using the `layoutId` prop allows elements with the same `layoutId` to smoothly transition between different layouts.
+
+## Scroll-based Animations
+
+- `useScroll` : A hook that provides the current scroll position.
+- `useTransform` : A hook that maps input ranges (e.g., scroll positions) to output ranges (e.g., positions, scales, opacities).
+
+```jsx
+import { motion, useScroll, useTransform } from "framer-motion";
+
+function Component({ children }) {
+  // Destructure the vertical scroll position
+  const { scrollY } = useScroll();
+
+  // Transform the vertical position of the div based on scroll position
+  const yDiv = useTransform(scrollY, [0, 200], [0, -100]);
+
+  // Transform the opacity of the div based on scroll position
+  const opacityDiv = useTransform(scrollY, [0, 200, 500], [1, 0.5, 0]);
+
+  // Transform the vertical position of the text based on scroll position
+  const yText = useTransform(scrollY, [0, 200, 300, 500], [0, 50, 50, 300]);
+
+  // Transform the scale of the text based on scroll position
+  const scaleText = useTransform(scrollY, [0, 300], [1, 1.5]);
+
+  return (
+    <motion.div style={{ opacity: opacityDiv, y: yDiv }}>
+      <motion.h1 style={{ scale: scaleText, y: yText }}>Hello</motion.h1>
+    </motion.div>
+  );
+}
+```
+
+`const yDiv = useTransform(scrollY, [0, 200], [0, -100]);` : Maps the `scrollY` value from `[0, 200]` to `[0, -100]`, which means as you scroll from 0 to 200 pixels, the `y` position of the `div` will animate from `0` to `-100` pixels.

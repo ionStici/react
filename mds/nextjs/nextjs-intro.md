@@ -1,11 +1,20 @@
-# Server-Side Rendering (SSR)
+# Next.js Introduction
 
-What is Server-Side Rendering?
+[**Next.js**](https://nextjs.org/docs) is a React framework for building full-stack web applications. You use React Components to build user interfaces, and Next.js for additional features and optimizations.
 
-## Table of Contents
+## Setting Up a Next.js Project
 
-- [Comparing CSR vs. SSR](#comparing-csr-vs-ssr)
-- [Initial Page Load and Data Fetching](#initial-page-load-and-data-fetching)
+```
+npx create-next-app my-next-app
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Comparing CSR vs. SSR
 
@@ -59,3 +68,7 @@ What is Server-Side Rendering?
 ### Interactivity and Hydration
 
 Even in SSR, the client typically downloads and executes a JavaScript bundle. This leads to a process called **hydration**, where static HTML becomes interactive by adding JavaScript functionality.
+
+In SSR, after the generated webpage is sent and rendered on the client so that the first content paint happens, the React bundle is downloaded as well to hydrate the static webpage. In this process, the React will build back the component tree on the client and will compare it to the actual server-side rendered DOM that's currently on the page, and if it match then react will simply adopt the existing DOM, and attach all event handlers and file off existing effects. So instead of creating brand new DOM elements, which can take a long time, in hydration, react simply attempts to adopt the already existing DOM. After this process finishes, the page becomes interactive.
+
+**Common Hydration Errors:** incorrect HTML element nesting, rendering different data on the server and on the client, using browser-only APIs like window or localStorage, incorrect use of side effect, etc.
