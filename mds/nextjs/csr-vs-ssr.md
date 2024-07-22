@@ -1,3 +1,13 @@
+## Client-Side Rendering (CSR)
+
+- **Rendering Process:** HTML is rendered in the browser by JavaScript.
+- **Performance:** Slower initial page loads due to larger JavaScript bundle and data fetching after components mount.
+- **SEO Impact:** SEO can be challenging as content is not immediately available to search engines.
+
+## Server-Side Rendering (SSR)
+
+- **Rendering Process:** HTML is rendered on the server. The server sends the fully generated webpage to the client.
+
 <br>
 <br>
 <br>

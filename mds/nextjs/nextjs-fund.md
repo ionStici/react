@@ -2,6 +2,16 @@
 
 [**Next.js**](https://nextjs.org/docs) is a React framework for building full-stack web applications. You use React Components to build user interfaces, and Next.js for additional features and optimizations.
 
+## Table of Content
+
+- [Setting Up a Next.js Project](#setting-up-a-nextjs-project)
+- [Creating Routes](#creating-routes)
+- [Link](#link)
+- [The `layout` file](#the-layout-file)
+- [Fetching Data in a Page](#fetching-data-in-a-page)
+- [Client Components](#client-components)
+- [Displaying a Loading Indicator](#displaying-a-loading-indicator)
+
 ## Setting Up a Next.js Project
 
 ```
@@ -56,3 +66,51 @@ export default function RootLayout({ children }) {
 The `metadata` object allows you to define default metadata, such as the title and description, which can be used throughout your app.
 
 The `RootLayout` component wraps your application and ensures a consistent HTML structure, with the `children` prop rendering the content of your individual pages.
+
+## Fetching Data in a Page
+
+In the `app` folder, each component is a server component. Therefore, data fetching occurs on the server.
+
+```jsx
+export default async function Page() {
+  const response = await fetch("api");
+  const data = await response.json();
+
+  return null;
+}
+```
+
+The fetched data is cached, meaning that subsequent requests for the same data will retrieve it from the cache rather than making a new fetch request.
+
+## Client Components
+
+The `'use client'` directive designates a component as a client component.
+
+```jsx
+"use client";
+
+import { useState } from "react";
+
+export default function Counter({ c }) {
+  const [count, setCount] = useState(c);
+
+  return <p>{count}</p>;
+}
+```
+
+**Props:** Client components can receive props from server components.
+
+**Initial Render:** Initially, all components, including client components, are rendered on the server.
+
+**Hydration:** Once the components are sent to the client, client components are hydrated to add interactivity.
+
+## Displaying a Loading Indicator
+
+The `app/loading.js` file can be used to automatically display a loading indicator during data fetching or route transitions.
+
+```jsx
+// app/loading.js
+export default function Loading() {
+  return <p>Loading...</p>;
+}
+```
