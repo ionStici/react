@@ -18,14 +18,15 @@ These frameworks can be seen as full-stack solutions because they offer features
 
 - **CSS Styling:** `CSS Modules` `Styled Components` `Tailwind CSS`
 
-- **UI Component:** `Material UI` `shadcn/ui`
-
 - **Animations:** `Framer Motion`
+
+- **UI Component:** `Material UI` `shadcn/ui`
 
 - **Auth / Database / Backend:** `Supabase` `Firebase` `Next.js`
 
 ## Third-Party Libraries
 
+- [Next.js](./../nextjs/README.md) - Full-Stack React Framework.
 - [react-query](./react-query.md) - Server State Management
 - [axios](./axios.md) - Promise-based HTTP client
 - [react-router-dom](./router/react-router.md) - Client-Side Routing

@@ -18,89 +18,51 @@
 
   _Reduced Client Bundle:_ Server components do not ship any JavaScript to the client, allowing for the import of large libraries without impacting client performance.
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
 ## Differences between Client and Server Components
 
 ### Server Components
 
-- Server component cannot use React state or hooks, and no lifting state up available.
-
-- **Props:** Server components can pass props to client components (props must be serializable, so no functions or classes).
-
-- **Data fetching:** Server components are ideal for data fetching because they run on the server.
-
-<br>
-<br>
-<br>
-
-Can import:
-Client and server components: Server components can import both client and server components, providing flexibility in component structure.
-
-Can render:
-Client and server components: Server components can render both other server components and client components.
-
-When re-render?:
-On URL change (navigation): Server components re-render based on URL changes or navigation events, ensuring fresh data is fetched and rendered appropriately.
+- **State / Hooks / Lifting State Up:** Not supported.
+- **Props:** Server components can pass props to client components, but these props must be serializable (no functions or classes).
+- **Data Fetching:** Ideal for data fetching since they run on the server.
+- **Import / Render:** Server components can import and render both server and client components.
+- **When Re-render:** Re-renders occur based on URL changes or navigation events.
 
 ### Client Components
 
-- Client components can only import other client components, they cannot import server components.
-
-- Client components can render both other client components and server components. Server component must be passed as props.
-
-<br>
-
-- **State/hooks & Lifting state up & Props & Data fetching:** Available.
-
-- **Can Import:** Client components can only import other client components, they cannot import server components.
-
-- **Can Render:** Client components can render both other client components and server components. Server components must be passed as props.
-
-- **When Re-render:** Client components re-render when there is a change in their state or props.
-
-### Server Components
-
-<br>
-<br>
-<br>
+- **State / Hooks / Lifting State Up:** Supported.
+- **Data Fetching:** Handled on the client, ideally using a library.
+- **Import:** Client components can only import other client components.
+- **Render:** Client components can render both client and server components, but server components must be passed as props.
+- **When Re-render:** Re-renders occur when there are changes to state or props.
 
 ## Traditional React vs React with RSC
 
 ### Traditional React
 
-1. **Fetch Data:** Components fetch data directly.
-2. **Display:** The fetched data is used to display the view.
-3. **Interaction:** User interactions update the state.
-4. **Re-render:** State updates re-render the component.
+1. **Fetch Data:** Components directly fetch data on the client side.
+2. **Display:** The fetched data is used to render the view.
+3. **Interaction:** User interactions update the component state.
+4. **Re-render:** Components re-render when their state updates.
 
 ### React with RSC
 
-- **Server Components** are responsible for fetching data on the server.
-- **Client Components** handle user interactions and display the view.
+- **Server Components** handle data fetching on the server.
+- **Client Components** manage user interactions and display the view.
 
-#### Data Flow of RSC
+_Data Flow of RSC:_
 
-1. **Fetch Data:** Server components fetch data and process it on the server.
-2. **Props:** Data is passed as props from server components to client components.
-3. **Display:** Client components use the props to render the view.
-4. **Interaction:** User interactions update the state within the client components.
-5. **Re-render:** State updates within client components trigger a re-render of those components.
-6. **Navigation:** URL changes cause the server components to re-fetch data and update the client components.
+1. **Fetch Data:** Data is fetched and processed by server components on the server.
+2. **Props:** The server components pass the data as props to client components.
+3. **Display:** Client components use these props to render the view.
+4. **Interaction:** User interactions update the state within client components.
+5. **Re-render:** State changes in client components trigger their re-rendering.
+6. **Navigation:** URL changes cause server components to fetch new data and update the client components.
 
 ### Key Differences
 
-- **Separation of Concerns:** In the RSC model, data fetching is handled by server components, while client components focus on interactivity.
+- **Separation of Concerns:** In the RSC model, server components handle data fetching, while client components focus on interactivity.
 
-- **Efficiency:** The RSC model optimizes performance by reducing the amount of JavaScript needed on the client, as server components handle data fetching.
+- **Efficiency:** The RSC model improves performance by minimizing the JavaScript needed on the client, as server components manage data fetching.
 
-- **Re-rendering Triggers:** In the traditional model, re-renders are triggered by state changes in client components. In the RSC model, re-renders can also be triggered by URL changes, causing server components to fetch new data.
+- **Re-rendering Triggers:** In the traditional model, re-renders are primarily triggered by state changes in client components. In the RSC model, re-renders can also be triggered by URL changes, causing server components to fetch updated data.

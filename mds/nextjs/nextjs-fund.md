@@ -30,6 +30,12 @@ To create nested routes, you simply nest folders within each other.
 - `app/about/page.js` : corresponds to the "about" route.
 - `app/about/team/page.js` : sets up the "about/team" nested route.
 
+### Underscore Folders
+
+`app/_components/Nav.js`
+
+Folders beginning with an underscore are considered private and are excluded from the routing system.
+
 ## Link
 
 The `Link` component is used to navigating between pages.
