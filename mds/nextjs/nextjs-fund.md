@@ -139,7 +139,7 @@ export default function Counter({ c }) {
 
 ## Displaying a Loading Indicator
 
-The `app/loading.js` file can be used to automatically display a loading indicator during data fetching or route transitions.
+The `app/loading.js` file can be used to automatically display a global loading indicator during data fetching or route transitions.
 
 ```jsx
 // app/loading.js
@@ -147,6 +147,12 @@ export default function Loading() {
   return <p>Loading...</p>;
 }
 ```
+
+Enabling a file like this will active streaming in our application, which means that the client will require JavaScript to work properly.
+
+### Route based Loading Indicator
+
+`app/contact/loading.js` will display a loading indicator during data fetching only for the "contact" route segment.
 
 ## Loading and Optimizing Fonts
 
@@ -232,22 +238,23 @@ Also, in this situation we can add a few other properties:
 
 ```jsx
 import Image from "next/image";
-import bg from "@/public/bg.png";
 
 export default function Page() {
-  return <Image src={bg} fill class="object-cover object-top" />;
+  return (
+    <div className="relative aspect-square">
+      <Image src="bg.jpg" fill class="object-cover object-top" />
+    </div>
+  );
 }
 ```
 
-- `fill` : this prop will make the image fill the entire viewport
+- `fill` : this prop will make the image fill the entire relative containing block.
 - `object-fit: cover;` and `object-position: top;` complement this technique.
 
-### Using Static Images without Width and Height Props
+`fill` allows us to use static images without specifying width and height.
 
-```jsx
-return (
-  <div className="relative aspect-square">
-    <Image src="/about-2.jpg" className="object-cover" fill />
-  </div>
-);
-```
+### Notes
+
+If the image `src` comes from an api, you have to specify that in the `next.config.mjs` file.
+
+https://nextjs.org/docs/messages/next-image-unconfigured-host
