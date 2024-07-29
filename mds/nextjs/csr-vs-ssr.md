@@ -2,6 +2,14 @@
 
 ## Client-Side Rendering
 
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Client-Side Rendering
+
 - **Rendering Process:** HTML is rendered in the browser by JavaScript.
 - **Performance:** Slower initial page loads due to larger JavaScript bundle and data fetching after components mount.
 - **SEO Impact:** SEO can be challenging as content is not immediately available to search engines.

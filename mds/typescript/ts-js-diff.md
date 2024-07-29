@@ -1,5 +1,3 @@
-[&larr; Back](./README.md)
-
 # TypeScript and JavaScript
 
 **TypeScript** _is a superset of JavaScript._ This means that JavaScript code is valid TypeScript code, but TypeScript provides additional features that make it more reliable.
@@ -21,7 +19,7 @@ TS suppots JS libraries, it is not environment specific, you can use TS with nod
 | **Typing**        | Dynamically-typed | Statically typed |
 | **OOP**           |  Prototype-based  |   Follows OOP    |
 
-### Advantages of using TS over JS
+## Advantages of using TS over JS
 
 - In TS, errors are caught at compile time, resulting in less runtime errors.
 
@@ -31,15 +29,13 @@ TS suppots JS libraries, it is not environment specific, you can use TS with nod
 
 - Due to static typing and additional features, TS code becomes more self-documenting.
 
-### Statically Typed vs. Strongly Typed
+## Statically Typed vs. Strongly Typed
 
 - **Statically Typed:** Type checking is done at compile time.
 
 - **Strongly Typed:** Strict type rules are enforced, and implicit type coercion is limited.
 
 **TypeScript:** Statically typed and strongly typed, providing type checking at compile time and enforcing strict type rules.
-
-<br>
 
 ## Transpilation vs. Compilation vs. Interpretation
 
@@ -56,5 +52,3 @@ _Example:_ JavaScript is primarily an interpreted language. The JavaScript engin
 _Example:_ TypeScript is a superset of JavaScript. TypeScript code is transpiled into JavaScript before execution. The TypeScript compiler `tsc` translates TypeScript code into equivalent JavaScript code.
 
 TypeScript code is transpiled into JavaScript code, and the resulting JavaScript code is executed in a JavaScript runtime environment. The TypeScript compiler removes type annotations and other TypeScript-specific features, producing JavaScript code that is compatible with browsers or other JS runtime environments.
-
-<br>
