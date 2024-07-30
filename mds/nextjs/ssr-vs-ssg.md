@@ -1,3 +1,8 @@
+## Types of SSR
+
+1. **Static Site Generation (SSG):** The HTML is generated at build time by the bundler, and is served like that to all users.
+2. **Dynamic SSR:** The HTML is generated on each request, making it ideal for pages with frequently changing data.
+
 # Types of SSR: Static vs Dynamic Rendering
 
 ## Server-Side Rendering in Next.js

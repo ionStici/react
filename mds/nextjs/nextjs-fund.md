@@ -258,3 +258,16 @@ export default function Page() {
 If the image `src` comes from an api, you have to specify that in the `next.config.mjs` file.
 
 https://nextjs.org/docs/messages/next-image-unconfigured-host
+
+# draft
+
+Custom react hook that next.js provides that gives the current url (works in client components only).
+
+```js
+"use client";
+import { usePathname } from "next/navigation";
+
+function Component() {
+  const pathname = usePathname(); // /about
+}
+```

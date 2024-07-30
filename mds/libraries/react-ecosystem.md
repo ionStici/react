@@ -26,8 +26,6 @@ These frameworks can be seen as full-stack solutions because they offer features
 
 ## Third-Party Libraries
 
-<!-- - [Next.js](./../nextjs/README.md) - Full-Stack React Framework. -->
-
 - [react-query](./react-query.md) - Server State Management
 - [axios](./axios.md) - Promise-based HTTP client
 - [react-router-dom](./router/react-router.md) - Client-Side Routing

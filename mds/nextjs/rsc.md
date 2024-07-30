@@ -1,10 +1,12 @@
 # React Server Components (RSC)
 
-- **React Server Components (RSC):** full-stack architecture for building React applications, where the server becomes an integral part of the React component tree. This approach allows React components to extend to the server.
+## Introduction
 
-- **Server Components:** These components are only rendered on the server and are typically responsible for fetching data. Since they run solely on the server, the app requires zero JavaScript to be downloaded for them.
+- **React Server Components (RSC):** architecture for building full-stack React applications, where the server components are rendered on the server and streamed to the client, optimizing performance by reducing client-side JavaScript and improving the speed of the initial page load.
 
-  _With Server components we essentially can build the application's backend also with React._
+- **Server Components:** These components are only rendered on the server, and since they run exclusively on the server, the client does not require any JS to render them.
+
+  _With Server Components we essentially can build the application's backend also with React._
 
 - **Client Components:** These are regular React components that run on the client, handling all the interactivity. To use a client component, you must specify the `'use client'` directive at the top of the module.
 
@@ -18,20 +20,21 @@
 
   _Reduced Client Bundle:_ Server components do not ship any JavaScript to the client, allowing for the import of large libraries without impacting client performance.
 
-## Differences between Client and Server Components
+## Comparing Server and Client Components
 
 ### Server Components
 
-- **State / Hooks / Lifting State Up:** Not supported.
-- **Props:** Server components can pass props to client components, but these props must be serializable (no functions or classes).
-- **Data Fetching:** Ideal for data fetching since they run on the server.
+- **State / Hooks:** Not Applicable.
+- **Props:** Server components can pass any props to other server components and only serializable props to client components.
+- **Data Fetching:** Server components are ideal for data fetching since they run on the server.
 - **Import / Render:** Server components can import and render both server and client components.
 - **When Re-render:** Re-renders occur based on URL changes or navigation events.
 
 ### Client Components
 
-- **State / Hooks / Lifting State Up:** Supported.
-- **Data Fetching:** Handled on the client, ideally using a library.
+- **State / Hooks:** Applicable.
+- **Props:** Client components can pass props to other client components, but not to server components.
+- **Data Fetching:** handled on the client, preferably using a library.
 - **Import:** Client components can only import other client components.
 - **Render:** Client components can render both client and server components, but server components must be passed as props.
 - **When Re-render:** Re-renders occur when there are changes to state or props.
@@ -40,24 +43,24 @@
 
 ### Traditional React
 
-1. **Fetch Data:** Components directly fetch data on the client side.
-2. **Display:** The fetched data is used to render the view.
-3. **Interaction:** User interactions update the component state.
-4. **Re-render:** Components re-render when their state updates.
+- Components directly fetch data on the client side.
+- The fetched data is used to render the view.
+- User interactions update the component state.
+- Components re-render when their state updates.
 
 ### React with RSC
 
-- **Server Components** handle data fetching on the server.
-- **Client Components** manage user interactions and display the view.
+- **Server Components:** handle data fetching on the server.
+- **Client Components:** manage user interactions and display the view.
 
 _Data Flow of RSC:_
 
-1. **Fetch Data:** Data is fetched and processed by server components on the server.
-2. **Props:** The server components pass the data as props to client components.
-3. **Display:** Client components use these props to render the view.
-4. **Interaction:** User interactions update the state within client components.
-5. **Re-render:** State changes in client components trigger their re-rendering.
-6. **Navigation:** URL changes cause server components to fetch new data and update the client components.
+1. Data is fetched and processed by server components on the server.
+2. Server components pass that data to client components as props.
+3. Client components use these props to render the view.
+4. User interactions update the state within client components.
+5. State updates in client components trigger their re-rendering.
+6. URL changes cause server components to fetch new data and update the client components.
 
 ### Key Differences
 
