@@ -1,5 +1,12 @@
 # Comparing CSR and SSR
 
+## Table of Contents
+
+- [Client-Side Rendering (CSR)](#client-side-rendering-csr)
+- [Server-Side Rendering (SSR)](#server-side-rendering-ssr)
+- [Initial Request: CSR vs SSR](#initial-request-csr-vs-ssr)
+- [Interactivity and Hydration](#interactivity-and-hydration)
+
 ## Client-Side Rendering (CSR)
 
 - **Rendering Process:** The HTML is rendered in the browser by JavaScript.

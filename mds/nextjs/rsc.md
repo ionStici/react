@@ -1,5 +1,16 @@
 # React Server Components (RSC)
 
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Comparing Server and Client Components](#comparing-server-and-client-components)
+  - [Server Components](#server-components)
+  - [Client Components](#client-components)
+- [Traditional React vs React with RSC](#traditional-react-vs-react-with-rsc)
+  - [Traditional React](#traditional-react)
+  - [React with RSC](#react-with-rsc)
+  - [Key Differences](#key-differences)
+
 ## Introduction
 
 - **React Server Components (RSC):** architecture for building full-stack React applications, where the server components are rendered on the server and streamed to the client, optimizing performance by reducing client-side JavaScript and improving the speed of the initial page load.
