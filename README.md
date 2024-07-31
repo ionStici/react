@@ -1,6 +1,8 @@
 # React
 
-The [**React**](./mds/react/README.md) library and its [**Ecosystem**](./mds/libraries/react-ecosystem.md).
+- The [**React**](./mds/react/README.md) library and its [**Ecosystem**](./mds/libraries/react-ecosystem.md).
+
+- Build full-stack React applications with [**Next.js**](./mds/next/README.md).
 
 This repository contains a collection of lessons focused on React and its ecosystem, covering a wide range of topics from basic concepts to advanced techniques.
 
