@@ -1,3 +1,5 @@
+## Static vs Dynamic Rendering
+
 ## Types of SSR
 
 1. **Static Site Generation (SSG):** The HTML is generated at build time by the bundler, and is served like that to all users.
