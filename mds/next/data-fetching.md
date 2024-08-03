@@ -1,6 +1,8 @@
-## Fetching Data in a Page
+# Data Fetching
 
-In the `app` folder, each component is a server component. Therefore, data fetching occurs on the server.
+## Fetching Data on the Server
+
+In the `app` folder, by default components are rendered on the server, therefore data fetching occurs on the server.
 
 ```jsx
 export default async function Page() {
@@ -13,9 +15,11 @@ export default async function Page() {
 
 The fetched data is cached, meaning that subsequent requests for the same data will retrieve it from the cache rather than making a new fetch request.
 
+**Note:** Try to pass as little data as possible to client components.
+
 ## Data Fetching Strategies
 
-Instead of fetching data from multiple APIs in the same route component, we should delegate the fetching job to inner components (streaming):
+Instead of fetching data from multiple APIs in the same route component, we should delegate the fetching job to inner components.
 
 ```js
 // page.js
@@ -36,7 +40,6 @@ export default async function Page() {
 
 ```js
 // InnerData.js
-
 import getLeftData from "apis";
 import getRightData from "apis";
 
@@ -70,5 +73,3 @@ export function Right({ right }) {
   return;
 }
 ```
-
-Try to pass as little data as possible to client components.

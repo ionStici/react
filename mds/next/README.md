@@ -16,6 +16,20 @@
 
 <div></div>
 
+- [Client Components](./client-components.md)
+- [Data Fetching](./data-fetching.md)
+- [Sharing State Between Client and Server](./sharing-state.md)
+
+<div></div>
+
+- [Route Handlers](./route-handlers.md)
+- [Next.js Middleware](./middleware.md)
+- [Suspense](./suspense.md)
+
+<div></div>
+
+- [Environment Variables](./env-vars.md)
+
 ### How it Works
 
 - [Comparing CSR and SSR](./csr-vs-ssr.md)

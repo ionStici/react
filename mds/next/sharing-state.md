@@ -7,7 +7,7 @@ Server components get access to `searchParams` through props.
 ```js
 // page.js
 export default function Page({ searchParams }) {
-  console.log(searchParams); // { filter: "all" }
+  console.log(searchParams); // { sort: "all" }
 }
 ```
 
@@ -20,19 +20,19 @@ Consider that the page that uses `searchParams` will no longer be statically ren
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-export default function Filter() {
+export default function Text() {
   const searchParams = useSearchParams();
-  const activeFilter = searchParams.get("capacity") ?? "all";
+  const activeSort = searchParams.get("sort") ?? "all";
 
   const router = useRouter();
   const pathname = usePathname();
 
   function handleFilter(filter) {
     const params = new URLSearchParams();
-    params.set("capacity", filter);
+    params.set("sort", filter);
     router.replace(`${pathname}?${params.toString()}`);
   }
 
-  return "jsx";
+  return <button onClick={() => handleFilter("surprise")}>{activeSort}</button>;
 }
 ```
