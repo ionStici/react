@@ -2,7 +2,19 @@
 
 [**Next.js**](https://nextjs.org/docs) is a React framework for building full-stack web applications. You use React Components to build user interfaces, and Next.js for additional features and optimizations.
 
-###
+### Introduction
+
+- [Setting Up a Next.js Project](./setup.md)
+- [Routing and Navigation](./creating-routes.md)
+- [File Conventions](./file-conventions.md)
+
+<div></div>
+
+- [The Image Component](./image.md)
+- [Metadata and Favicon](./metadata.md)
+- [Loading and Optimizing Fonts](./fonts.md)
+
+<div></div>
 
 ### How it Works
 
