@@ -30,6 +30,12 @@
 
 - [Environment Variables](./env-vars.md)
 
+<!-- - [Next Auth](./next-auth.md) -->
+
+### Server Actions
+
+- [What are Server Actions](./server-actions.md)
+
 ### How it Works
 
 - [Comparing CSR and SSR](./csr-vs-ssr.md)
