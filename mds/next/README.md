@@ -35,6 +35,7 @@
 ### Server Actions
 
 - [What are Server Actions](./server-actions.md)
+- [Introduction to Server Actions](./server-actions-intro.md)
 
 ### How it Works
 

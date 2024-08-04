@@ -15,7 +15,7 @@ Server Actions are asynchronous functions that run exclusively on the server, en
 
 ### 2. Async Function in a Server Component
 
-- Use the `'use server'` directive at the top of the function.
+- Use the `'use server'` directive at the top of the function body.
 - The function can be used within the server component of passed to a client component (unlike functions).
 
 ## Key Points
