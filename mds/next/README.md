@@ -23,14 +23,8 @@
 <div></div>
 
 - [Route Handlers](./route-handlers.md)
-- [Next.js Middleware](./middleware.md)
 - [Suspense](./suspense.md)
-
-<div></div>
-
-- [Environment Variables](./env-vars.md)
-
-<!-- - [Next Auth](./next-auth.md) -->
+- [Next.js Middleware](./middleware.md)
 
 ### Server Actions
 
@@ -43,6 +37,11 @@
 - [The useFormStatus Hook](./useformstatus.md)
 - [The useOptimistic Hook](./useoptimistic.md)
 - [The useTransition Hook](./usetransition.md)
+
+### Next Auth
+
+- [Next Auth](./next-auth.md)
+- [Environment Variables](./env-vars.md)
 
 ### How RSC and Next.js Works
 
