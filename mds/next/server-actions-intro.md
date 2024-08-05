@@ -33,7 +33,7 @@ export async function addTodo(formData) {
   if (!todoList.id === session.user.id) throw new Error("Not allowed");
 
   // 3. Data validation
-  const todo = formData.get("todo");
+  const todo = formData.get("todo").slice(0, 50);
   if (!/^[a-zA-Z0-9]{1,20}$/.test(todo)) throw new Error("Invalid format");
 
   // 4. Preparing data
@@ -90,29 +90,23 @@ export default function TodoList() {
 }
 ```
 
-## The useFormStatus Hook
-
-The `useFormStatus` hook provides status information about the form submission.
+## Calling a Server Action with Additional Parameters
 
 ```js
-"use client";
+import { createItemAction } from "server-action";
 
-import { useFormStatus } from "react-dom";
-
-export default function Button({ children, pendingLabel }) {
-  const { pending } = useFormStatus();
+export default function UpdateItem({ reset, id }) {
+  const createItem = createItemAction.bind(null, id);
 
   return (
-    <button disabled={pending}>{pending ? pendingLabel : children}</button>
+    <form
+      action={async (formData) => {
+        await createItem(formData);
+        reset();
+      }}
+    >
+      <input />
+    </form>
   );
 }
 ```
-
-Use case: Useful for providing feedback to the user when the form is currently submitting or not.
-
-`useFormStatus` returns the following properties:
-
-- `pending` : `true` it the `from` is pending submission, otherwise `false`.
-- `data` : form data currently submitted.
-- `method` : the http verb the form uses.
-- `action` : a reference to the function passed to the `action` prop of the `form`.
