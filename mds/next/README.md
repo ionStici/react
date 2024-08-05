@@ -29,7 +29,6 @@
 <div></div>
 
 - [Environment Variables](./env-vars.md)
-- [The useOptimistic Hook](./useoptimistic.md)
 
 <!-- - [Next Auth](./next-auth.md) -->
 
@@ -38,7 +37,12 @@
 - [What are Server Actions](./server-actions.md)
 - [Introduction to Server Actions](./server-actions-intro.md)
 
-### How it Works
+### Modern Hooks
+
+- [The useOptimistic Hook](./useoptimistic.md)
+- [The useTransition Hook](./usetransition.md)
+
+### How RSC and Next.js Works
 
 - [Comparing CSR and SSR](./csr-vs-ssr.md)
 - [React Server Components (RSC)](./rsc.md)
