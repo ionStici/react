@@ -89,3 +89,30 @@ export default function TodoList() {
   );
 }
 ```
+
+## The useFormStatus Hook
+
+The `useFormStatus` hook provides status information about the form submission.
+
+```js
+"use client";
+
+import { useFormStatus } from "react-dom";
+
+export default function Button({ children, pendingLabel }) {
+  const { pending } = useFormStatus();
+
+  return (
+    <button disabled={pending}>{pending ? pendingLabel : children}</button>
+  );
+}
+```
+
+Use case: Useful for providing feedback to the user when the form is currently submitting or not.
+
+`useFormStatus` returns the following properties:
+
+- `pending` : `true` it the `from` is pending submission, otherwise `false`.
+- `data` : form data currently submitted.
+- `method` : the http verb the form uses.
+- `action` : a reference to the function passed to the `action` prop of the `form`.

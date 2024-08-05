@@ -29,6 +29,7 @@
 <div></div>
 
 - [Environment Variables](./env-vars.md)
+- [The useOptimistic Hook](./useoptimistic.md)
 
 <!-- - [Next Auth](./next-auth.md) -->
 
