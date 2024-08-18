@@ -50,4 +50,4 @@ _The library for web and native user interfaces._
 - [Code Splitting](./code-splitting.md)
 - [Error Boundary](./error-boundary.md)
 
-### [The React Ecosystem](./../libraries/react-ecosystem.md)
+### [The React Ecosystem](./../react-ecosystem.md)
