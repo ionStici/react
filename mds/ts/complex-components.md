@@ -3,7 +3,7 @@
 ## Table of Contents
 
 - [Flexible Button Component](#flexible-button-component)
-- [forwardRef in TypeScript](#forwardref-in-typescript)
+- [forwardRef with TypeScript](#forwardref-with-typescript)
 - [Form Component with forwardRef and useImperativeHandle](#form-component-with-forwardref-and-useimperativehandle)
 
 ## Flexible Button Component
@@ -40,7 +40,7 @@ return <Button>Click</Button>;
 
 - By using the `isAnchorProps` type guard, the component can conditionally and safely determine the correct element to render.
 
-## forwardRef in TypeScript
+## forwardRef with TypeScript
 
 ```tsx
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
