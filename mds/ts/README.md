@@ -1,5 +1,7 @@
 # TypeScript with React
 
+- [TypeScript Fundamentals](https://github.com/ionStici/frontend/blob/main/mds/ts/README.md)
+
 - [TypeScript with React - Essentials](./essentials.md)
 
 - [Complex Components](./complex-components.md)

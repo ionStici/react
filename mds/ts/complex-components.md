@@ -133,6 +133,11 @@ const Form = forwardRef<FormHandle, FormProps>(function Form(
 export default Form;
 ```
 
+- `forwardRef<FormHandle, FormProps>`
+
+  - `FormHandle` : SPecifies the type of the `ref` object. The parent component can call methods define din `FormHandle`.
+  - `FormProps` : Defines the props that the `Form` component accepts.
+
 ### Using the Form
 
 ```tsx
