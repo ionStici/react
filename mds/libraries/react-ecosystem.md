@@ -32,4 +32,6 @@
 
 - **Drag and Drop:** `react-dnd`
 
-- **Utility Libraries:** [`react-icons`](./react-icons.md), [`react-svg`](./react-svg.md), [`gh-pages`](./gh-pages.md), [`json-server`](./json-server.md)
+- **Utility Libraries:** [`react-markdown`](./react-markdown.md), [`react-icons`](./react-icons.md), [`react-svg`](./react-svg.md)
+
+- **Other:** [`gh-pages`](./gh-pages.md), [`json-server`](./json-server.md)
